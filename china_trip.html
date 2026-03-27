@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rural China Road Trip — Shenzhen to Zhangjiajie via Chongqing</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+  :root {
+    --ink: #1a1714; --cream: #f5f0e8; --parchment: #ebe4d6;
+    --rust: #c4572a; --terracotta: #d4845a; --jade: #3a6b5e;
+    --gold: #c49a3c; --mist: #8a9a9a; --charcoal: #2d2a26; --warm-gray: #6b6560;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Source Sans 3',sans-serif; background:var(--cream); color:var(--ink); line-height:1.7; font-weight:300; overflow-x:hidden; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end;
+    padding:4rem 3rem; position:relative;
+    background:linear-gradient(175deg,#2a3a2e 0%,#1a2a1e 30%,#0d1a12 60%,#0a0f0c 100%);
+    overflow:hidden;
+  }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 70% 20%,rgba(58,107,94,.3),transparent),radial-gradient(ellipse 50% 40% at 20% 70%,rgba(196,87,42,.15),transparent); z-index:1; }
+  .hero::after { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); z-index:1; }
+  .hero-content { position:relative; z-index:2; max-width:900px; }
+  .hero-eyebrow { font-family:'JetBrains Mono',monospace; font-size:.72rem; letter-spacing:.35em; text-transform:uppercase; color:var(--terracotta); margin-bottom:1.5rem; opacity:0; animation:fadeUp .8s .3s ease forwards; }
+  .hero h1 { font-family:'Playfair Display',serif; font-weight:900; font-size:clamp(3rem,8vw,6.5rem); line-height:1; color:var(--cream); margin-bottom:1.5rem; opacity:0; animation:fadeUp .8s .5s ease forwards; }
+  .hero h1 em { font-style:italic; font-weight:400; color:var(--terracotta); }
+  .hero-subtitle { font-size:1.15rem; color:rgba(245,240,232,.6); max-width:580px; line-height:1.8; opacity:0; animation:fadeUp .8s .7s ease forwards; }
+  .hero-meta { display:flex; gap:2.5rem; margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(245,240,232,.12); opacity:0; animation:fadeUp .8s .9s ease forwards; }
+  .hero-meta-item { display:flex; flex-direction:column; gap:.25rem; }
+  .hero-meta-label { font-family:'JetBrains Mono',monospace; font-size:.62rem; letter-spacing:.25em; text-transform:uppercase; color:rgba(245,240,232,.35); }
+  .hero-meta-value { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--cream); }
+
+  /* ── OVERVIEW ── */
+  .overview { display:grid; grid-template-columns:repeat(5,1fr); background:var(--charcoal); }
+  .overview-card { padding:2.5rem 1.5rem; border-right:1px solid rgba(245,240,232,.06); text-align:center; }
+  .overview-card:last-child { border-right:none; }
+  .overview-icon { font-size:1.6rem; margin-bottom:.6rem; display:block; }
+  .overview-num { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:var(--cream); }
+  .overview-label { font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; color:var(--mist); margin-top:.25rem; }
+
+  /* ── MAP SECTION ── */
+  .map-section { padding:4rem 3rem 3rem; max-width:1100px; margin:0 auto; }
+  .map-section h2 { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:400; text-align:center; margin-bottom:.5rem; }
+  .map-section > p { text-align:center; color:var(--warm-gray); margin-bottom:2rem; font-size:.95rem; }
+  #route-map { height:500px; border-radius:4px; border:1px solid rgba(26,23,20,.1); z-index:0; }
+  .leaflet-popup-content-wrapper { border-radius:4px; font-family:'Source Sans 3',sans-serif; }
+  .leaflet-popup-content { margin:12px 16px; font-size:.9rem; line-height:1.5; }
+  .leaflet-popup-content strong { font-family:'Playfair Display',serif; font-size:1.05rem; display:block; margin-bottom:4px; }
+  .leaflet-popup-content .pop-day { font-family:'JetBrains Mono',monospace; font-size:.65rem; color:var(--jade); letter-spacing:.1em; text-transform:uppercase; }
+
+  /* ── ROUTE SUMMARY ── */
+  .route-summary { padding:3rem 3rem 5rem; max-width:1000px; margin:0 auto; text-align:center; }
+  .route-summary h2 { font-family:'Playfair Display',serif; font-size:2.4rem; font-weight:400; margin-bottom:1.5rem; }
+  .route-summary > p { font-size:1.05rem; color:var(--warm-gray); max-width:680px; margin:0 auto; line-height:1.9; }
+  .province-flow { display:flex; align-items:center; justify-content:center; gap:.8rem; margin-top:2.5rem; flex-wrap:wrap; }
+  .province-tag { padding:.6rem 1.3rem; border:1px solid var(--ink); font-family:'JetBrains Mono',monospace; font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; }
+  .province-arrow { color:var(--terracotta); font-size:1.2rem; }
+
+  /* ── PHOTO GALLERY ── */
+  .photo-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:4px; margin:0; }
+  .photo-strip img { width:100%; height:220px; object-fit:cover; display:block; transition:transform .3s ease; }
+  .photo-strip img:hover { transform:scale(1.03); }
+  .photo-caption { position:relative; }
+  .photo-caption::after {
+    content:attr(data-label); position:absolute; bottom:8px; left:8px;
+    background:rgba(0,0,0,.7); color:var(--cream); padding:4px 10px;
+    font-family:'JetBrains Mono',monospace; font-size:.6rem; letter-spacing:.1em;
+    text-transform:uppercase; border-radius:2px;
+  }
+
+  /* ── ITINERARY ── */
+  .itinerary { max-width:1100px; margin:0 auto; padding:0 3rem 5rem; }
+  .section-label { font-family:'JetBrains Mono',monospace; font-size:.68rem; letter-spacing:.35em; text-transform:uppercase; color:var(--rust); text-align:center; margin-bottom:3rem; }
+  .day-card { display:grid; grid-template-columns:140px 1fr; border-top:1px solid rgba(26,23,20,.1); padding:3rem 0; }
+  .day-card:last-child { border-bottom:1px solid rgba(26,23,20,.1); }
+  .day-number { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; line-height:1; color:rgba(26,23,20,.08); position:sticky; top:2rem; }
+  .day-date { font-family:'JetBrains Mono',monospace; font-size:.65rem; letter-spacing:.15em; color:var(--warm-gray); margin-top:.5rem; }
+  .day-content { padding-left:2rem; }
+  .day-title { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:700; margin-bottom:.3rem; line-height:1.3; }
+  .day-route { font-family:'JetBrains Mono',monospace; font-size:.68rem; letter-spacing:.1em; color:var(--jade); margin-bottom:1.2rem; display:flex; gap:1.5rem; flex-wrap:wrap; }
+  .day-route span::before { content:'◆ '; font-size:.5rem; vertical-align:middle; }
+  .day-description { font-size:1rem; line-height:1.85; color:var(--charcoal); margin-bottom:1.5rem; }
+  .day-highlights { display:flex; flex-wrap:wrap; gap:.5rem; }
+  .highlight-tag { padding:.35rem .9rem; background:rgba(58,107,94,.08); border-radius:2px; font-size:.78rem; color:var(--jade); font-weight:600; }
+  .highlight-tag.food { background:rgba(196,87,42,.08); color:var(--rust); }
+  .highlight-tag.culture { background:rgba(196,154,60,.08); color:var(--gold); }
+  .phase-header { text-align:center; padding:4rem 2rem 1rem; }
+  .phase-header h3 { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:400; font-style:italic; color:var(--warm-gray); }
+  .phase-header h3::before,.phase-header h3::after { content:'—'; margin:0 1rem; color:var(--terracotta); }
+  .driving-note { max-width:800px; margin:0 auto 3rem; padding:2rem 2.5rem; background:rgba(58,107,94,.05); border-left:3px solid var(--jade); font-size:.92rem; line-height:1.8; color:var(--charcoal); }
+  .driving-note strong { font-weight:600; color:var(--jade); font-family:'JetBrains Mono',monospace; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; display:block; margin-bottom:.5rem; }
+
+  /* ── PHOTO INLINE ── */
+  .day-photos { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin:1.5rem 0; border-radius:4px; overflow:hidden; }
+  .day-photos img { width:100%; height:160px; object-fit:cover; display:block; }
+
+  /* ── TRAIN ALTERNATIVE ── */
+  .train-section { background:var(--parchment); padding:5rem 3rem; }
+  .train-inner { max-width:1000px; margin:0 auto; }
+  .train-section h2 { font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:400; text-align:center; margin-bottom:.5rem; }
+  .train-section > .train-inner > p.train-intro { text-align:center; color:var(--warm-gray); margin-bottom:3rem; font-size:.95rem; max-width:700px; margin-left:auto; margin-right:auto; }
+  .train-comparison { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-bottom:3rem; }
+  .compare-card { padding:2rem; background:var(--cream); border-radius:4px; }
+  .compare-card h4 { font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:1rem; display:flex; align-items:center; gap:.5rem; }
+  .compare-card ul { list-style:none; }
+  .compare-card li { padding:.5rem 0; border-bottom:1px solid rgba(26,23,20,.06); font-size:.9rem; display:flex; justify-content:space-between; }
+  .compare-card li:last-child { border-bottom:none; }
+  .compare-card .val { font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--jade); }
+
+  .train-timeline { position:relative; padding-left:3rem; }
+  .train-timeline::before { content:''; position:absolute; left:11px; top:0; bottom:0; width:2px; background:var(--rust); }
+  .train-day { position:relative; margin-bottom:2.5rem; }
+  .train-day::before { content:''; position:absolute; left:-3rem; top:6px; width:12px; height:12px; border-radius:50%; border:2px solid var(--rust); background:var(--parchment); margin-left:6px; }
+  .train-day-label { font-family:'JetBrains Mono',monospace; font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--rust); margin-bottom:.3rem; }
+  .train-day h4 { font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:.5rem; }
+  .train-day p { font-size:.9rem; line-height:1.7; color:var(--charcoal); }
+  .train-leg { display:inline-flex; align-items:center; gap:.4rem; padding:.25rem .7rem; background:rgba(196,87,42,.1); border-radius:2px; font-family:'JetBrains Mono',monospace; font-size:.68rem; color:var(--rust); margin:.3rem .3rem .3rem 0; }
+  .train-leg .icon { font-size:.9rem; }
+
+  /* ── FOOD GUIDE ── */
+  .food-guide { padding:5rem 3rem; max-width:1000px; margin:0 auto; }
+  .food-guide h2 { font-family:'Playfair Display',serif; font-size:2rem; font-weight:400; text-align:center; margin-bottom:.5rem; }
+  .food-guide > p { text-align:center; color:var(--warm-gray); margin-bottom:3rem; font-size:.95rem; }
+  .food-list { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; }
+  .food-item { display:flex; gap:1rem; padding:1.5rem; background:var(--parchment); border-radius:2px; }
+  .food-emoji { font-size:1.8rem; flex-shrink:0; }
+  .food-item h5 { font-family:'Playfair Display',serif; font-size:1rem; margin-bottom:.2rem; }
+  .food-item .cn { font-size:.8rem; color:var(--warm-gray); }
+  .food-item p { font-size:.85rem; line-height:1.6; color:var(--charcoal); margin-top:.3rem; }
+
+  /* ── TIPS ── */
+  .tips { background:var(--charcoal); color:var(--cream); padding:5rem 3rem; }
+  .tips-inner { max-width:1000px; margin:0 auto; }
+  .tips h2 { font-family:'Playfair Display',serif; font-size:2rem; font-weight:400; margin-bottom:3rem; text-align:center; }
+  .tips-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; }
+  .tip-card { padding:2rem; border:1px solid rgba(245,240,232,.08); border-radius:2px; }
+  .tip-card h4 { font-family:'JetBrains Mono',monospace; font-size:.68rem; letter-spacing:.25em; text-transform:uppercase; color:var(--terracotta); margin-bottom:1rem; }
+  .tip-card p { font-size:.92rem; line-height:1.8; color:rgba(245,240,232,.7); }
+
+  /* ── FOOTER ── */
+  footer { text-align:center; padding:4rem 2rem; border-top:1px solid rgba(26,23,20,.08); }
+  footer p { font-family:'JetBrains Mono',monospace; font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--mist); }
+  footer .chinese { font-family:'Playfair Display',serif; font-size:1.8rem; font-style:italic; color:var(--ink); margin-bottom:1rem; letter-spacing:.3em; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+  .fade-in { opacity:0; transform:translateY(30px); transition:opacity .6s ease,transform .6s ease; }
+  .fade-in.visible { opacity:1; transform:translateY(0); }
+
+  @media(max-width:768px) {
+    .hero{padding:3rem 1.5rem} .hero-meta{flex-wrap:wrap;gap:1.5rem}
+    .overview{grid-template-columns:repeat(2,1fr)} .overview-card:nth-child(5){grid-column:span 2}
+    .day-card{grid-template-columns:1fr} .day-sidebar{display:flex;align-items:baseline;gap:1rem;margin-bottom:.5rem}
+    .day-number{position:static;font-size:2.5rem} .day-content{padding-left:0}
+    .tips-grid,.food-list{grid-template-columns:1fr}
+    .route-summary,.itinerary,.food-guide,.map-section{padding-left:1.5rem;padding-right:1.5rem}
+    .photo-strip{grid-template-columns:repeat(2,1fr)} .photo-strip img{height:160px}
+    .train-comparison{grid-template-columns:1fr} .day-photos{grid-template-columns:1fr}
+    #route-map{height:350px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">A 9-Day Driving Itinerary — July 2025</div>
+    <h1>Into <em>Rural</em> China</h1>
+    <p class="hero-subtitle">Shenzhen to Chongqing to Zhangjiajie — through karst peaks, minority villages, terraced mountains, and the spiciest food on earth.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="hero-meta-label">Dates</span><span class="hero-meta-value">Jul 11 – 19</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Distance</span><span class="hero-meta-value">~2,400 km</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Provinces</span><span class="hero-meta-value">5 Crossed</span></div>
+      <div class="hero-meta-item"><span class="hero-meta-label">Terrain</span><span class="hero-meta-value">Karst & Mountain</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OVERVIEW ═══ -->
+<section class="overview">
+  <div class="overview-card"><span class="overview-icon">🗓️</span><div class="overview-num">9</div><div class="overview-label">Days Total</div></div>
+  <div class="overview-card"><span class="overview-icon">🏘️</span><div class="overview-num">5+</div><div class="overview-label">Minority Villages</div></div>
+  <div class="overview-card"><span class="overview-icon">🏔️</span><div class="overview-num">3</div><div class="overview-label">Mountain Ranges</div></div>
+  <div class="overview-card"><span class="overview-icon">🍜</span><div class="overview-num">5</div><div class="overview-label">Regional Cuisines</div></div>
+  <div class="overview-card"><span class="overview-icon">🚗</span><div class="overview-num">7</div><div class="overview-label">Days Driving</div></div>
+</section>
+
+<!-- ═══ MAP ═══ -->
+<section class="map-section fade-in">
+  <h2>The Route</h2>
+  <p>2,400 km through five provinces — click any marker for details</p>
+  <div id="route-map"></div>
+</section>
+
+<!-- ═══ PROVINCE FLOW ═══ -->
+<section class="route-summary fade-in">
+  <p>From Shenzhen northwest through Guangxi's dreamlike karst country, into Guizhou's minority highlands, north to Chongqing's fiery street-food scene, and east to Zhangjiajie's sandstone pillars that inspired Avatar.</p>
+  <div class="province-flow">
+    <span class="province-tag">Guangdong</span><span class="province-arrow">→</span>
+    <span class="province-tag">Guangxi</span><span class="province-arrow">→</span>
+    <span class="province-tag">Guizhou</span><span class="province-arrow">→</span>
+    <span class="province-tag">Chongqing</span><span class="province-arrow">→</span>
+    <span class="province-tag">Hunan</span>
+  </div>
+</section>
+
+<!-- ═══ PHOTO STRIP ═══ -->
+<div class="photo-strip">
+  <div class="photo-caption" data-label="Yangshuo Karst"><img src="https://lh3.googleusercontent.com/place-photos/AL8-SNE2Uz_3GF2rSAmKc6uIB7pqhPbd5OlS6FW5a0pwgV33otVAHOmU3tBUibyZZHTv4amVeJTerfyDlAtGB1H4MqBNQyfyVzcBVz7QBSZXPUed26grlfo83nCbLX5kep6MT5EQFjNdYC96MQpK7Q=s4800-w800-h600" alt="Yangshuo karst landscape"></div>
+  <div class="photo-caption" data-label="Longji Terraces"><img src="https://lh3.googleusercontent.com/place-photos/AL8-SNHSlSJ2DJzfvbCc1TWp-qXCPgKhIfr4vZCBjpHvt4OX79XsGtKWFDXLHS9EV1c2b2PjTLw4EQhdeQTdzRmYC6_Poa8hk3Y5XtwIIxTq0a0EnY9g_3u0O0tLsZpKCeZZjxpRNteMowSXd2nbm94=s4800-w800-h600" alt="Longji Rice Terraces"></div>
+  <div class="photo-caption" data-label="Xijiang Miao"><img src="https://lh3.googleusercontent.com/place-photos/AL8-SNHGP4FqeBbQWIbe61Q8Goh-gwbDSwZryMb2DavROdhx84_50EZAbGE2ayggh8xmirZcBoTW25M1-i77y2wTUd9K3tjSI4uIuFS5WUxSP4lLTtAMfqOgKAEkPxHE-n6YFppGev9ckKObb4qsLA=s4800-w800-h600" alt="Xijiang Miao Village"></div>
+  <div class="photo-caption" data-label="Zhangjiajie"><img src="https://lh3.googleusercontent.com/place-photos/AL8-SNFR1-zAuw62d919s0HJReLSV128GbBOiGQ4yGaT72j0A7G53o02_9UxLhmKaoBsk_ZxNLSVXwB0k1A-26QKfBKH0m5if1lVkszt9e95SHC8b-fdZe5Y8AUHeceMN8wLS7BfESzo3DtqXCPVzBM4QEcF=s4800-w588-h420" alt="Zhangjiajie National Forest Park"></div>
+</div>
+
+<!-- ═══ ITINERARY ═══ -->
+<section class="itinerary">
+  <div class="section-label">Day by Day — Road Trip</div>
+
+  <div class="driving-note fade-in">
+    <strong>A note on the schedule</strong>
+    With 9 days (2 in Shenzhen, 7 on the road) covering ~2,400 km, some days involve serious driving. Two days have 6+ hours; the rest are relaxed 3–5 hour stints with plenty of exploration time.
+  </div>
+
+  <div class="phase-header"><h3>Shenzhen — Arrival & Exploration</h3></div>
+
+  <article class="day-card fade-in">
+    <div class="day-sidebar"><div class="day-number">01</div><div class="day-date">FRI · JUL 11</div></div>
+    <div class="day-content">
+      <h3 class="day-title">Arrive in Shenzhen</h3>
+      <div class="day-route"><span>Arrival day — no driving</span></div>
+      <p class="day-description">Land, settle in, ease into China. Head to Dongmen Old Street for a buzzing night market — grilled skewers, stinky tofu, fresh sugar cane juice. Walk Shenzhen Bay Park at sunset for views across to Hong Kong.</p>
+      <div class="day-highlights"><span class="highlight-tag food">Dongmen night market</span><span class="highlight-tag">Shenzhen Bay sunset</span></div>
+    </div>
+  </article>
+
+  <article class="day-card fade-in">
+    <div class="day-sidebar"><div class="day-number">02</div><div class="day-date">SAT · JUL 12</div></div>
+    <div class="day-content">
+      <h3 class="day-title">Explore Shenzhen & Prep</h3>
+      <div class="day-route"><span>City day — pick up car late afternoon</span></div>
+      <p class="day-description">Morning at Dafen Oil Painting Village — thousands of artists mass-producing replicas of masterpieces. Afternoon in Nantou Ancient City (南头古城), 1,700-year-old walls now filled with galleries and street art. Pick up your rental car. Download Gaode Maps offline. Stock up on water, snacks, a power bank.</p>
+      <div class="day-highlights"><span class="highlight-tag culture">Dafen Oil Painting Village</span><span class="highlight-tag culture">Nantou Ancient City</span><span class="highlight-tag">Pick up rental car</span></div>
+    </div>
+  </article>
+
+  <div class="phase-header"><h3>Guangxi — Karst Peaks & Rice Terraces</h3></div>
+
+  <article class="day-card fade-in">
+    <div class="day-sidebar"><div class="day-number">03</div><div class="day-date">SUN · JUL 13</div></div>
+    <div class="day-content">
+      <h3 class="day-title">Shenzhen → Yangshuo</h3>
+      <div class="day-route"><span>~630 km</span><span>~7 hours via G78</span></div>
+      <p class="day-description">Depart early. Watch for the transformation crossing into Guangxi — karst peaks rise like shark fins from flat paddies. Arrive by mid-afternoon. Find a side-alley restaurant for beer fish (啤酒鱼) — river fish braised in local beer with tomatoes and peppers.</p>
+      <div class="day-photos">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNH-tuOcKj3gyS6GRFxmQePMy9_l_r7KEzah_S4IYsWsqj4hJsFdc2WbioUtKnA8dOg_OsABOD2UQ-CfQDcpHgI7WKqsGoVB04YhLsOE94gggCIHpcOW31xOxcz665ZsjAawf5tKsXlrE1Y1ORM=s4800-w800-h600" alt="Yangshuo">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNHQ4Ym5GiVYqXA6q-dISHWzt9oQqk6JFWZhAd6TEmjyFFTAmx9VSW25a9e0ZRKfqj281PnBy__2baCGq9Mjrqj1fmLgVmfYK6LM7HVShlgpMtigzh2n59Ne778Fe7CLzA0kZupvAsc_uJV86qQ=s4800-w800-h600" alt="Yangshuo karst">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNFv5qV5H9qoel5XhJXAXfa77jJHD4g-tMOk2TS8-w1ylBhLooUatZH91Kt2fJ3ginoYBmu55b9HrdIEOj99l7S6EX4UuSegvffjYoZB_eQ1-fJEs70488jTLjXAWq7VTpJV24Cv7qxMFUmH2To=s4800-w800-h600" alt="Yangshuo">
+      </div>
+      <div class="day-highlights"><span class="highlight-tag">First karst peaks</span><span class="highlight-tag food">Beer fish 啤酒鱼</span><span class="highlight-tag">Li River sunset</span></div>
+    </div>
+  </article>
+
+  <article class="day-card fade-in">
+    <div class="day-sidebar"><div class="day-number">04</div><div class="day-date">MON · JUL 14</div></div>
+    <div class="day-content">
+      <h3 class="day-title">Yangshuo Countryside → Longji Rice Terraces</h3>
+      <div class="day-route"><span>Morning: Yulong River by bike</span><span>Afternoon: 150 km north</span></div>
+      <p class="day-description">Early bike ride along the Yulong River — water buffalo, bamboo rafts, karst peaks framing every turn. After lunch, drive to Longsheng. The Dragon's Backbone Terraces in July are electric green, carved over 700 years by the Zhuang and Red Yao peoples. Stay overnight in a wooden guesthouse on the terraces.</p>
+      <div class="day-photos">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNHSlSJ2DJzfvbCc1TWp-qXCPgKhIfr4vZCBjpHvt4OX79XsGtKWFDXLHS9EV1c2b2PjTLw4EQhdeQTdzRmYC6_Poa8hk3Y5XtwIIxTq0a0EnY9g_3u0O0tLsZpKCeZZjxpRNteMowSXd2nbm94=s4800-w800-h600" alt="Longji">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNEYdQRW-8NHxiuKB1hqraGTZF_flFyr_CdeRkLyS0mU1xasXmzAnTBGgTZt9kHfwOA56_eNn6vqUAvvI2QOG9g1Gm9-5esjsTcyC2tR-BQubFMYPv87MwxDndvioLzZQWN3set84O7l5VrXig=s4800-w800-h600" alt="Longji terraces">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNHNP7x1Oq-G3mUxFAdP-oT_HGAZ1FoEHX6I3TlIgxmCYd3oIdjZzWXczS_LZ-nSrXe44sSFkiBwWDG1QBmNj-aaUYhOvoDWAvlg1YxI8MtKGQVhmGabNz6BX2pLiM45kgl3hZVtwuq9BwJZhVc=s4800-w800-h600" alt="Rice terraces">
+      </div>
+      <div class="day-highlights"><span class="highlight-tag">Yulong River cycling</span><span class="highlight-tag culture">Red Yao long-hair villages</span><span class="highlight-tag">Longji Terraces 龙脊梯田</span></div>
+    </div>
+  </article>
+
+  <div class="phase-header"><h3>Guizhou — Minority Villages & Hidden Mountains</h3></div>
+
+  <article class="day-card fade-in">
+    <div class="day-sidebar"><div class="day-number">05</div><div class="day-date">TUE · JUL 15</div></div>
+    <div class="day-content">
+      <h3 class="day-title">Longji → Sanjiang Dong Villages → Kaili</h3>
+      <div class="day-route"><span>~350 km</span><span>~5.5 hours with stops</span></div>
+      <p class="day-description">Cross into Guizhou through Dong minority country. Stop at the Chengyang Wind-Rain Bridge — a covered wooden bridge built without nails, with pavilions where old men play cards and smoke pipes. The surrounding villages have stilt houses and soaring drum towers. Try Dong sour fish (酸鱼) for lunch. Arrive in Kaili — gateway to Miao country — by evening.</p>
+      <div class="day-highlights"><span class="highlight-tag culture">Chengyang Wind-Rain Bridge</span><span class="highlight-tag culture">Dong drum towers</span><span class="highlight-tag food">Dong sour fish 酸鱼</span></div>
+    </div>
+  </article>
+
+  <article class="day-card fade-in">
+    <div class="day-sidebar"><div class="day-number">06</div><div class="day-date">WED · JUL 16</div></div>
+    <div class="day-content">
+      <h3 class="day-title">Xijiang Thousand Household Miao Village</h3>
+      <div class="day-route"><span>35 km from Kaili</span><span>Full day — overnight in village</span></div>
+      <p class="day-description">The cultural centrepiece. Over 1,200 wooden stilt houses cascading down a river valley. Watch silversmiths forge jewelry, catch lusheng reed-pipe performances, wander back lanes where grandmothers embroider in doorways. Stay overnight — when every rooftop lights up at dusk, the valley glows amber. Dinner: acid soup fish (酸汤鱼), fiery fermented tomato broth with river fish.</p>
+      <div class="day-photos">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNHGP4FqeBbQWIbe61Q8Goh-gwbDSwZryMb2DavROdhx84_50EZAbGE2ayggh8xmirZcBoTW25M1-i77y2wTUd9K3tjSI4uIuFS5WUxSP4lLTtAMfqOgKAEkPxHE-n6YFppGev9ckKObb4qsLA=s4800-w800-h600" alt="Xijiang">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNH_WtCLuHS15wZdiBkCsY_rs6-IDpcRX4TPolB-gVP9cZvltO6U6js4JvD5pmia5GnMZtvh33oGgSOZD42RaQrYn04BRMKe16iOb-6GKetJUYSkWBaCO5bdM7YGxFtd45Xbx1HYlZgDjhj2j7I=s4800-w800-h600" alt="Xijiang village">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNFBMn5e1uSLUydbDYksQtM6gaZh9kZ19l2Hqr2pr5Fisw2cBpinGEpwJ5aiTdj3bRlWUCJeLehBVJn0kH9jWtZpU4LVflGdJB9fymPrb9hnuwDANAa-FWA1buwXfWEpgpLCDquDPz1xRMHAghs=s4800-w800-h600" alt="Xijiang stilt houses">
+      </div>
+      <div class="day-highlights"><span class="highlight-tag culture">1,200 Miao stilt houses</span><span class="highlight-tag culture">Silver jewelry</span><span class="highlight-tag food">Acid soup fish 酸汤鱼</span></div>
+    </div>
+  </article>
+
+  <div class="phase-header"><h3>Chongqing — The Mountain City</h3></div>
+
+  <article class="day-card fade-in">
+    <div class="day-sidebar"><div class="day-number">07</div><div class="day-date">THU · JUL 17</div></div>
+    <div class="day-content">
+      <h3 class="day-title">Xijiang → Chongqing</h3>
+      <div class="day-route"><span>~620 km</span><span>~8 hours — the marathon leg</span></div>
+      <p class="day-description">The longest day. Northwest through Guizhou's dramatic interior — misty gorges, terraced hillsides of corn and tobacco, small market towns that see no outside visitors. As you cross into Chongqing municipality, mountains give way to the humid Sichuan Basin. Arrive by evening. Find a streetside hotpot joint (火锅) — bubbling málà broth of Sichuan peppercorn and dried chili oil.</p>
+      <div class="day-highlights"><span class="highlight-tag">Guizhou mountain roads</span><span class="highlight-tag">Rural market towns</span><span class="highlight-tag food">Chongqing hotpot 火锅</span></div>
+    </div>
+  </article>
+
+  <article class="day-card fade-in">
+    <div class="day-sidebar"><div class="day-number">08</div><div class="day-date">FRI · JUL 18</div></div>
+    <div class="day-content">
+      <h3 class="day-title">Chongqing Exploration</h3>
+      <div class="day-route"><span>Rest day — no highway driving</span></div>
+      <p class="day-description">China's most vertigo-inducing megacity — roads stacking on roads, where the 1st floor of one building is the 15th of the next. Morning at Ciqikou Ancient Town (磁器口). Ride the cross-river cable car over the Yangtze. Try xiaomian noodles (小面) for breakfast, grilled skewers for lunch. Evening: south bank skyline view when the peninsula blazes between two rivers.</p>
+      <div class="day-photos">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNHhYq6XFB7hVjB8Yy6rlni6I8bYug4qPlLH3ymV0GO6gHAeKifW3B9vJBdsgma4TGO2Fl2J-f-lQS7yAxV3h0FI65L8kammfbroFIchd7SUSenb0ny51DXm5j7RYDB6umx_JXKqcK4znjMEnw=s4800-w800-h600" alt="Chongqing">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNFgyTQvgM_V_atOBe7HvO1MnF2La6t5wZ6QGTNwmbRlL65S6LS9mT79JMJYZldTCOV0eHx5fQ6oyZ9u_x85LzqWqt0f07cvJ5mhIwTVBfJUVyIJDbVuBNatunASkklP7ljyMG1Jf8-VWyUl4A=s4800-w800-h600" alt="Chongqing skyline">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNFs3s6PcxX7q5QP8cW4F3Qt76rMmP8xoC6bhUQEfY0cK8EW7zg4E4ROYwm6SJw0HH2LMq1FbnkkQw7Pm_rgRiDu1rTkNoQX_Sif8O7SKndtLO4SluMlF4rp2hVnb0EXZK5SO9DofzNNE02he8Y=s4800-w800-h600" alt="Chongqing city">
+      </div>
+      <div class="day-highlights"><span class="highlight-tag culture">Ciqikou Ancient Town</span><span class="highlight-tag">Yangtze cable car</span><span class="highlight-tag food">Xiaomian noodles 小面</span><span class="highlight-tag">Night skyline</span></div>
+    </div>
+  </article>
+
+  <div class="phase-header"><h3>Hunan — The Avatar Mountains</h3></div>
+
+  <article class="day-card fade-in">
+    <div class="day-sidebar"><div class="day-number">09</div><div class="day-date">SAT · JUL 19</div></div>
+    <div class="day-content">
+      <h3 class="day-title">Chongqing → Zhangjiajie</h3>
+      <div class="day-route"><span>~400 km</span><span>~6 hours via G65</span></div>
+      <p class="day-description">Final leg east into Hunan. The expressway cuts through dramatic gorge country — towering limestone, long tunnels, bridges over deep valleys. Arrive by early afternoon. Take the Bailong Elevator up the cliff face to Yuanjiajie plateau. Walk to the "Hallelujah Mountain" viewpoint — over 3,000 sandstone pillars rising through clouds. The trip ends where the earth touches the sky.</p>
+      <div class="day-photos">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNFR1-zAuw62d919s0HJReLSV128GbBOiGQ4yGaT72j0A7G53o02_9UxLhmKaoBsk_ZxNLSVXwB0k1A-26QKfBKH0m5if1lVkszt9e95SHC8b-fdZe5Y8AUHeceMN8wLS7BfESzo3DtqXCPVzBM4QEcF=s4800-w588-h420" alt="Zhangjiajie">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNFpeBpiLpX6nbOg2NTkSYmXI9uymImC8vXDfKeqjFRtfDefTi54DdX5F9OW1FcMfsiTFAbPFS89Im8f2Ff33hY3dl9jX_o4Kr2W5QmQ-uHmChIUqpU4oekWSJwOB75WwTHV9yKSBYtyWrJx3SY=s4800-w800-h600" alt="Zhangjiajie pillars">
+        <img src="https://lh3.googleusercontent.com/place-photos/AL8-SNHDU44hhXC8ezqTUxJ_1uIgO54r_bUq7yYyFgAUttooygo1MhoRAN1a2CVrq02IIBysvwoSOXkL4U0NmruBVToJayKd4UtMcxPHfAnNhx4NxSbBIq0dNksFLY5TeBu2KNTzQo_xyypB38HNYA=s4800-w800-h600" alt="Zhangjiajie forest">
+      </div>
+      <div class="day-highlights"><span class="highlight-tag">Bailong Elevator</span><span class="highlight-tag">Hallelujah Mountain</span><span class="highlight-tag">3,000+ sandstone pillars</span></div>
+    </div>
+  </article>
+</section>
+
+<!-- ═══ TRAIN ALTERNATIVE ═══ -->
+<section class="train-section">
+  <div class="train-inner">
+    <h2>Alternative: By High-Speed Train</h2>
+    <p class="train-intro">Same destinations, no driving. China's HSR network connects all these stops — and the Chongqing → Zhangjiajie line opened in July 2025. You trade flexibility for zero driving fatigue and a completely different kind of scenery through the window.</p>
+
+    <div class="train-comparison fade-in">
+      <div class="compare-card">
+        <h4>🚗 Road Trip</h4>
+        <ul>
+          <li>Total driving <span class="val">~2,400 km</span></li>
+          <li>Longest day <span class="val">~8 hrs driving</span></li>
+          <li>Flexibility <span class="val">★★★★★</span></li>
+          <li>Rural access <span class="val">★★★★★</span></li>
+          <li>Fatigue factor <span class="val">★★★☆☆</span></li>
+          <li>Approx. fuel cost <span class="val">~¥2,000</span></li>
+        </ul>
+      </div>
+      <div class="compare-card">
+        <h4>🚄 High-Speed Train</h4>
+        <ul>
+          <li>Total train time <span class="val">~12 hrs total</span></li>
+          <li>Longest leg <span class="val">~3 hrs</span></li>
+          <li>Flexibility <span class="val">★★★☆☆</span></li>
+          <li>Rural access <span class="val">★★★☆☆</span></li>
+          <li>Fatigue factor <span class="val">★☆☆☆☆</span></li>
+          <li>Approx. ticket cost <span class="val">~¥1,200</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-label">Train Timeline — Same 9 Days</div>
+
+    <div class="train-timeline fade-in">
+      <div class="train-day">
+        <div class="train-day-label">Day 1 — Fri Jul 11</div>
+        <h4>Arrive in Shenzhen</h4>
+        <p>Same as road trip. Explore Dongmen night market, Shenzhen Bay sunset. No train needed today.</p>
+      </div>
+
+      <div class="train-day">
+        <div class="train-day-label">Day 2 — Sat Jul 12</div>
+        <h4>Shenzhen → Yangshuo</h4>
+        <p>Morning: explore Dafen Oil Painting Village and Nantou Ancient City. Afternoon: take the HSR direct to Yangshuo station.</p>
+        <div><span class="train-leg"><span class="icon">🚄</span> Shenzhen North → Yangshuo · ~3h · ¥232</span></div>
+        <p style="margin-top:.5rem">Arrive by evening, explore Yangshuo's back alleys, beer fish for dinner. Saves a full driving day.</p>
+      </div>
+
+      <div class="train-day">
+        <div class="train-day-label">Day 3 — Sun Jul 13</div>
+        <h4>Yangshuo → Longji Rice Terraces → Guilin</h4>
+        <p>Morning: bike ride along the Yulong River. Afternoon: hire a local driver or take a shared minibus to Longji Terraces (~2.5 hrs). Hike the terraces, stay overnight in a guesthouse in Ping'an or Dazhai village. Note: no train goes to Longji — this leg requires a car/minibus from Guilin or Yangshuo.</p>
+      </div>
+
+      <div class="train-day">
+        <div class="train-day-label">Day 4 — Mon Jul 14</div>
+        <h4>Longji → Guilin → Kaili</h4>
+        <p>Morning on the terraces. Return to Guilin by minibus, then take the HSR via the Guiyang–Guangzhou line, which stops at Sanjiang South (for Dong villages) and continues to Kaili South.</p>
+        <div>
+          <span class="train-leg"><span class="icon">🚐</span> Longji → Guilin · ~1.5h minibus</span>
+          <span class="train-leg"><span class="icon">🚄</span> Guilin → Kaili South · ~3h via Sanjiang · ¥175</span>
+        </div>
+        <p style="margin-top:.5rem">Alternatively, break at Sanjiang South station and hire a local taxi to visit Chengyang Wind-Rain Bridge (20 min from station), then catch a later train to Kaili.</p>
+      </div>
+
+      <div class="train-day">
+        <div class="train-day-label">Day 5 — Tue Jul 15</div>
+        <h4>Xijiang Miao Village — Full Day</h4>
+        <p>Same as road trip. Local bus from Kaili to Xijiang (~1 hr, ¥17). Full day immersion in the world's largest Miao settlement. Stay overnight in the village. Silver workshops, lusheng music, acid soup fish, amber rooftop lights at dusk.</p>
+      </div>
+
+      <div class="train-day">
+        <div class="train-day-label">Day 6 — Wed Jul 16</div>
+        <h4>Xijiang → Kaili → Chongqing</h4>
+        <p>Morning in Xijiang, then bus back to Kaili. Take the HSR to Guiyang (35 min), then change to the Chongqing-bound bullet train.</p>
+        <div>
+          <span class="train-leg"><span class="icon">🚄</span> Kaili South → Guiyang North · 35 min · ¥50</span>
+          <span class="train-leg"><span class="icon">🚄</span> Guiyang North → Chongqing West · 2h · ¥139</span>
+        </div>
+        <p style="margin-top:.5rem">Arrive Chongqing by afternoon — far less tiring than the 8-hour drive. Evening: Chongqing hotpot.</p>
+      </div>
+
+      <div class="train-day">
+        <div class="train-day-label">Day 7 — Thu Jul 17</div>
+        <h4>Chongqing Exploration</h4>
+        <p>Full rest day same as road trip. Ciqikou Ancient Town, Yangtze cable car, xiaomian noodles, south-bank skyline at night. No train today.</p>
+      </div>
+
+      <div class="train-day">
+        <div class="train-day-label">Day 8 — Fri Jul 18</div>
+        <h4>Chongqing → Zhangjiajie</h4>
+        <p>Take the brand-new Chongqing–Zhangjiajie HSR (opened July 2025). Arrive in just 2 hours and spend the whole afternoon in the park.</p>
+        <div><span class="train-leg"><span class="icon">🚄</span> Chongqing East → Zhangjiajie West · 2h · ¥215</span></div>
+        <p style="margin-top:.5rem">Bailong Elevator, Yuanjiajie plateau, Hallelujah Mountain viewpoint. Stay near Wulingyuan gate.</p>
+      </div>
+
+      <div class="train-day">
+        <div class="train-day-label">Day 9 — Sat Jul 19</div>
+        <h4>Zhangjiajie — Full Day Hiking</h4>
+        <p>Golden Whip Stream (7.5 km valley walk), Tianzi Mountain panoramic views, sea of clouds. The big advantage of the train route: you get an extra full day in Zhangjiajie instead of spending it driving. Depart from Zhangjiajie Hehua Airport or take HSR to Changsha (1.5h) for more flight options.</p>
+      </div>
+    </div>
+
+    <div class="driving-note fade-in" style="margin-top:3rem; border-left-color:var(--rust);">
+      <strong>The train advantage</strong>
+      The HSR route gives you a full extra day to explore (no 8-hour Kaili→Chongqing drive, no 6-hour Chongqing→Zhangjiajie drive). The trade-off: you lose the freedom to stop at random villages, pull over at viewpoints, and drive the spectacular mountain roads. The rural roads through Guizhou are half the adventure by car — you won't get that from a train window. Both options are excellent; it depends on whether you want the journey to be part of the experience.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOD GUIDE ═══ -->
+<section class="food-guide fade-in">
+  <h2>Eat Your Way Through</h2>
+  <p>The dishes you shouldn't miss, stop by stop</p>
+  <div class="food-list">
+    <div class="food-item"><div class="food-emoji">🐟</div><div><h5>Beer Fish</h5><span class="cn">啤酒鱼 — Yangshuo, Guangxi</span><p>River fish braised in local beer with tomatoes and peppers. Served sizzling.</p></div></div>
+    <div class="food-item"><div class="food-emoji">🍜</div><div><h5>Guilin Rice Noodles</h5><span class="cn">桂林米粉 — Guangxi</span><p>Silky rice noodles in pork-bone broth with pickled greens and chili oil.</p></div></div>
+    <div class="food-item"><div class="food-emoji">🐠</div><div><h5>Dong Sour Fish</h5><span class="cn">酸鱼 — Sanjiang, Guangxi</span><p>Fermented river fish with sticky rice. Pungent, sour, centuries-old tradition.</p></div></div>
+    <div class="food-item"><div class="food-emoji">🍲</div><div><h5>Acid Soup Fish</h5><span class="cn">酸汤鱼 — Kaili, Guizhou</span><p>Fiery red fermented tomato broth with fresh river fish. Miao country's signature.</p></div></div>
+    <div class="food-item"><div class="food-emoji">🌶️</div><div><h5>Chongqing Hotpot</h5><span class="cn">重庆火锅 — Chongqing</span><p>Bubbling málà broth of Sichuan peppercorn and dried chilies. Dip everything.</p></div></div>
+    <div class="food-item"><div class="food-emoji">🥢</div><div><h5>Xiaomian Noodles</h5><span class="cn">小面 — Chongqing</span><p>Cult breakfast: wheat noodles in spicy, garlicky, peanut-laced sauce.</p></div></div>
+    <div class="food-item"><div class="food-emoji">🫕</div><div><h5>Three Wok Pot</h5><span class="cn">三下锅 — Zhangjiajie, Hunan</span><p>Three meats stir-fried then braised with dried chilies. Tujia soul food.</p></div></div>
+    <div class="food-item"><div class="food-emoji">🧀</div><div><h5>Fried Milk Cake</h5><span class="cn">炸鲜奶 — Shenzhen</span><p>Crispy fried milk custard. Guangdong specialty. Best eaten scalding hot.</p></div></div>
+  </div>
+</section>
+
+<!-- ═══ TIPS ═══ -->
+<section class="tips">
+  <div class="tips-inner">
+    <h2>Before You Go</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><h4>Navigation</h4><p>Download Gaode Maps (高德地图) offline. Google Maps doesn't work reliably. Baidu Maps is backup. Program each day's route the night before.</p></div>
+      <div class="tip-card"><h4>Car Rental / Train Tickets</h4><p>Car: book via Zuche or eHi, confirm one-way drop-off. Trains: book via Trip.com or 12306 app (needs Chinese phone number). Book 2–3 weeks ahead for summer.</p></div>
+      <div class="tip-card"><h4>Payment</h4><p>Cash is nearly extinct. Set up WeChat Pay or Alipay — both support international cards. Small cash stash for remote Guizhou villages.</p></div>
+      <div class="tip-card"><h4>Summer Weather</h4><p>Afternoon thunderstorms in Guizhou, Chongqing, Hunan. Mountain roads get slippery. Start early, pack rain jacket. July: 28–38°C. Chongqing is a furnace.</p></div>
+      <div class="tip-card"><h4>Language</h4><p>Outside Shenzhen, English is rare. Offline translator essential. Key: 你好 (hello), 谢谢 (thanks), 多少钱 (how much?). Point at menu photos.</p></div>
+      <div class="tip-card"><h4>Connectivity</h4><p>Local SIM at Shenzhen airport (China Mobile/Unicom). Install VPN before entering China if you need Google, Instagram, WhatsApp etc.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="chinese">一路平安</div>
+  <p>Shenzhen → Yangshuo → Longji → Sanjiang → Kaili → Xijiang → Chongqing → Zhangjiajie</p>
+</footer>
+
+<script>
+// ─── INTERACTIVE MAP ───
+const stops = [
+  { name:"Shenzhen", lat:22.543, lng:114.058, day:"Days 1–2", desc:"Arrival city. Dongmen night market, Dafen Oil Painting Village, Nantou Ancient City.", color:"#c4572a" },
+  { name:"Yangshuo", lat:24.778, lng:110.497, day:"Day 3", desc:"Karst dreamscape. Beer fish, Li River, side-alley noodle shops.", color:"#3a6b5e" },
+  { name:"Longji Rice Terraces", lat:25.770, lng:110.132, day:"Day 4", desc:"Dragon's Backbone. 700-year-old terraces. Zhuang & Red Yao villages.", color:"#3a6b5e" },
+  { name:"Sanjiang (Chengyang Bridge)", lat:25.851, lng:109.678, day:"Day 5 stop", desc:"Dong Wind-Rain Bridge — wooden covered bridge built without nails.", color:"#c49a3c" },
+  { name:"Kaili", lat:26.568, lng:107.977, day:"Day 5", desc:"Gateway to Miao country. Market towns, minority cuisine.", color:"#c49a3c" },
+  { name:"Xijiang Miao Village", lat:26.494, lng:108.172, day:"Day 6", desc:"1,200 stilt houses. Silver workshops. Acid soup fish. Night lights.", color:"#c49a3c" },
+  { name:"Chongqing", lat:29.563, lng:106.551, day:"Days 7–8", desc:"Mountain city. Hotpot capital. Cable car, Ciqikou, night skyline.", color:"#c4572a" },
+  { name:"Zhangjiajie", lat:29.315, lng:110.435, day:"Day 9", desc:"3,000+ sandstone pillars. Avatar mountains. Bailong Elevator.", color:"#c4572a" }
+];
+
+const map = L.map('route-map',{scrollWheelZoom:false}).setView([26.5,109],5.8);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{
+  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
+  maxZoom:18
+}).addTo(map);
+
+const routeCoords = stops.map(s=>[s.lat,s.lng]);
+L.polyline(routeCoords,{color:'#c4572a',weight:2.5,opacity:.6,dashArray:'8 6'}).addTo(map);
+
+stops.forEach((s,i)=>{
+  const marker = L.circleMarker([s.lat,s.lng],{
+    radius: (i===0||i===stops.length-1)?8:6,
+    fillColor:s.color, color:'#fff', weight:2, fillOpacity:.9
+  }).addTo(map);
+  marker.bindPopup(`<div class="pop-day">${s.day}</div><strong>${s.name}</strong>${s.desc}`);
+});
+
+// ─── SCROLL ANIMATIONS ───
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
