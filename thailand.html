@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bangkok &amp; Phuket — 12–19 July</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c1410;
+    --paper:#f4 ;
+    --paper:#f5efe4;
+    --paper-deep:#ece2cf;
+    --teal:#0f6b63;
+    --teal-deep:#0a4d47;
+    --coral:#e0653f;
+    --gold:#c8943b;
+    --shadow:rgba(28,20,16,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Outfit',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;}
+
+  /* ---------- texture overlay ---------- */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    pointer-events:none;z-index:9999;
+    opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:7vw 8vw;
+    background:
+      radial-gradient(ellipse at 75% 15%, rgba(200,148,59,.28), transparent 55%),
+      radial-gradient(ellipse at 15% 90%, rgba(15,107,99,.30), transparent 50%),
+      linear-gradient(160deg,#0a4d47 0%, #0f6b63 40%, #14483f 100%);
+    color:var(--paper);
+    overflow:hidden;
+  }
+  .hero-sun{
+    position:absolute;
+    width:46vw;height:46vw;
+    right:-8vw;top:-8vw;
+    border-radius:50%;
+    background:radial-gradient(circle,#e7b85a 0%,#e0653f 60%,transparent 72%);
+    opacity:.5;
+    filter:blur(8px);
+  }
+  .hero-tag{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:clamp(1rem,2.4vw,1.5rem);
+    letter-spacing:.02em;
+    color:#e7b85a;
+    margin-bottom:1.2rem;
+    position:relative;
+  }
+  .hero h1{
+    font-family:'Fraunces',serif;
+    font-weight:900;
+    font-size:clamp(3.4rem,12vw,9.5rem);
+    line-height:.92;
+    letter-spacing:-.02em;
+    position:relative;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:#e7b85a;
+  }
+  .hero-meta{
+    margin-top:2.6rem;
+    display:flex;
+    flex-wrap:wrap;
+    gap:.9rem 2.4rem;
+    font-size:1.05rem;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    font-weight:500;
+    position:relative;
+  }
+  .hero-meta span{display:flex;align-items:center;gap:.55rem;}
+  .hero-meta .dot{width:7px;height:7px;border-radius:50%;background:#e0653f;}
+  .scroll-hint{
+    position:absolute;
+    bottom:2.4rem;left:8vw;
+    font-size:.78rem;letter-spacing:.28em;
+    text-transform:uppercase;
+    opacity:.7;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+
+  /* ---------- section frame ---------- */
+  section{padding:7rem 8vw;position:relative;}
+  .kicker{
+    font-size:.8rem;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    color:var(--coral);
+    font-weight:600;
+    margin-bottom:1rem;
+  }
+  .sec-title{
+    font-family:'Fraunces',serif;
+    font-weight:900;
+    font-size:clamp(2.2rem,5.5vw,4rem);
+    line-height:1;
+    letter-spacing:-.02em;
+    margin-bottom:1.4rem;
+  }
+  .sec-title em{font-style:italic;font-weight:400;color:var(--teal);}
+  .lede{
+    max-width:46ch;
+    font-size:1.12rem;
+    color:#4a3d33;
+  }
+
+  /* ---------- overview cities ---------- */
+  .cities{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2rem;
+    margin-top:3.5rem;
+  }
+  .city{
+    border:1.5px solid var(--ink);
+    padding:2.2rem;
+    background:var(--paper-deep);
+    position:relative;
+    transition:transform .35s ease;
+  }
+  .city:hover{transform:translateY(-6px);}
+  .city .num{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--coral);
+  }
+  .city h3{
+    font-family:'Fraunces',serif;
+    font-weight:900;
+    font-size:2.4rem;
+    line-height:1;
+    margin:.3rem 0 .8rem;
+  }
+  .city p{font-size:1rem;color:#4a3d33;}
+  .city .days{
+    margin-top:1.2rem;
+    font-size:.82rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--teal);
+  }
+
+  /* ---------- day blocks ---------- */
+  .day{
+    margin-top:5.5rem;
+    display:grid;
+    grid-template-columns:88px 1fr;
+    gap:2.4rem;
+  }
+  .day:first-of-type{margin-top:3.5rem;}
+  .day-rail{
+    position:relative;
+  }
+  .day-num{
+    font-family:'Fraunces',serif;
+    font-weight:900;
+    font-size:3.4rem;
+    line-height:.8;
+    color:var(--teal);
+  }
+  .day-num small{
+    display:block;
+    font-family:'Outfit',sans-serif;
+    font-weight:600;
+    font-size:.62rem;
+    letter-spacing:.2em;
+    color:var(--coral);
+    margin-top:.5rem;
+  }
+  .day-rail::after{
+    content:"";
+    position:absolute;
+    left:50%;top:5.2rem;bottom:-5.5rem;
+    width:1.5px;
+    background:linear-gradient(var(--ink),transparent);
+    opacity:.25;
+  }
+  .day:last-of-type .day-rail::after{display:none;}
+
+  .day-body h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:1.9rem;
+    line-height:1.05;
+    margin-bottom:.4rem;
+  }
+  .day-date{
+    font-size:.78rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--coral);
+    font-weight:600;
+    margin-bottom:1.6rem;
+  }
+
+  .stops{display:flex;flex-direction:column;gap:1.6rem;}
+  .stop{
+    display:grid;
+    grid-template-columns:240px 1fr;
+    gap:1.6rem;
+    background:var(--paper-deep);
+    border:1.5px solid var(--ink);
+  }
+  .stop-img{
+    position:relative;
+    overflow:hidden;
+    min-height:170px;
+  }
+  .stop-img img{
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:transform .6s ease;
+  }
+  .stop:hover .stop-img img{transform:scale(1.07);}
+  .stop-time{
+    position:absolute;
+    top:0;left:0;
+    background:var(--coral);
+    color:var(--paper);
+    font-size:.72rem;
+    font-weight:600;
+    letter-spacing:.1em;
+    padding:.35rem .7rem;
+  }
+  .stop-text{padding:1.5rem 1.6rem 1.5rem 0;}
+  .stop-text h4{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:1.32rem;
+    line-height:1.1;
+    margin-bottom:.45rem;
+  }
+  .stop-text p{font-size:.96rem;color:#4a3d33;}
+  .stop-getting{
+    margin-top:.9rem;
+    padding-top:.9rem;
+    border-top:1px dashed rgba(28,20,16,.3);
+    font-size:.86rem;
+    display:flex;
+    gap:.5rem;
+    align-items:flex-start;
+  }
+  .stop-getting b{
+    color:var(--teal);
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-size:.7rem;
+    font-weight:600;
+    white-space:nowrap;
+    padding-top:.15rem;
+  }
+
+  /* ---------- transit banner ---------- */
+  .transit{
+    margin-top:5.5rem;
+    background:var(--teal-deep);
+    color:var(--paper);
+    padding:2.4rem 2.6rem;
+    display:flex;
+    align-items:center;
+    gap:1.6rem;
+    flex-wrap:wrap;
+  }
+  .transit .plane{
+    font-family:'Fraunces',serif;
+    font-size:2.4rem;
+  }
+  .transit-text h4{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:1.4rem;
+    margin-bottom:.2rem;
+  }
+  .transit-text p{font-size:.95rem;opacity:.85;}
+
+  /* ---------- food section ---------- */
+  .food{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .food .sec-title em{color:var(--gold);}
+  .food .kicker{color:var(--gold);}
+  .food .lede{color:#cdbfae;}
+  .food-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1.8rem;
+    margin-top:3.5rem;
+  }
+  .dish{
+    position:relative;
+    overflow:hidden;
+    border:1.5px solid #4a3d33;
+  }
+  .dish img{
+    width:100%;height:260px;
+    object-fit:cover;
+    transition:transform .6s ease;
+  }
+  .dish:hover img{transform:scale(1.08);}
+  .dish-cap{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    padding:1.4rem 1.3rem .9rem;
+    background:linear-gradient(transparent,rgba(28,20,16,.92));
+  }
+  .dish-cap h4{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:1.3rem;
+  }
+  .dish-cap span{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:.92rem;
+    color:var(--gold);
+  }
+  .dish-cap p{font-size:.84rem;color:#cdbfae;margin-top:.3rem;}
+  .veg-note{
+    margin-top:3rem;
+    border:1.5px solid var(--gold);
+    padding:1.8rem 2rem;
+    display:flex;
+    gap:1.2rem;
+    align-items:flex-start;
+  }
+  .veg-note .vleaf{font-size:1.8rem;}
+  .veg-note h4{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:1.25rem;
+    margin-bottom:.3rem;
+    color:var(--gold);
+  }
+  .veg-note p{font-size:.94rem;color:#cdbfae;}
+  .veg-note b{color:var(--paper);}
+
+  /* ---------- getting around ---------- */
+  .ga-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1.6rem;
+    margin-top:3.5rem;
+  }
+  .ga-card{
+    border:1.5px solid var(--ink);
+    padding:1.9rem 2rem;
+    background:var(--paper-deep);
+  }
+  .ga-card .tag{
+    font-size:.72rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--coral);
+  }
+  .ga-card h4{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:1.5rem;
+    margin:.25rem 0 .6rem;
+  }
+  .ga-card p{font-size:.95rem;color:#4a3d33;}
+
+  /* ---------- practical / footer ---------- */
+  .practical{background:var(--paper-deep);}
+  .pr-list{
+    margin-top:3rem;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1.4rem 3rem;
+  }
+  .pr-item{
+    display:flex;
+    gap:1rem;
+    align-items:flex-start;
+    padding-bottom:1.2rem;
+    border-bottom:1px solid rgba(28,20,16,.18);
+  }
+  .pr-item .pr-i{
+    font-family:'Fraunces',serif;
+    font-weight:900;
+    font-style:italic;
+    color:var(--coral);
+    font-size:1.3rem;
+    line-height:1;
+  }
+  .pr-item h4{font-size:1rem;font-weight:600;margin-bottom:.15rem;}
+  .pr-item p{font-size:.9rem;color:#4a3d33;}
+
+  footer{
+    background:var(--teal-deep);
+    color:var(--paper);
+    padding:5rem 8vw 3rem;
+    text-align:center;
+  }
+  footer .f-mark{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:2.4rem;
+    margin-bottom:.6rem;
+  }
+  footer p{opacity:.7;font-size:.9rem;letter-spacing:.04em;}
+
+  /* ---------- reveal animation ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(34px);
+    transition:opacity .8s ease,transform .8s ease;
+  }
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:860px){
+    section{padding:4.5rem 6vw;}
+    .hero{padding:18vw 7vw;}
+    .cities{grid-template-columns:1fr;}
+    .day{grid-template-columns:1fr;gap:1.2rem;}
+    .day-rail{display:flex;align-items:baseline;gap:1rem;}
+    .day-rail::after{display:none;}
+    .day-num{font-size:2.6rem;}
+    .day-num small{display:inline;margin-left:.4rem;}
+    .stop{grid-template-columns:1fr;}
+    .stop-img{min-height:200px;}
+    .stop-text{padding:0 1.4rem 1.5rem;}
+    .food-grid{grid-template-columns:1fr;}
+    .ga-grid{grid-template-columns:1fr;}
+    .pr-list{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-sun"></div>
+  <p class="hero-tag">A seven-day route through Thailand</p>
+  <h1>Bangkok<br>&amp; <em>Phuket</em></h1>
+  <div class="hero-meta">
+    <span><span class="dot"></span>12 – 19 July</span>
+    <span><span class="dot"></span>3 nights city · 4 nights coast</span>
+    <span><span class="dot"></span>Temples · Islands · Spa</span>
+  </div>
+  <div class="scroll-hint">scroll to begin ↓</div>
+</header>
+
+<!-- ============ OVERVIEW ============ -->
+<section id="overview">
+  <p class="kicker reveal">The shape of the trip</p>
+  <h2 class="sec-title reveal">Two halves, one <em>easy rhythm</em></h2>
+  <p class="lede reveal">Three days of big-city temples and markets in Bangkok, a short flight south, then four slower days on the coast — never two demanding days back to back.</p>
+  <div class="cities">
+    <div class="city reveal">
+      <span class="num">01 — the city</span>
+      <h3>Bangkok</h3>
+      <p>Gilded temples, a river crossing, Chinatown after dark, and the sprawl of Chatuchak market. Big, loud, and dazzling.</p>
+      <p class="days">Sat 12 → Mon 14 July</p>
+    </div>
+    <div class="city reveal">
+      <span class="num">02 — the coast</span>
+      <h3>Phuket</h3>
+      <p>Old Town shophouses, a deliberate spa day, the iconic Phi&nbsp;Phi boat trip, and the Big Buddha on the way out.</p>
+      <p class="days">Mon 14 → Sat 19 July</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BANGKOK ITINERARY ============ -->
+<section id="bangkok" style="background:var(--paper-deep);">
+  <p class="kicker reveal">Days 1 – 3</p>
+  <h2 class="sec-title reveal">Bangkok</h2>
+  <p class="lede reveal">Start early each morning — it beats both the heat and the crowds, especially at the Grand Palace.</p>
+
+  <!-- DAY 1 -->
+  <article class="day reveal">
+    <div class="day-rail"><div class="day-num">1<small>Sat</small></div></div>
+    <div class="day-body">
+      <h3>Grand Palace &amp; the Old City</h3>
+      <p class="day-date">Saturday 12 July</p>
+      <div class="stops">
+        <div class="stop">
+          <div class="stop-img">
+            <span class="stop-time">8:30 AM</span>
+            <img src="https://images.unsplash.com/photo-1563492065599-3520f775eeed?auto=format&fit=crop&w=900&q=80" alt="Wat Phra Kaew, the Grand Palace, Bangkok">
+          </div>
+          <div class="stop-text">
+            <h4>Temple of the Emerald Buddha</h4>
+            <p>Thailand's most sacred temple, inside the Grand Palace complex. Arrive right at opening. Strict dress code — shoulders and knees covered.</p>
+            <div class="stop-getting"><b>Getting there</b><span>From most central hotels, a metered taxi or Grab is 15–25 min. Or take the Chao Phraya Express Boat to Tha Chang pier, a short walk away.</span></div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-img">
+            <span class="stop-time">12:00 PM</span>
+            <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=900&q=80" alt="Thai temple interior with golden Buddha">
+          </div>
+          <div class="stop-text">
+            <h4>Wat Suthat &amp; the Giant Swing</h4>
+            <p>A quieter royal temple with a huge bronze Buddha and story-telling murals. The towering red Giant Swing stands right out front.</p>
+            <div class="stop-getting"><b>Getting there</b><span>About a 10-min tuk-tuk or taxi ride east of the Grand Palace — agree the fare first, or use Grab.</span></div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-img">
+            <span class="stop-time">1:30 PM</span>
+            <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a?auto=format&fit=crop&w=900&q=80" alt="Ornate tiled temple courtyard in Bangkok">
+          </div>
+          <div class="stop-text">
+            <h4>Wat Ratchabophit</h4>
+            <p>Underrated and often nearly empty — intricate tilework and a calm courtyard. There's a good coffee shop across the street.</p>
+            <div class="stop-getting"><b>Getting there</b><span>A 5-min walk from Wat Suthat — the whole Old City is compact and walkable between stops.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- DAY 2 -->
+  <article class="day reveal">
+    <div class="day-rail"><div class="day-num">2<small>Sun</small></div></div>
+    <div class="day-body">
+      <h3>Riverside &amp; Chinatown</h3>
+      <p class="day-date">Sunday 13 July</p>
+      <div class="stops">
+        <div class="stop">
+          <div class="stop-img">
+            <span class="stop-time">9:00 AM</span>
+            <img src="https://images.unsplash.com/photo-1598935898639-81586f7d2129?auto=format&fit=crop&w=900&q=80" alt="Wat Arun, the Temple of Dawn, on the Chao Phraya river">
+          </div>
+          <div class="stop-text">
+            <h4>Wat Arun — Temple of Dawn</h4>
+            <p>Climb partway up the porcelain-studded central prang for views over the river. Beautiful in the morning light before the heat builds.</p>
+            <div class="stop-getting"><b>Getting there</b><span>Take the cross-river ferry from Tha Tien pier — it runs every few minutes and costs only a few baht.</span></div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-img">
+            <span class="stop-time">12:30 PM</span>
+            <img src="https://images.unsplash.com/photo-1545126178-862cdb469409?auto=format&fit=crop&w=900&q=80" alt="Colorful Hindu temple detail">
+          </div>
+          <div class="stop-text">
+            <h4>Sri Maha Mariamman Temple</h4>
+            <p>A vivid South Indian Hindu temple in the Silom district — free to enter, shoes off, dress respectfully.</p>
+            <div class="stop-getting"><b>Getting there</b><span>Cross back on the ferry, then a short taxi/Grab ride to Silom — or the MRT to Sam Yan, then a 10-min walk.</span></div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-img">
+            <span class="stop-time">6:30 PM</span>
+            <img src="https://images.unsplash.com/photo-1554797589-7241bb691973?auto=format&fit=crop&w=900&q=80" alt="Bangkok Chinatown street food at night with neon signs">
+          </div>
+          <div class="stop-text">
+            <h4>Yaowarat — Chinatown after dark</h4>
+            <p>The heart of Bangkok's street food scene. Come hungry and graze your way down the neon-lit main road — noodle soups, grilled skewers, fresh fruit.</p>
+            <div class="stop-getting"><b>Getting there</b><span>The MRT Blue Line stops right at Wat Mangkon station, in the middle of Chinatown. Easiest after-dark option.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- DAY 3 -->
+  <article class="day reveal">
+    <div class="day-rail"><div class="day-num">3<small>Mon</small></div></div>
+    <div class="day-body">
+      <h3>Chatuchak Market, then fly south</h3>
+      <p class="day-date">Monday 14 July</p>
+      <div class="stops">
+        <div class="stop">
+          <div class="stop-img">
+            <span class="stop-time">9:30 AM</span>
+            <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=900&q=80" alt="Busy market stalls in Bangkok">
+          </div>
+          <div class="stop-text">
+            <h4>Chatuchak Weekend Market</h4>
+            <p>Over 10,000 stalls of clothes, crafts, antiques and food. Go early before the heat peaks. <b>Note:</b> 14 July is a Monday, when Chatuchak is closed — swap in the Pratunam shopping district, or visit Chatuchak's adjacent daily JJ Mall / weekend-only sections won't be open, so Pratunam is the cleaner choice.</p>
+            <div class="stop-getting"><b>Getting there</b><span>For Pratunam: BTS to Chit Lom or Ratchathewi. For the market area: MRT to Chatuchak Park or BTS to Mo Chit.</span></div>
+          </div>
+        </div>
+        <div class="stop">
+          <div class="stop-img">
+            <span class="stop-time">1:30 PM</span>
+            <img src="https://images.unsplash.com/photo-1607330289024-1535c6b4e1c1?auto=format&fit=crop&w=900&q=80" alt="Thai curry and rice dishes on a table">
+          </div>
+          <div class="stop-text">
+            <h4>Last Bangkok lunch, then the airport</h4>
+            <p>A relaxed Thai meal before heading out. Then the short flight to Phuket — about 1 hr 25 min.</p>
+            <div class="stop-getting"><b>Getting there</b><span>Suvarnabhumi (BKK) or Don Muang (DMK) depending on airline. Allow 1 hr by taxi from the city, more in traffic. The Airport Rail Link serves Suvarnabhumi.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- TRANSIT -->
+  <div class="transit reveal">
+    <span class="plane">✈</span>
+    <div class="transit-text">
+      <h4>Bangkok → Phuket</h4>
+      <p>A 1 hr 25 min domestic flight. AirAsia, Thai Lion, Nok Air and Thai Vietjet all fly it many times daily — cheapest booked a few weeks ahead. An evening flight on the 14th lands you in Phuket in time to settle in.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHUKET ITINERARY ============ -->
+<section id="phuket">
+  <p class="kicker reveal">Days 4 – 7</p>
+  <h2 class="sec-title reveal">Phuket</h2>
+  <p class="lede reveal">A gentler pace: Old Town to settle in, a spa day in the middle, one big island trip, and the Big Buddha on your way out.</p>
+
+  <!-- DAY 4 -->
+  <article class="day reveal">
+    <div class="day-rail"><div class="day-num">4<small>Mon</small></div></div>
+    <div class="day-body">
+      <h3>Old Town — arrive &amp; settle in</h3>
+      <p class="day-date">Monday 14 July · evening</p>
+      <div class="stops">
+        <div class="stop">
+          <div class="stop-img">
+            <span class="stop-time">EVENING</span>
+            <img src="https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?auto=format&fit=crop&w=900&q=80" alt="Colorful Sino-Portuguese shophouses in Phuket Old Town">
+          </div>
+          <div class="stop-text">
+            <h4>Phuket Old Town</h4>
+            <p>Colourful Sino-Portuguese shophouses, cafés and small boutiques — very walkable and photogenic, especially as the lights come on. A low-key first evening: stroll the streets, find dinner, no transport to sort out.</p>
+            <div class="stop-getting"><b>Getting there</b><span>From the airport, a metered taxi, airport bus, or Grab to Old Town takes around 45 min–1 hr. Basing yourself in or near Old Town keeps this evening effortless.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- DAY 5 -->
+  <article class="day reveal">
+    <div class="day-rail"><div class="day-num">5<small>Tue</small></div></div>
+    <div class="day-body">
+      <h3>Spa day — the deliberate slow point</h3>
+      <p class="day-date">Tuesday 15 July</p>
+      <div class="stops">
+        <div class="stop">
+          <div class="stop-img">
+            <span class="stop-time">ALL DAY</span>
+            <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=900&q=80" alt="Thai spa massage setup with flowers">
+          </div>
+          <div class="stop-text">
+            <h4>Massage &amp; wellness</h4>
+            <p>A day built around rest, set between Old Town and the big boat day. Phuket does spas exceptionally well and affordably — from hour-long massages you can book same-day, to half- or full-day packages at resorts. Pair it with your hotel pool to keep it fully restful.</p>
+            <div class="stop-getting"><b>Good to know</b><span>No need to book far ahead — decide on the ground based on where you're staying. Many spas will arrange pickup, or it's a short Grab ride.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- DAY 6 -->
+  <article class="day reveal">
+    <div class="day-rail"><div class="day-num">6<small>Wed</small></div></div>
+    <div class="day-body">
+      <h3>Phi Phi Islands boat trip</h3>
+      <p class="day-date">Wednesday 16 July</p>
+      <div class="stops">
+        <div class="stop">
+          <div class="stop-img">
+            <span class="stop-time">FULL DAY</span>
+            <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=900&q=80" alt="Longtail boats at Maya Bay, Phi Phi Islands">
+          </div>
+          <div class="stop-text">
+            <h4>Phi Phi &amp; Maya Bay</h4>
+            <p>The iconic island-hopping day — limestone cliffs straight out of turquoise water, snorkeling stops, Maya Bay. Sunrise tours mean an early start but get you there before the crowds.</p>
+            <div class="stop-getting"><b>Getting there</b><span>Tours include hotel pickup by minivan to the pier, then speedboat. <b>Book this one in advance</b> — it's the single excursion that really needs reserving.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- DAY 7 -->
+  <article class="day reveal">
+    <div class="day-rail"><div class="day-num">7<small>Thu</small></div></div>
+    <div class="day-body">
+      <h3>Big Buddha, then fly home</h3>
+      <p class="day-date">Thursday 17 July → onward</p>
+      <div class="stops">
+        <div class="stop">
+          <div class="stop-img">
+            <span class="stop-time">MORNING</span>
+            <img src="https://images.unsplash.com/photo-1571115764595-644a1f56a55c?auto=format&fit=crop&w=900&q=80" alt="The Big Buddha statue of Phuket on a hilltop">
+          </div>
+          <div class="stop-text">
+            <h4>The Big Buddha</h4>
+            <p>A 45-metre marble statue on a hilltop with 360° views over the island and its bays. Front access has been restricted recently, but it's still viewable — and the panorama is the real draw. Watch for monkeys.</p>
+            <div class="stop-getting"><b>Getting there</b><span>A scenic winding drive up from the Chalong area — easiest by Grab or a hired car/driver. Roughly on the way back toward the airport side of the island.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+  <p class="lede reveal" style="margin-top:2.5rem;">Your dates run 12–19 July, so there's a flexible final stretch — an extra slow morning, a quiet beach swim, or more Old Town café-hopping before the flight back to Bangkok for the international connection.</p>
+</section>
+
+<!-- ============ FOOD ============ -->
+<section id="food" class="food">
+  <p class="kicker reveal">What to eat</p>
+  <h2 class="sec-title reveal">The <em>edible</em> itinerary</h2>
+  <p class="lede reveal">A short list of dishes to actively hunt down — all of them easy to find, and all easy to get vegetarian if you ask.</p>
+  <div class="food-grid">
+    <div class="dish reveal">
+      <img src="https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=800&q=80" alt="Plate of pad thai noodles">
+      <div class="dish-cap">
+        <h4>Pad Thai</h4>
+        <span>ผัดไทย</span>
+        <p>Stir-fried rice noodles with tofu, egg and peanuts. Ask for no fish sauce or dried shrimp to keep it veg.</p>
+      </div>
+    </div>
+    <div class="dish reveal">
+      <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&w=800&q=80" alt="Bowl of Thai green curry">
+      <div class="dish-cap">
+        <h4>Green Curry</h4>
+        <span>แกงเขียวหวาน</span>
+        <p>Coconut curry with tofu and vegetables. Check the paste — some contain shrimp.</p>
+      </div>
+    </div>
+    <div class="dish reveal">
+      <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=800&q=80" alt="Mango sticky rice dessert">
+      <div class="dish-cap">
+        <h4>Mango Sticky Rice</h4>
+        <span>ข้าวเหนียวมะม่วง</span>
+        <p>Sweet coconut sticky rice with ripe mango. Naturally vegetarian — and a must.</p>
+      </div>
+    </div>
+    <div class="dish reveal">
+      <img src="https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?auto=format&fit=crop&w=800&q=80" alt="Som tam green papaya salad">
+      <div class="dish-cap">
+        <h4>Som Tam</h4>
+        <span>ส้มตำ</span>
+        <p>Pounded green papaya salad — bright, hot and sour. Ask for it without fish sauce and dried shrimp.</p>
+      </div>
+    </div>
+    <div class="dish reveal">
+      <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80" alt="Bowl of khao soi curry noodle soup">
+      <div class="dish-cap">
+        <h4>Khao Soi</h4>
+        <span>ข้าวซอย</span>
+        <p>Northern coconut-curry noodle soup, crispy noodles on top. Increasingly served in veg versions.</p>
+      </div>
+    </div>
+    <div class="dish reveal">
+      <img src="https://images.unsplash.com/photo-1572656631137-7935297eff55?auto=format&fit=crop&w=800&q=80" alt="Thai street food spread">
+      <div class="dish-cap">
+        <h4>Street Food Grazing</h4>
+        <span>อาหารริมทาง</span>
+        <p>Spring rolls, fried tofu, grilled corn, coconut ice cream — Chinatown and Phuket's markets are the place.</p>
+      </div>
+    </div>
+  </div>
+  <div class="veg-note reveal">
+    <span class="vleaf">🌿</span>
+    <div>
+      <h4>Eating vegetarian — the key phrases</h4>
+      <p>Say <b>"gin jay"</b> for strict vegetarian/vegan (no meat, egg, dairy or pungent veg), or <b>"gin mangsawirat"</b> for vegetarian that may include egg and dairy. The things that catch people out are fish sauce <b>(nam pla)</b>, oyster sauce and dried shrimp used as background seasoning — <b>"mai sai nam pla"</b> means no fish sauce. Look for yellow flags marking <b>jay</b> food. Phuket Old Town in particular is full of vegetarian-friendly cafés.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GETTING AROUND ============ -->
+<section id="getting-around" class="practical">
+  <p class="kicker reveal">Logistics</p>
+  <h2 class="sec-title reveal">Getting <em>around</em></h2>
+  <p class="lede reveal">Two very different cities — Bangkok runs on trains and boats, Phuket on cars.</p>
+  <div class="ga-grid">
+    <div class="ga-card reveal">
+      <span class="tag">In Bangkok</span>
+      <h4>Trains, boats &amp; Grab</h4>
+      <p>The BTS Skytrain and MRT subway are fast, cheap and skip the notorious traffic — use them whenever you can. The Chao Phraya Express Boat links many riverside temples. For everything else, the Grab app gives you fair, fixed fares without haggling. Tuk-tuks are fun but agree the price first.</p>
+    </div>
+    <div class="ga-card reveal">
+      <span class="tag">In Phuket</span>
+      <h4>You'll need wheels</h4>
+      <p>Phuket has no train and sights are spread far apart, so plan on Grab, metered taxis, or a hired car with driver for the day. Day tours and many spas include hotel pickup. Scooters are common but only if you're confident — the roads can be rough.</p>
+    </div>
+    <div class="ga-card reveal">
+      <span class="tag">Between cities</span>
+      <h4>The domestic flight</h4>
+      <p>Bangkok–Phuket is a 1 hr 25 min hop, flown many times daily by AirAsia, Thai Lion, Nok Air and Thai Vietjet. Book a few weeks ahead for the best fares. Check whether you depart Suvarnabhumi or Don Muang — they're on opposite sides of Bangkok.</p>
+    </div>
+    <div class="ga-card reveal">
+      <span class="tag">Where to base yourself</span>
+      <h4>Phuket: stay central or calm</h4>
+      <p>Old Town, Kata or Karon all suit this itinerary and are far calmer than the Patong nightlife strip. Old Town makes day 4 effortless and puts you among the best vegetarian cafés. Wherever you land, you'll still rely on Grab to reach beaches and tours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRACTICAL NOTES ============ -->
+<section id="notes">
+  <p class="kicker reveal">Before you go</p>
+  <h2 class="sec-title reveal">Practical <em>notes</em></h2>
+  <div class="pr-list">
+    <div class="pr-item reveal">
+      <span class="pr-i">i</span>
+      <div><h4>July is rainy season</h4><p>The Andaman coast sees monsoon weather roughly May–October. Expect warm days with passing downpours, and keep the Phi Phi day flexible — rough seas can cancel boats. Build in a buffer.</p></div>
+    </div>
+    <div class="pr-item reveal">
+      <span class="pr-i">i</span>
+      <div><h4>Temple dress code</h4><p>Shoulders and knees covered at all temples, shoes off where indicated. The Grand Palace enforces this strictly — bring a light layer.</p></div>
+    </div>
+    <div class="pr-item reveal">
+      <span class="pr-i">i</span>
+      <div><h4>Book Phi Phi ahead</h4><p>It's the one excursion worth reserving before you arrive. The spa day, by contrast, can be arranged on the ground.</p></div>
+    </div>
+    <div class="pr-item reveal">
+      <span class="pr-i">i</span>
+      <div><h4>Chatuchak is weekends only</h4><p>14 July is a Monday, so the market is closed — the site swaps in the Pratunam shopping district for that morning.</p></div>
+    </div>
+    <div class="pr-item reveal">
+      <span class="pr-i">i</span>
+      <div><h4>Carry small cash</h4><p>Street food, ferries, tuk-tuks and markets are cash-based. Cards work in malls, hotels and bigger restaurants; 7-Elevens and ATMs are everywhere.</p></div>
+    </div>
+    <div class="pr-item reveal">
+      <span class="pr-i">i</span>
+      <div><h4>Get the Grab app</h4><p>Set it up before you land. It removes fare haggling in both cities and is the simplest way to get around Phuket.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-mark">Bangkok &amp; Phuket</div>
+  <p>Seven days · 12–19 July · an easy-rhythm route</p>
+</footer>
+
+<script>
+  // scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.transitionDelay = (i % 4 * 0.07) + 's';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
