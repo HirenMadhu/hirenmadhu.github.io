@@ -1,0 +1,1321 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Hong Kong for Two</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+TC:wght@700;900&display=swap">
+<style>
+/* Layout: a harbour-postcard ledger. Each day is a spread: a neon shop sign and an illustrated plate on the left, the day's stops as a timed list on the right. */
+:root{
+  --paper:#E8EDE9;
+  --paper-2:#DCE4DF;
+  --card:#F3F6F3;
+  --ink:#12212B;
+  --ink-2:#34454F;
+  --muted:#5E6F77;
+  --rule:rgba(18,33,43,.16);
+  --rule-strong:rgba(18,33,43,.38);
+  --ferry:#1C6A4F;
+  --ferry-soft:rgba(28,106,79,.10);
+  --neon:#C3352D;
+  --neon-soft:rgba(195,53,45,.10);
+  --gold:#A87910;
+  --sign-bg:#161B26;
+  --sign-gold:#F4C64E;
+  --sign-red:#E5483C;
+  --hero-fg:#F6F2E8;
+  --hero-1:#1B2847; --hero-2:#5F4E78; --hero-3:#DB8A64;
+  --hero-ridge:#2B3150; --hero-bldg:#121929; --hero-sea:#151F35; --hero-win:#FFD36A;
+
+  --l-island:#0071BC; --l-tw:#E2231A; --l-kt:#00A04A; --l-tc:#F38B32; --l-ae:#00888A;
+  --l-drl:#E66FA8; --l-tm:#923011; --l-er:#4FA9DD;
+
+  --il-sky:#C9DCDD; --il-night:#2A3A5A; --il-sea:#5C8D9F; --il-harbour:#1D3450;
+  --il-hill:#5B8364; --il-hill-2:#91AE96; --il-bldg:#2B4554; --il-bldg-2:#557181;
+  --il-light:#F2C548; --il-red:#C9362E; --il-white:#F6F6F0; --il-sand:#E3D1A5;
+  --il-facade:#EBDBC6; --il-bronze:#7B6946; --il-road:#7E8A8D; --il-ink:#12212B;
+  --il-tram:#1C6A4F; --il-moon:#F4EBCF;
+
+  --f-display:'Big Shoulders Display','Arial Narrow','Roboto Condensed',sans-serif;
+  --f-body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --f-zh:'Noto Serif TC','Songti TC','PMingLiU','Noto Serif CJK TC',serif;
+
+  --gutter:clamp(16px,4.5vw,56px);
+  --maxw:1180px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0D161C; --paper-2:#121E26; --card:#15222B; --ink:#E3EAE6; --ink-2:#BCC8C3; --muted:#8C9DA3;
+    --rule:rgba(227,234,230,.13); --rule-strong:rgba(227,234,230,.34);
+    --ferry:#5CC29C; --ferry-soft:rgba(92,194,156,.12); --neon:#FF6A5C; --neon-soft:rgba(255,106,92,.12); --gold:#F0C24A;
+    --hero-1:#04070E; --hero-2:#0C162B; --hero-3:#22385A;
+    --hero-ridge:#0D1626; --hero-bldg:#060A12; --hero-sea:#050911; --hero-win:#FFCF5A;
+    --il-sky:#22344A; --il-night:#0E1726; --il-sea:#1B4053; --il-harbour:#0A1828;
+    --il-hill:#284536; --il-hill-2:#3A5A4A; --il-bldg:#13222D; --il-bldg-2:#22394A;
+    --il-light:#FFD45E; --il-red:#E8564A; --il-white:#D9E1DD; --il-sand:#7F6F4E;
+    --il-facade:#6E6556; --il-bronze:#B89A5F; --il-road:#26313A; --il-ink:#0A1218; --il-tram:#2E8A68; --il-moon:#E9DFC0;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0D161C; --paper-2:#121E26; --card:#15222B; --ink:#E3EAE6; --ink-2:#BCC8C3; --muted:#8C9DA3;
+  --rule:rgba(227,234,230,.13); --rule-strong:rgba(227,234,230,.34);
+  --ferry:#5CC29C; --ferry-soft:rgba(92,194,156,.12); --neon:#FF6A5C; --neon-soft:rgba(255,106,92,.12); --gold:#F0C24A;
+  --hero-1:#04070E; --hero-2:#0C162B; --hero-3:#22385A;
+  --hero-ridge:#0D1626; --hero-bldg:#060A12; --hero-sea:#050911; --hero-win:#FFCF5A;
+  --il-sky:#22344A; --il-night:#0E1726; --il-sea:#1B4053; --il-harbour:#0A1828;
+  --il-hill:#284536; --il-hill-2:#3A5A4A; --il-bldg:#13222D; --il-bldg-2:#22394A;
+  --il-light:#FFD45E; --il-red:#E8564A; --il-white:#D9E1DD; --il-sand:#7F6F4E;
+  --il-facade:#6E6556; --il-bronze:#B89A5F; --il-road:#26313A; --il-ink:#0A1218; --il-tram:#2E8A68; --il-moon:#E9DFC0;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--f-body);font-size:16.5px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit;text-decoration-color:var(--rule-strong);text-underline-offset:3px}
+a:hover{text-decoration-color:currentColor}
+:focus-visible{outline:2px solid var(--ferry);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+h1,h2,h3,h4{margin:0;text-wrap:balance}
+p{margin:0}
+.zh{font-family:var(--f-zh);font-weight:700}
+.mono{font-family:var(--f-mono)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;color:var(--hero-fg);overflow:hidden;isolation:isolate;background:var(--hero-1)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1;display:block}
+.hero-inner{position:relative;padding-block:clamp(3.2rem,8vw,6rem) clamp(15rem,30vw,22rem)}
+.hero-eyebrow{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
+.hero h1{
+  font-family:var(--f-display);font-weight:900;text-transform:uppercase;
+  font-size:clamp(4.2rem,15vw,11.5rem);line-height:.82;letter-spacing:-.01em;margin-top:.9rem;
+  text-shadow:0 2px 30px rgba(0,0,0,.25);
+}
+.hero h1 span{display:block;font-weight:600;font-size:.34em;letter-spacing:.06em;line-height:1.1;margin-top:.35em;color:var(--sign-gold)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem;max-width:40rem}
+.hero-meta li{list-style:none;font-size:.86rem;font-weight:500;padding:.32rem .75rem;border:1px solid rgba(246,242,232,.38);border-radius:99px;background:rgba(10,14,24,.28);backdrop-filter:blur(4px)}
+.hero-meta{padding:0}
+.sign{
+  position:absolute;right:var(--gutter);top:clamp(2.6rem,7vw,5rem);
+  writing-mode:vertical-rl;font-family:var(--f-zh);font-weight:900;
+  font-size:clamp(2.4rem,6.4vw,4.6rem);line-height:1;letter-spacing:.12em;
+  padding:.38em .26em;background:var(--sign-bg);color:var(--sign-gold);
+  border:3px solid var(--sign-red);border-radius:6px;
+  box-shadow:0 0 0 1px rgba(0,0,0,.4),0 0 18px rgba(229,72,60,.55),inset 0 0 14px rgba(229,72,60,.35);
+  text-shadow:0 0 10px rgba(244,198,78,.75),0 0 2px rgba(244,198,78,.9);
+  animation:flicker 2.4s steps(1) .4s 1 both;
+}
+.sign small{display:block;font-family:var(--f-mono);font-weight:500;font-size:.18em;letter-spacing:.3em;margin-top:.6em;color:var(--hero-fg);text-shadow:none;opacity:.8}
+@keyframes flicker{0%{opacity:.2}8%{opacity:1}12%{opacity:.35}16%{opacity:1}54%{opacity:1}57%{opacity:.6}60%{opacity:1}100%{opacity:1}}
+@media (prefers-reduced-motion: reduce){.sign{animation:none}}
+@media (max-width:640px){.sign{top:auto;bottom:clamp(9rem,40vw,14rem);font-size:2.2rem}}
+
+/* ---------- day nav ---------- */
+.daynav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.daynav ol{display:flex;gap:.25rem;margin:0;padding:.55rem 0;list-style:none;overflow-x:auto;scrollbar-width:none}
+.daynav ol::-webkit-scrollbar{display:none}
+.daynav a{display:flex;align-items:baseline;gap:.4rem;white-space:nowrap;text-decoration:none;font-size:.84rem;font-weight:600;padding:.35rem .7rem;border-radius:6px;color:var(--ink-2)}
+.daynav a .zh{font-size:.8rem;color:var(--muted);font-weight:700}
+.daynav a:hover{background:var(--ferry-soft)}
+.daynav a[aria-current="true"]{background:var(--ink);color:var(--paper)}
+.daynav a[aria-current="true"] .zh{color:var(--paper);opacity:.75}
+.daynav .sep{width:1px;background:var(--rule);margin:.35rem .35rem}
+
+/* ---------- section scaffolding ---------- */
+section{padding-block:clamp(3.5rem,8vw,6.5rem)}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--neon)}
+.sec-title{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(2.5rem,6vw,4.4rem);line-height:.9;letter-spacing:.005em;margin-top:.6rem}
+.lede{max-width:62ch;color:var(--ink-2);margin-top:1rem;font-size:1.05rem}
+
+/* ---------- week strip ---------- */
+.week{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:0;margin-top:2.4rem;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule)}
+.wk{padding:1rem .8rem 1.1rem;border-right:1px solid var(--rule);text-decoration:none;display:flex;flex-direction:column;gap:.45rem;min-width:0;transition:background .2s}
+.wk:last-child{border-right:0}
+.wk:hover{background:var(--ferry-soft)}
+.wk-d{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.wk-zh{font-family:var(--f-zh);font-weight:900;font-size:1.5rem;line-height:1}
+.wk-t{font-size:.86rem;font-weight:600;line-height:1.3}
+.pace{display:flex;gap:3px;margin-top:auto;padding-top:.3rem}
+.pace i{display:block;width:16px;height:5px;border-radius:2px;background:var(--rule)}
+.pace[data-p="1"] i:nth-child(-n+1),.pace[data-p="2"] i:nth-child(-n+2),.pace[data-p="3"] i:nth-child(-n+3){background:var(--neon)}
+.pace-key{display:flex;gap:1rem;align-items:center;margin-top:.9rem;font-size:.8rem;color:var(--muted)}
+.pace-key .pace{margin:0;padding:0}
+@media (max-width:900px){.week{grid-template-columns:repeat(4,minmax(0,1fr))}.wk:nth-child(4){border-right:0}.wk:nth-child(-n+4){border-bottom:1px solid var(--rule)}}
+@media (max-width:460px){.week{grid-template-columns:repeat(2,minmax(0,1fr))}.wk:nth-child(2n){border-right:0}.wk:nth-child(-n+6){border-bottom:1px solid var(--rule)}.wk:nth-child(4){border-right:0}}
+
+/* ---------- day spreads ---------- */
+.days{padding-top:0}
+.day{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:clamp(1.6rem,5vw,4.5rem);padding-block:clamp(3rem,6vw,4.5rem);border-top:1px solid var(--rule);scroll-margin-top:3.5rem}
+.day:first-child{border-top:0}
+.day-side{display:flex;flex-direction:column;gap:1.1rem;min-width:0}
+.day-head{display:flex;gap:1rem;align-items:flex-start}
+.vsign{writing-mode:vertical-rl;font-family:var(--f-zh);font-weight:900;font-size:1.9rem;line-height:1;letter-spacing:.1em;padding:.4em .24em;background:var(--sign-bg);color:var(--sign-gold);border:2px solid var(--sign-red);border-radius:4px;box-shadow:0 0 12px rgba(229,72,60,.35);text-shadow:0 0 8px rgba(244,198,78,.6);flex:none}
+.day-k{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.day-head h3{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(2.1rem,4.4vw,3rem);line-height:.92;margin-top:.35rem}
+.area{display:inline-flex;align-items:center;gap:.4rem;margin-top:.7rem;font-size:.8rem;font-weight:600;color:var(--ink-2)}
+.area .pace{padding:0;margin:0}
+.plate{margin:0;border:1px solid var(--rule-strong);border-radius:3px;padding:8px;background:var(--card)}
+.plate svg{display:block;width:100%;height:auto;border-radius:1px}
+.plate figcaption{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;color:var(--muted);padding:.55rem .1rem .1rem;display:flex;justify-content:space-between;gap:.5rem}
+@media (min-width:861px){.day-side{position:sticky;top:4.5rem;align-self:start}}
+@media (max-width:860px){.day{grid-template-columns:1fr}.plate{max-width:520px}}
+
+.stops{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.stop{display:grid;grid-template-columns:5.6rem minmax(0,1fr);gap:1rem;padding-block:1.3rem;border-bottom:1px dashed var(--rule)}
+.stop:first-child{padding-top:.2rem}
+.stop:last-child{border-bottom:0}
+@media (max-width:520px){.stop{grid-template-columns:1fr;gap:.2rem}.t{padding-top:0}}
+.t{font-family:var(--f-mono);font-size:.8rem;font-weight:500;color:var(--neon);padding-top:.28rem;font-variant-numeric:tabular-nums}
+.stop h4{font-size:1.18rem;font-weight:700;line-height:1.25;display:flex;flex-wrap:wrap;align-items:baseline;gap:.15rem .6rem}
+.stop h4 .zh{font-size:.95rem;color:var(--muted);font-weight:700}
+.stop p{color:var(--ink-2);margin-top:.35rem;max-width:62ch}
+.how{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .55rem;margin-top:.7rem;font-size:.88rem;color:var(--ink-2)}
+.how b{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ferry);font-weight:500}
+.mtr{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:600;padding:.12rem .55rem .12rem .2rem;border-radius:4px;background:var(--card);border:1px solid var(--rule);white-space:nowrap}
+.mtr::before{content:"";width:5px;height:1.05em;border-radius:2px;background:var(--line,var(--ink))}
+.note{margin-top:1.4rem;padding:1rem 1.1rem;border-left:3px solid var(--neon);background:var(--neon-soft);border-radius:0 4px 4px 0;font-size:.92rem;color:var(--ink-2);max-width:68ch}
+.note strong{color:var(--ink)}
+.note.green{border-left-color:var(--ferry);background:var(--ferry-soft)}
+
+/* departure strip */
+.depart{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:clamp(1.6rem,5vw,4.5rem);align-items:center;padding-block:clamp(2.4rem,5vw,3.5rem);border-top:2px solid var(--ink);scroll-margin-top:3.5rem}
+@media (max-width:860px){.depart{grid-template-columns:1fr}}
+
+/* ---------- food ---------- */
+.food{background:var(--paper-2)}
+.dishes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:2.4rem}
+.dish{background:var(--card);padding:1.4rem 1.3rem 1.5rem;display:flex;flex-direction:column;gap:.5rem;min-width:0}
+.dish .zh{font-size:2.3rem;line-height:1.05;font-weight:900;letter-spacing:.04em}
+.dish h4{font-size:1.02rem;font-weight:700}
+.dish p{font-size:.9rem;color:var(--ink-2)}
+.tag{align-self:flex-start;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .5rem;border-radius:3px;border:1px solid currentColor}
+.tag.ok{color:var(--ferry)}
+.tag.ask{color:var(--neon)}
+@media (max-width:860px){.dishes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.dishes{grid-template-columns:1fr}}
+
+.talk{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(1.4rem,4vw,3rem);margin-top:3.2rem;align-items:start}
+@media (max-width:860px){.talk{grid-template-columns:1fr}}
+.phrases{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.phrases li{display:grid;grid-template-columns:minmax(0,7.5rem) minmax(0,1fr);gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.phrases .zh{font-size:1.45rem;font-weight:900}
+.phrases .jp{font-family:var(--f-mono);font-size:.8rem;color:var(--ferry)}
+.phrases .en{font-size:.92rem;color:var(--ink-2)}
+.showcard{background:var(--sign-bg);color:#F3EEE2;border:2px solid var(--sign-red);border-radius:6px;padding:1.5rem 1.4rem;box-shadow:0 0 22px rgba(229,72,60,.22)}
+.showcard .lbl{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sign-gold)}
+.showcard .big{font-family:var(--f-zh);font-weight:900;font-size:clamp(1.5rem,3.4vw,2.05rem);line-height:1.45;margin-top:.8rem;color:#FFF7E4}
+.showcard .tr{font-size:.9rem;color:#C9C3B6;margin-top:.9rem;border-top:1px solid rgba(243,238,226,.18);padding-top:.8rem}
+.showcard button{margin-top:1rem;font:600 .82rem var(--f-body);color:var(--sign-bg);background:var(--sign-gold);border:0;border-radius:4px;padding:.5rem .9rem;cursor:pointer}
+.showcard button:hover{filter:brightness(1.06)}
+
+.eats{margin-top:3.4rem}
+.eats h3{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:1.9rem;line-height:1}
+.table-wrap{overflow-x:auto;margin-top:1.1rem;border-top:2px solid var(--ink)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.9rem}
+th,td{text-align:left;padding:.75rem .9rem .75rem 0;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td:first-child{font-weight:700;color:var(--ink)}
+td{color:var(--ink-2)}
+td .d{font-family:var(--f-mono);font-size:.78rem;color:var(--neon)}
+
+/* ---------- shopping ---------- */
+.shop-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,3vw,2rem);margin-top:2.4rem}
+@media (max-width:860px){.shop-grid{grid-template-columns:1fr}}
+.shop{border-top:2px solid var(--ink);padding-top:1rem;min-width:0}
+.shop h3{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:2rem;line-height:1;display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+.shop h3 .zh{font-size:1.3rem;color:var(--muted)}
+.shop ul{list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-direction:column;gap:.9rem}
+.shop li{font-size:.93rem;color:var(--ink-2)}
+.shop li strong{display:block;color:var(--ink);font-size:.98rem}
+.shop li em{font-style:normal;font-family:var(--f-mono);font-size:.74rem;color:var(--neon)}
+
+/* ---------- getting around / notes ---------- */
+.around{background:var(--paper-2)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:2.4rem}
+@media (max-width:760px){.cards{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:1.4rem 1.4rem 1.5rem;min-width:0}
+.card .k{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--neon)}
+.card h4{font-size:1.25rem;font-weight:700;margin-top:.35rem}
+.card p{font-size:.93rem;color:var(--ink-2);margin-top:.5rem}
+.taxis{display:flex;flex-direction:column;gap:.55rem;margin-top:.9rem}
+.taxi{display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:.7rem;align-items:center;font-size:.9rem;color:var(--ink-2)}
+.taxi i{display:block;height:1.35rem;border-radius:4px;background:var(--c)}
+.taxi strong{color:var(--ink)}
+.lines{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem}
+
+.notes-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem 2.4rem;margin-top:2.4rem}
+@media (max-width:900px){.notes-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.notes-grid{grid-template-columns:1fr}}
+.n{border-top:1px solid var(--rule-strong);padding-top:.9rem;min-width:0}
+.n h4{font-size:1rem;font-weight:700}
+.n p{font-size:.92rem;color:var(--ink-2);margin-top:.35rem}
+.wx{width:100%;min-width:0;margin-top:.6rem;font-size:.86rem}
+.wx td,.wx th{padding:.4rem .5rem .4rem 0;font-variant-numeric:tabular-nums}
+.wx td:first-child{font-weight:600}
+
+footer{background:var(--sign-bg);color:#E9E4D8;padding-block:3.2rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.4rem}
+footer .fz{font-family:var(--f-zh);font-weight:900;font-size:3rem;line-height:1;color:var(--sign-gold);text-shadow:0 0 12px rgba(244,198,78,.45)}
+footer p{font-size:.86rem;color:#B8B2A6;max-width:52ch}
+footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#E9E4D8;margin-bottom:.3rem}
+
+/* ---------- illustration fills ---------- */
+.f-sky{fill:var(--il-sky)}.f-night{fill:var(--il-night)}.f-sea{fill:var(--il-sea)}.f-harbour{fill:var(--il-harbour)}
+.f-hill{fill:var(--il-hill)}.f-hill2{fill:var(--il-hill-2)}.f-bldg{fill:var(--il-bldg)}.f-bldg2{fill:var(--il-bldg-2)}
+.f-light{fill:var(--il-light)}.f-red{fill:var(--il-red)}.f-white{fill:var(--il-white)}.f-sand{fill:var(--il-sand)}
+.f-facade{fill:var(--il-facade)}.f-bronze{fill:var(--il-bronze)}.f-road{fill:var(--il-road)}.f-ink{fill:var(--il-ink)}
+.f-tram{fill:var(--il-tram)}.f-moon{fill:var(--il-moon)}.f-sign{fill:var(--sign-bg)}.f-signgold{fill:var(--sign-gold)}
+.s-ink{stroke:var(--il-ink)}.s-light{stroke:var(--il-light)}.s-white{stroke:var(--il-white)}.s-red{stroke:var(--sign-red)}.s-ferry{stroke:var(--il-tram)}.s-gold{stroke:var(--sign-gold)}
+.burst{animation:pop 3.2s ease-in-out infinite}
+.burst:nth-of-type(2){animation-delay:.9s}.burst:nth-of-type(3){animation-delay:1.7s}.burst:nth-of-type(4){animation-delay:2.3s}
+@keyframes pop{0%,100%{opacity:1}50%{opacity:.45}}
+@media (prefers-reduced-motion: reduce){.burst{animation:none}}
+</style>
+
+<header class="hero" id="top">
+  <canvas aria-hidden="true"></canvas>
+  <div class="wrap hero-inner">
+    <p class="hero-eyebrow">Seven nights · Sunday to Sunday · For two</p>
+    <h1>Hong Kong<span>Harbour, peaks, beach &amp; a spa day</span></h1>
+    <ul class="hero-meta">
+      <li>All-vegetarian food plan</li>
+      <li>Disneyland on a weekday</li>
+      <li>Two shopping days</li>
+      <li>Room to slow down</li>
+    </ul>
+  </div>
+  <div class="sign" aria-hidden="true">香港<small>HK</small></div>
+</header>
+
+<nav class="daynav" aria-label="Jump to a day">
+  <div class="wrap">
+    <ol>
+      <li><a href="#sun"><span>Sun</span><span class="zh">尖沙咀</span></a></li>
+      <li><a href="#mon"><span>Mon</span><span class="zh">太平山</span></a></li>
+      <li><a href="#tue"><span>Tue</span><span class="zh">淺水灣</span></a></li>
+      <li><a href="#wed"><span>Wed</span><span class="zh">迪士尼</span></a></li>
+      <li><a href="#thu"><span>Thu</span><span class="zh">深水埗</span></a></li>
+      <li><a href="#fri"><span>Fri</span><span class="zh">大嶼山</span></a></li>
+      <li><a href="#sat"><span>Sat</span><span class="zh">銅鑼灣</span></a></li>
+      <li><a href="#fly"><span>Sun</span><span class="zh">機場</span></a></li>
+      <li class="sep" aria-hidden="true"></li>
+      <li><a href="#food"><span>Food</span></a></li>
+      <li><a href="#shopping"><span>Shopping</span></a></li>
+      <li><a href="#around"><span>Getting around</span></a></li>
+      <li><a href="#notes"><span>Before you go</span></a></li>
+    </ol>
+  </div>
+</nav>
+
+<main>
+<section id="week">
+  <div class="wrap">
+    <p class="eyebrow">The week at a glance</p>
+    <h2 class="sec-title">Busy days, then slow ones</h2>
+    <p class="lede">Every full day is followed by an easier one, so you never stack two big outings back to back without a breather. Disneyland and the beach both land on weekdays, when crowds are thinner.</p>
+    <div class="week">
+      <a class="wk" href="#sun"><span class="wk-d">Sun</span><span class="wk-zh">尖沙咀</span><span class="wk-t">Arrive, harbour walk, light show</span><span class="pace" data-p="1"><i></i><i></i><i></i></span></a>
+      <a class="wk" href="#mon"><span class="wk-d">Mon</span><span class="wk-zh">太平山</span><span class="wk-t">The Peak, old Central, Star Ferry</span><span class="pace" data-p="3"><i></i><i></i><i></i></span></a>
+      <a class="wk" href="#tue"><span class="wk-d">Tue</span><span class="wk-zh">淺水灣</span><span class="wk-t">Beach morning, spa afternoon</span><span class="pace" data-p="1"><i></i><i></i><i></i></span></a>
+      <a class="wk" href="#wed"><span class="wk-d">Wed</span><span class="wk-zh">迪士尼</span><span class="wk-t">Hong Kong Disneyland</span><span class="pace" data-p="3"><i></i><i></i><i></i></span></a>
+      <a class="wk" href="#thu"><span class="wk-d">Thu</span><span class="wk-zh">深水埗</span><span class="wk-t">Tech, fabric and Mong Kok markets</span><span class="pace" data-p="3"><i></i><i></i><i></i></span></a>
+      <a class="wk" href="#fri"><span class="wk-d">Fri</span><span class="wk-zh">大嶼山</span><span class="wk-t">Cable car, Big Buddha, Tai O</span><span class="pace" data-p="2"><i></i><i></i><i></i></span></a>
+      <a class="wk" href="#sat"><span class="wk-d">Sat</span><span class="wk-zh">銅鑼灣</span><span class="wk-t">Boutiques, malls, farewell dinner</span><span class="pace" data-p="2"><i></i><i></i><i></i></span></a>
+      <a class="wk" href="#fly"><span class="wk-d">Sun</span><span class="wk-zh">機場</span><span class="wk-t">Slow breakfast, fly home</span><span class="pace" data-p="1"><i></i><i></i><i></i></span></a>
+    </div>
+    <div class="pace-key"><span class="pace" data-p="1"><i></i><i></i><i></i></span> easy <span class="pace" data-p="2"><i></i><i></i><i></i></span> moderate <span class="pace" data-p="3"><i></i><i></i><i></i></span> full day</div>
+  </div>
+</section>
+
+<section class="days" aria-label="Day by day">
+  <div class="wrap">
+
+    <!-- SUNDAY -->
+    <article class="day" id="sun">
+      <div class="day-side">
+        <div class="day-head">
+          <div class="vsign" aria-hidden="true">尖沙咀</div>
+          <div>
+            <p class="day-k">Day 1 · Sunday</p>
+            <h3>Land, rest, harbour lights</h3>
+            <p class="area"><span class="pace" data-p="1"><i></i><i></i><i></i></span>Tsim Sha Tsui, Kowloon</p>
+          </div>
+        </div>
+        <figure class="plate">
+          <svg viewBox="0 0 400 250" role="img" aria-label="Illustration of the Hong Kong Island skyline at night, seen across Victoria Harbour, with a Star Ferry crossing">
+            <defs>
+              <pattern id="win-a" width="6" height="8" patternUnits="userSpaceOnUse"><rect x="1.6" y="2" width="2" height="3" class="f-light" opacity=".85"/></pattern>
+            </defs>
+            <rect width="400" height="250" class="f-night"/>
+            <circle cx="330" cy="44" r="14" class="f-moon"/>
+            <g class="f-light" opacity=".7"><circle cx="40" cy="30" r="1"/><circle cx="96" cy="18" r="1"/><circle cx="160" cy="34" r="1"/><circle cx="232" cy="22" r="1"/><circle cx="380" cy="70" r="1"/><circle cx="270" cy="52" r="1"/></g>
+            <path class="f-bldg2" d="M0 122 C60 96 112 82 162 94 C212 106 252 70 302 78 C342 84 372 100 400 96 L400 160 L0 160Z"/>
+            <g stroke-width="1.2" opacity=".28"><line x1="131" y1="46" x2="60" y2="0" class="s-light"/><line x1="131" y1="46" x2="190" y2="0" class="s-light"/><line x1="206" y1="56" x2="300" y2="0" class="s-white"/></g>
+            <g class="f-bldg">
+              <rect x="10" y="118" width="22" height="42"/><rect x="34" y="104" width="18" height="56"/><rect x="54" y="126" width="26" height="34"/>
+              <rect x="82" y="96" width="20" height="64"/><polygon points="118,160 118,58 122,52 126,46 136,46 140,52 144,58 144,160"/>
+              <rect x="148" y="110" width="22" height="50"/><rect x="172" y="88" width="16" height="72"/>
+              <polygon points="194,160 194,76 206,56 218,76 218,160"/><rect x="222" y="116" width="28" height="44"/>
+              <rect x="252" y="100" width="18" height="60"/><rect x="272" y="124" width="30" height="36"/><rect x="304" y="106" width="22" height="54"/>
+              <rect x="328" y="130" width="24" height="30"/><rect x="354" y="112" width="18" height="48"/><rect x="374" y="124" width="26" height="36"/>
+            </g>
+            <g fill="url(#win-a)">
+              <rect x="10" y="118" width="22" height="42"/><rect x="34" y="104" width="18" height="56"/><rect x="82" y="96" width="20" height="64"/>
+              <rect x="118" y="60" width="26" height="100"/><rect x="172" y="88" width="16" height="72"/><rect x="194" y="78" width="24" height="82"/>
+              <rect x="252" y="100" width="18" height="60"/><rect x="304" y="106" width="22" height="54"/><rect x="354" y="112" width="18" height="48"/>
+            </g>
+            <path d="M200 78 L212 70 M196 96 L216 84 M196 116 L216 104" class="s-light" stroke-width="1" opacity=".5"/>
+            <rect y="160" width="400" height="90" class="f-harbour"/>
+            <g class="s-light" stroke-width="2" opacity=".5" stroke-linecap="round">
+              <line x1="124" y1="170" x2="138" y2="170"/><line x1="128" y1="180" x2="136" y2="180"/><line x1="122" y1="192" x2="140" y2="192"/><line x1="130" y1="204" x2="134" y2="204"/>
+              <line x1="198" y1="172" x2="214" y2="172"/><line x1="202" y1="184" x2="210" y2="184"/><line x1="196" y1="196" x2="212" y2="196"/>
+              <line x1="36" y1="174" x2="48" y2="174"/><line x1="40" y1="186" x2="46" y2="186"/><line x1="84" y1="170" x2="98" y2="170"/><line x1="88" y1="184" x2="96" y2="184"/>
+              <line x1="254" y1="172" x2="266" y2="172"/><line x1="306" y1="174" x2="322" y2="174"/><line x1="310" y1="188" x2="318" y2="188"/><line x1="356" y1="170" x2="368" y2="170"/>
+            </g>
+            <g transform="translate(250 196)">
+              <path d="M-36 8 L36 8 L30 18 L-30 18Z" class="f-white"/>
+              <rect x="-26" y="-4" width="52" height="12" rx="2" class="f-tram"/>
+              <g class="f-light"><rect x="-21" y="-1" width="5" height="5"/><rect x="-12" y="-1" width="5" height="5"/><rect x="-3" y="-1" width="5" height="5"/><rect x="6" y="-1" width="5" height="5"/><rect x="15" y="-1" width="5" height="5"/></g>
+              <rect x="-4" y="-12" width="8" height="8" class="f-white"/>
+            </g>
+            <rect y="234" width="400" height="16" class="f-ink"/>
+            <g class="s-white" stroke-width="1.5" opacity=".55"><line x1="0" y1="232" x2="400" y2="232"/><line x1="20" y1="232" x2="20" y2="240"/><line x1="80" y1="232" x2="80" y2="240"/><line x1="140" y1="232" x2="140" y2="240"/><line x1="200" y1="232" x2="200" y2="240"/><line x1="260" y1="232" x2="260" y2="240"/><line x1="320" y1="232" x2="320" y2="240"/><line x1="380" y1="232" x2="380" y2="240"/></g>
+          </svg>
+          <figcaption><span>Victoria Harbour from the TST side</span><span>No. 1</span></figcaption>
+        </figure>
+      </div>
+      <ol class="stops">
+        <li class="stop">
+          <span class="t">Morning</span>
+          <div>
+            <h4>Arrive and check in <span class="zh">機場快綫</span></h4>
+            <p>Take the Airport Express into town, then a short taxi to your hotel. Tsim Sha Tsui is the most convenient base for this week. If the room isn't ready, leave the bags and get a coffee; the afternoon is for napping.</p>
+            <p class="how"><b>Getting there</b><span class="mtr" style="--line:var(--l-ae)">Kowloon</span> station on the Airport Express, then taxi</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">4:30 PM</span>
+          <div>
+            <h4>Avenue of Stars <span class="zh">星光大道</span></h4>
+            <p>The waterfront promenade facing the Hong Kong Island skyline. A slow walk with no agenda, and a good way to get your bearings.</p>
+            <p class="how"><b>Getting there</b><span class="mtr" style="--line:var(--l-tm)">East Tsim Sha Tsui</span> Exit J, a few minutes' walk</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">6:00 PM</span>
+          <div>
+            <h4>Dinner at Sangeetha</h4>
+            <p>Fully vegetarian South Indian. Order the dosa platter or a masala dosa. Vegan and Jain versions are available on request.</p>
+            <p class="how"><b>Where</b>Wing On Plaza, 62 Mody Road<span class="mtr" style="--line:var(--l-tm)">East Tsim Sha Tsui</span> Exit P1 · dinner 6–10 PM</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">8:00 PM</span>
+          <div>
+            <h4>A Symphony of Lights <span class="zh">幻彩詠香江</span></h4>
+            <p>A ten-minute light show across the harbour's towers, best watched from the Avenue of Stars.</p>
+          </div>
+        </li>
+      </ol>
+    </article>
+    <div class="note" style="margin-top:-1.4rem;margin-bottom:2rem"><strong>Check the light show before you go.</strong> The government plans to retire A Symphony of Lights in the last quarter of 2026 and replace it with festival light shows; no final date has been announced. It is also cancelled when typhoon signal No. 3 or higher, or a red or black rainstorm warning, is in force. If it has ended, the harbour walk is still the best way to spend the evening.</div>
+
+    <!-- MONDAY -->
+    <article class="day" id="mon">
+      <div class="day-side">
+        <div class="day-head">
+          <div class="vsign" aria-hidden="true">太平山</div>
+          <div>
+            <p class="day-k">Day 2 · Monday</p>
+            <h3>The Peak and old Central</h3>
+            <p class="area"><span class="pace" data-p="3"><i></i><i></i><i></i></span>Hong Kong Island</p>
+          </div>
+        </div>
+        <figure class="plate">
+          <svg viewBox="0 0 400 250" role="img" aria-label="Illustration of the red Peak Tram climbing a steep green hillside toward the Peak Tower">
+            <rect width="400" height="250" class="f-sky"/>
+            <circle cx="78" cy="52" r="20" class="f-light" opacity=".9"/>
+            <path class="f-hill2" d="M0 150 C60 120 120 120 170 110 C230 96 300 70 400 64 L400 250 L0 250Z"/>
+            <path class="f-hill" d="M0 250 L0 196 C60 176 120 140 200 104 C250 82 296 54 336 44 L400 40 L400 250Z"/>
+            <g class="f-bldg2">
+              <rect x="6" y="196" width="18" height="54"/><rect x="26" y="182" width="14" height="68"/><rect x="42" y="204" width="20" height="46"/>
+              <rect x="64" y="190" width="12" height="60"/><rect x="78" y="212" width="22" height="38"/>
+            </g>
+            <line x1="40" y1="246" x2="334" y2="60" class="s-ink" stroke-width="3"/>
+            <line x1="44" y1="250" x2="338" y2="64" class="s-ink" stroke-width="1" opacity=".5"/>
+            <g transform="translate(176 160) rotate(-32.3)">
+              <rect x="-40" y="-20" width="80" height="22" rx="4" class="f-red"/>
+              <g class="f-white"><rect x="-34" y="-15" width="10" height="9" rx="1"/><rect x="-20" y="-15" width="10" height="9" rx="1"/><rect x="-6" y="-15" width="10" height="9" rx="1"/><rect x="8" y="-15" width="10" height="9" rx="1"/><rect x="22" y="-15" width="10" height="9" rx="1"/></g>
+              <rect x="-40" y="-2" width="80" height="4" class="f-ink"/>
+            </g>
+            <g>
+              <rect x="318" y="30" width="6" height="16" class="f-bldg"/><rect x="350" y="30" width="6" height="16" class="f-bldg"/>
+              <path d="M296 12 Q337 34 378 12 L370 30 Q337 44 304 30Z" class="f-bldg"/>
+              <path d="M300 16 Q337 34 374 16" class="s-light" stroke-width="1.5" fill="none" opacity=".8"/>
+            </g>
+          </svg>
+          <figcaption><span>The Peak Tram on its climb</span><span>No. 2</span></figcaption>
+        </figure>
+      </div>
+      <ol class="stops">
+        <li class="stop">
+          <span class="t">9:00 AM</span>
+          <div>
+            <h4>Peak Tram to Victoria Peak <span class="zh">山頂纜車</span></h4>
+            <p>A steep 1.4 km climb in about eight minutes. Go early, before the queue and the midday haze. The Sky Terrace 428 viewing deck at the top opens at 8:30 AM.</p>
+            <p class="how"><b>Getting there</b><span class="mtr" style="--line:var(--l-island)">Central</span> Exit J2, then about 10 minutes uphill to the Garden Road terminus. Buy tickets at the counter; Octopus can't be tapped for entry.</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">12:00 PM</span>
+          <div>
+            <h4>Lunch at LockCha Tea House <span class="zh">樂茶軒</span></h4>
+            <p>All-vegetarian dim sum and more than a hundred teas, inside the restored Tai Kwun police compound. The pan-fried taro cake is the one to get.</p>
+            <p class="how"><b>Where</b>Tai Kwun, 10 Hollywood Road · weekdays from 11 AM · book on their site</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">1:30 PM</span>
+          <div>
+            <h4>Hollywood Road and Man Mo Temple <span class="zh">文武廟</span></h4>
+            <p>Look around Tai Kwun's courtyards, then walk west past the antique and gallery shops to the incense-filled temple, open 8 AM–6 PM.</p>
+            <p class="how"><b>Getting there</b>Walk. The Mid-Levels escalator runs uphill from 10 AM if you want a lift.</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">3:30 PM</span>
+          <div>
+            <h4>PMQ <span class="zh">元創方</span></h4>
+            <p>The former police married quarters, now small studios and shops by local designers. A good first look at decor pieces before the shopping days.</p>
+            <p class="how"><b>Where</b>35 Aberdeen Street, a few minutes' walk from Man Mo Temple</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">5:30 PM</span>
+          <div>
+            <h4>Star Ferry back to Kowloon <span class="zh">天星小輪</span></h4>
+            <p>A short crossing with the best view in the city, for about HK$5 on the upper deck. Pay with Octopus or a card at the machines.</p>
+            <p class="how"><b>Where</b>Central Pier 7 to Tsim Sha Tsui · boats every 6–12 minutes</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">7:00 PM</span>
+          <div>
+            <h4>Dinner at Kailash Parbat</h4>
+            <p>Vegetarian Indian from a Mumbai institution founded in 1952. Pav bhaji, chole bhature and pani puri; vegan and Jain menus too.</p>
+            <p class="how"><b>Where</b>3/F Multifield Plaza, 3–7A Prat Avenue<span class="mtr" style="--line:var(--l-tw)">Tsim Sha Tsui</span></p>
+          </div>
+        </li>
+      </ol>
+    </article>
+
+    <!-- TUESDAY -->
+    <article class="day" id="tue">
+      <div class="day-side">
+        <div class="day-head">
+          <div class="vsign" aria-hidden="true">淺水灣</div>
+          <div>
+            <p class="day-k">Day 3 · Tuesday</p>
+            <h3>Beach morning, spa afternoon</h3>
+            <p class="area"><span class="pace" data-p="1"><i></i><i></i><i></i></span>Southside, Hong Kong Island</p>
+          </div>
+        </div>
+        <figure class="plate">
+          <svg viewBox="0 0 400 250" role="img" aria-label="Illustration of Repulse Bay beach with a wave-topped apartment block, sand and a red beach umbrella">
+            <rect width="400" height="250" class="f-sky"/>
+            <circle cx="332" cy="48" r="22" class="f-light"/>
+            <path class="f-hill2" d="M0 118 C60 74 120 88 180 100 C240 62 304 66 400 92 L400 160 L0 160Z"/>
+            <path class="f-hill" d="M0 148 C40 122 92 126 136 146 L136 160 L0 160Z"/>
+            <path class="f-hill" d="M286 150 C320 126 362 122 400 132 L400 160 L286 160Z"/>
+            <path class="f-facade" d="M148 154 L148 84 Q168 74 188 84 Q208 94 228 84 Q248 74 268 84 L268 154Z"/>
+            <rect x="194" y="104" width="30" height="28" class="f-sky"/>
+            <g class="s-ink" stroke-width="1" opacity=".22"><line x1="152" y1="98" x2="264" y2="98"/><line x1="152" y1="140" x2="264" y2="140"/><line x1="152" y1="148" x2="264" y2="148"/><line x1="176" y1="88" x2="176" y2="152"/><line x1="240" y1="88" x2="240" y2="152"/></g>
+            <rect y="154" width="400" height="56" class="f-sea"/>
+            <g class="s-white" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7">
+              <path d="M30 172 q10 -6 20 0 t20 0"/><path d="M150 180 q10 -6 20 0 t20 0"/><path d="M280 168 q10 -6 20 0 t20 0"/><path d="M220 196 q10 -6 20 0 t20 0"/>
+            </g>
+            <path class="f-sand" d="M0 212 Q200 182 400 212 L400 250 L0 250Z"/>
+            <line x1="108" y1="232" x2="118" y2="188" class="s-ink" stroke-width="2"/>
+            <path d="M88 196 Q116 168 146 186Z" class="f-red"/>
+            <path d="M107 190 Q114 178 126 182" class="s-white" stroke-width="2" fill="none" opacity=".8"/>
+            <rect x="214" y="224" width="44" height="12" rx="2" class="f-tram" transform="rotate(-4 236 230)"/>
+          </svg>
+          <figcaption><span>Repulse Bay on a weekday</span><span>No. 3</span></figcaption>
+        </figure>
+      </div>
+      <ol class="stops">
+        <li class="stop">
+          <span class="t">10:00 AM</span>
+          <div>
+            <h4>Repulse Bay Beach <span class="zh">淺水灣</span></h4>
+            <p>A wide crescent of sand with calm water and cafés at your back. On a weekday morning you'll have plenty of room. Bring towels and sunscreen and plan to do very little.</p>
+            <p class="how"><b>Getting there</b>Bus 6, 6X or 260 from Exchange Square<span class="mtr" style="--line:var(--l-island)">Central</span> · or bus 973 from Tsim Sha Tsui · about 20 minutes by taxi from Central</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">12:30 PM</span>
+          <div>
+            <h4>Lunch by the beach</h4>
+            <p>Spices, in The Repulse Bay arcade, has a separate vegan and vegetarian menu and outdoor tables. Classified, at The Pulse right on the sand, is a casual café with vegetarian options.</p>
+            <p class="how"><b>Where</b>109 Repulse Bay Road · The Pulse, 28 Beach Road</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">2:30 PM</span>
+          <div>
+            <h4>Spa day</h4>
+            <p>A couples massage and a long, slow afternoon. We'll pick the place later; book a couples room a few days ahead so the time slot is yours.</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">Evening</span>
+          <div>
+            <h4>Quiet night</h4>
+            <p>An early dinner near the hotel and a proper night's sleep before Disneyland.</p>
+          </div>
+        </li>
+      </ol>
+    </article>
+    <div class="note green" style="margin-top:-1.4rem;margin-bottom:2rem"><strong>Lifeguards at Repulse Bay</strong> are on duty about 9 AM–6 PM from April to October, 8 AM–5 PM in November and March, and not at all from December to February. If your trip falls in winter, neighbouring Deep Water Bay is staffed year-round.</div>
+
+    <!-- WEDNESDAY -->
+    <article class="day" id="wed">
+      <div class="day-side">
+        <div class="day-head">
+          <div class="vsign" aria-hidden="true">迪士尼</div>
+          <div>
+            <p class="day-k">Day 4 · Wednesday</p>
+            <h3>Hong Kong Disneyland</h3>
+            <p class="area"><span class="pace" data-p="3"><i></i><i></i><i></i></span>Lantau Island</p>
+          </div>
+        </div>
+        <figure class="plate">
+          <svg viewBox="0 0 400 250" role="img" aria-label="Illustration of fireworks over a fairground carousel at night, with hills behind">
+            <rect width="400" height="250" class="f-night"/>
+            <g class="burst" data-x="110" data-y="70" data-r="38" data-n="16" data-c="s-gold"></g>
+            <g class="burst" data-x="250" data-y="52" data-r="44" data-n="18" data-c="s-red"></g>
+            <g class="burst" data-x="330" data-y="104" data-r="26" data-n="12" data-c="s-white"></g>
+            <g class="burst" data-x="186" data-y="118" data-r="22" data-n="10" data-c="s-ferry"></g>
+            <path class="f-bldg2" d="M0 176 C70 140 130 150 190 160 C260 128 320 136 400 150 L400 250 L0 250Z"/>
+            <path class="f-bldg" d="M0 210 C80 196 160 200 240 206 C300 200 360 196 400 200 L400 250 L0 250Z"/>
+            <g transform="translate(200 0)">
+              <rect x="-46" y="186" width="92" height="34" class="f-facade"/>
+              <g class="f-red"><rect x="-46" y="186" width="10" height="34"/><rect x="-26" y="186" width="10" height="34"/><rect x="-6" y="186" width="10" height="34"/><rect x="14" y="186" width="10" height="34"/><rect x="34" y="186" width="10" height="34"/></g>
+              <polygon points="-56,188 0,152 56,188" class="f-red"/>
+              <polygon points="-56,188 0,152 -20,188" class="f-white" opacity=".35"/>
+              <line x1="0" y1="152" x2="0" y2="138" class="s-white" stroke-width="2"/>
+              <path d="M0 138 L14 142 L0 146Z" class="f-light"/>
+              <g class="f-light"><circle cx="-56" cy="188" r="2.2"/><circle cx="-28" cy="188" r="2.2"/><circle cx="0" cy="188" r="2.2"/><circle cx="28" cy="188" r="2.2"/><circle cx="56" cy="188" r="2.2"/></g>
+            </g>
+            <rect y="220" width="400" height="30" class="f-ink"/>
+          </svg>
+          <figcaption><span>Fireworks at closing time</span><span>No. 4</span></figcaption>
+        </figure>
+      </div>
+      <ol class="stops">
+        <li class="stop">
+          <span class="t">Opening</span>
+          <div>
+            <h4>Be at the gates when the park opens <span class="zh">香港迪士尼樂園</span></h4>
+            <p>Midweek is generally calmer than the weekend, and one wait-time analysis found Wednesday the quietest day. Head straight to World of Frozen while the queues are short, then work back toward Main Street.</p>
+            <p class="how"><b>Getting there</b>MTR to <span class="mtr" style="--line:var(--l-tc)">Sunny Bay</span> then change to the <span class="mtr" style="--line:var(--l-drl)">Disneyland Resort</span> line · about 30 minutes from Hong Kong or Kowloon station</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">12:30 PM</span>
+          <div>
+            <h4>Lunch at Plaza Inn</h4>
+            <p>A Chinese table-service restaurant on Main Street with vegetarian dishes marked on the menu. You can reserve online. For something quick, Starliner Diner in Tomorrowland has a veggie burger.</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">Afternoon</span>
+          <div>
+            <h4>Rides, then a break</h4>
+            <p>Mid-afternoon is the busiest stretch. Use it for a sit-down show or a cold drink in the shade so you have energy left for the evening.</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">Closing</span>
+          <div>
+            <h4>Momentous nighttime spectacular</h4>
+            <p>About 20 minutes of fireworks and projections over the castle. Find a spot on Main Street early. Showtimes change by season, so check the park calendar for your date.</p>
+          </div>
+        </li>
+      </ol>
+    </article>
+    <div class="note" style="margin-top:-1.4rem;margin-bottom:2rem"><strong>Book the date, not just the ticket.</strong> Every guest needs a park reservation for a specific day, up to 90 days ahead, and each ticket type has a daily quota. If typhoon signal No. 8 goes up, the park closes; Friday's Lantau day can swap in.</div>
+
+    <!-- THURSDAY -->
+    <article class="day" id="thu">
+      <div class="day-side">
+        <div class="day-head">
+          <div class="vsign" aria-hidden="true">深水埗</div>
+          <div>
+            <p class="day-k">Day 5 · Thursday</p>
+            <h3>Tech, fabric and markets</h3>
+            <p class="area"><span class="pace" data-p="3"><i></i><i></i><i></i></span>Sham Shui Po, Jordan and Mong Kok, Kowloon</p>
+          </div>
+        </div>
+        <figure class="plate">
+          <svg viewBox="0 0 400 250" role="img" aria-label="Illustration of a Kowloon street lined with vertical neon shop signs for electronics, fabric and sneakers">
+            <rect width="400" height="250" class="f-sky"/>
+            <g class="f-bldg2"><rect x="140" y="60" width="30" height="120"/><rect x="172" y="40" width="26" height="140"/><rect x="200" y="70" width="34" height="110"/><rect x="236" y="50" width="26" height="130"/></g>
+            <polygon points="0,0 136,42 136,250 0,250" class="f-bldg"/>
+            <polygon points="400,0 264,42 264,250 400,250" class="f-bldg"/>
+            <polygon points="136,250 264,250 226,178 174,178" class="f-road"/>
+            <g class="s-white" stroke-width="2" stroke-dasharray="8 8" opacity=".55"><line x1="200" y1="182" x2="200" y2="250"/></g>
+            <g>
+              <rect x="64" y="46" width="30" height="104" rx="2" class="f-sign s-red" stroke-width="2.5"/>
+              <g class="f-signgold zh" font-size="20" text-anchor="middle"><text x="79" y="74">電</text><text x="79" y="102">器</text><text x="79" y="130">行</text></g>
+              <rect x="14" y="120" width="36" height="74" rx="2" class="f-sign s-gold" stroke-width="2.5"/>
+              <g class="zh" font-size="20" text-anchor="middle" style="fill:var(--sign-red)"><text x="32" y="150">布</text><text x="32" y="180">行</text></g>
+              <rect x="100" y="164" width="30" height="20" class="f-red"/>
+            </g>
+            <g>
+              <rect x="302" y="38" width="32" height="76" rx="2" class="f-sign s-ferry" stroke-width="2.5"/>
+              <g class="zh" font-size="20" text-anchor="middle" style="fill:var(--il-white)"><text x="318" y="68">波</text><text x="318" y="98">鞋</text></g>
+              <rect x="348" y="96" width="40" height="110" rx="2" class="f-sign s-red" stroke-width="2.5"/>
+              <g class="f-signgold zh" font-size="22" text-anchor="middle"><text x="368" y="128">女</text><text x="368" y="160">人</text><text x="368" y="192">街</text></g>
+              <rect x="272" y="150" width="40" height="22" class="f-light"/>
+            </g>
+            <g class="s-light" stroke-width="1" opacity=".7"><path d="M136 120 Q200 140 264 120" fill="none"/></g>
+            <g class="f-light"><circle cx="152" cy="125" r="2"/><circle cx="176" cy="130" r="2"/><circle cx="200" cy="131" r="2"/><circle cx="224" cy="130" r="2"/><circle cx="248" cy="125" r="2"/></g>
+          </svg>
+          <figcaption><span>Signs for electronics, fabric, sneakers</span><span>No. 5</span></figcaption>
+        </figure>
+      </div>
+      <ol class="stops">
+        <li class="stop">
+          <span class="t">10:00 AM</span>
+          <div>
+            <h4>Apliu Street <span class="zh">鴨寮街</span></h4>
+            <p>An open-air electronics flea market: cables, chargers, cameras, headphones and odd gadgets laid out on tables.</p>
+            <p class="how"><b>Getting there</b><span class="mtr" style="--line:var(--l-tw)">Sham Shui Po</span> Exit C2</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">11:00 AM</span>
+          <div>
+            <h4>Golden Computer Arcade <span class="zh">黃金電腦商場</span></h4>
+            <p>Floors of computer parts, accessories and peripherals. Compare prices at a few stalls before you buy.</p>
+            <p class="how"><b>Where</b>Fuk Wa Street, a few minutes' walk · about 10 AM–8 PM</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">12:00 PM</span>
+          <div>
+            <h4>The fabric streets <span class="zh">基隆街</span></h4>
+            <p>Ki Lung, Nam Cheong and Yu Chau streets: bolts of fabric, trims, ribbons, beads and cushion covers. Good for home projects and small decor finds.</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">1:30 PM</span>
+          <div>
+            <h4>Lunch at Three Virtues <span class="zh">三德素食館</span></h4>
+            <p>Vegetarian Cantonese food and dim sum; order the pan-fried turnip cake. Listings disagree on hours, so phone ahead.</p>
+            <p class="how"><b>Where</b>JD Mall, 233–239 Nathan Road<span class="mtr" style="--line:var(--l-tw)">Jordan</span> · tel. 3622 1888</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">3:00 PM</span>
+          <div>
+            <h4>Mong Kok: phones, sneakers, Ladies' Market <span class="zh">旺角</span></h4>
+            <p>Phones and accessories at Sin Tat Plaza on Argyle Street, then every trainer imaginable along Fa Yuen Street, then clothes and souvenirs on Tung Choi Street. Bargaining is normal at the market stalls.</p>
+            <p class="how"><b>Getting there</b><span class="mtr" style="--line:var(--l-tw)">Mong Kok</span> Exit E2 for the Ladies' Market</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">Evening</span>
+          <div>
+            <h4>Harbour City, if you still have energy <span class="zh">海港城</span></h4>
+            <p>Brand-name clothes in one of the city's biggest malls, a short walk from most Tsim Sha Tsui hotels. Dinner at whichever of Sunday's or Monday's spots you liked best.</p>
+          </div>
+        </li>
+      </ol>
+    </article>
+
+    <!-- FRIDAY -->
+    <article class="day" id="fri">
+      <div class="day-side">
+        <div class="day-head">
+          <div class="vsign" aria-hidden="true">大嶼山</div>
+          <div>
+            <p class="day-k">Day 6 · Friday</p>
+            <h3>Cable car, Big Buddha, Tai O</h3>
+            <p class="area"><span class="pace" data-p="2"><i></i><i></i><i></i></span>Lantau Island</p>
+          </div>
+        </div>
+        <figure class="plate">
+          <svg viewBox="0 0 400 250" role="img" aria-label="Illustration of a cable car cabin over Lantau's mountains, with the seated Big Buddha on a hilltop">
+            <rect width="400" height="250" class="f-sky"/>
+            <path class="f-hill2" d="M0 160 L58 112 L98 130 L156 72 L206 118 L256 92 L318 128 L400 100 L400 250 L0 250Z"/>
+            <path class="f-hill" d="M0 206 C80 176 140 186 200 196 C250 174 300 156 340 156 C364 156 384 162 400 168 L400 250 L0 250Z"/>
+            <g transform="translate(330 0)">
+              <rect x="-24" y="150" width="48" height="8" class="f-bronze"/>
+              <rect x="-18" y="144" width="36" height="7" class="f-bronze" opacity=".85"/>
+              <path d="M-16 145 Q-16 124 -6 118 L6 118 Q16 124 16 145Z" class="f-bronze"/>
+              <path d="M-16 145 Q0 134 16 145" class="s-ink" stroke-width="1" fill="none" opacity=".35"/>
+              <circle cx="0" cy="112" r="6.5" class="f-bronze"/>
+              <circle cx="0" cy="104.5" r="2.6" class="f-bronze"/>
+            </g>
+            <line x1="0" y1="34" x2="400" y2="120" class="s-ink" stroke-width="1.6"/>
+            <g class="f-bldg"><rect x="66" y="48" width="4" height="70"/><rect x="62" y="44" width="12" height="4"/></g>
+            <g transform="translate(180 72.7)">
+              <line x1="0" y1="0" x2="0" y2="14" class="s-ink" stroke-width="2"/>
+              <rect x="-16" y="13" width="32" height="26" rx="6" class="f-red"/>
+              <rect x="-11" y="18" width="22" height="10" rx="2" class="f-white"/>
+              <rect x="-12" y="33" width="24" height="3" class="f-white" opacity=".5"/>
+            </g>
+            <path d="M0 234 Q60 226 120 232 T240 230 T400 232 L400 250 L0 250Z" class="f-sea" opacity=".9"/>
+          </svg>
+          <figcaption><span>Ngong Ping, Lantau Island</span><span>No. 6</span></figcaption>
+        </figure>
+      </div>
+      <ol class="stops">
+        <li class="stop">
+          <span class="t">10:00 AM</span>
+          <div>
+            <h4>Ngong Ping 360 cable car <span class="zh">昂坪360</span></h4>
+            <p>A 25-minute ride over the mountains and sea. Crystal cabins have glass floors; Crystal+ adds glass sides.</p>
+            <p class="how"><b>Getting there</b><span class="mtr" style="--line:var(--l-tc)">Tung Chung</span> Exit B, a 5-minute walk · runs about 10 AM–6 PM</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">11:00 AM</span>
+          <div>
+            <h4>Tian Tan Buddha <span class="zh">天壇大佛</span></h4>
+            <p>268 steps up to the giant bronze Buddha, with views across Lantau's peaks and the sea.</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">12:30 PM</span>
+          <div>
+            <h4>Vegetarian lunch at Po Lin Monastery <span class="zh">寶蓮禪寺</span></h4>
+            <p>A fixed vegetarian set (soup, a fried dish, vegetables, rice and tea) that changes with the season. Buy a meal ticket at the kitchen reception or the Buddha's entrance; the standard set is around HK$148 a person. Tofu pudding from the kiosk next door makes a good dessert.</p>
+            <p class="how"><b>Hours</b>Kitchen 11:30 AM–4:30 PM</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">2:30 PM</span>
+          <div>
+            <h4>Tai O fishing village <span class="zh">大澳</span></h4>
+            <p>Stilt houses over the water, dried-seafood stalls and a much slower pace than the city.</p>
+            <p class="how"><b>Getting there</b>Bus 21 from Ngong Ping, about 15 minutes · bus back to <span class="mtr" style="--line:var(--l-tc)">Tung Chung</span></p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">Evening</span>
+          <div>
+            <h4>Quiet night in</h4>
+            <p>Room service or something simple nearby. Tomorrow is the last full day.</p>
+          </div>
+        </li>
+      </ol>
+    </article>
+    <div class="note green" style="margin-top:-1.4rem;margin-bottom:2rem"><strong>Check np360.com.hk a week before.</strong> The cable car closes for a few days of scheduled maintenance several times a year. If it's shut, take bus 23 from Tung Chung up to Ngong Ping instead.</div>
+
+    <!-- SATURDAY -->
+    <article class="day" id="sat">
+      <div class="day-side">
+        <div class="day-head">
+          <div class="vsign" aria-hidden="true">銅鑼灣</div>
+          <div>
+            <p class="day-k">Day 7 · Saturday</p>
+            <h3>Boutiques, big malls, farewell dinner</h3>
+            <p class="area"><span class="pace" data-p="2"><i></i><i></i><i></i></span>Wan Chai and Causeway Bay</p>
+          </div>
+        </div>
+        <figure class="plate">
+          <svg viewBox="0 0 400 250" role="img" aria-label="Illustration of a green double-decker Hong Kong tram on Hennessy Road with buildings behind">
+            <rect width="400" height="250" class="f-sky"/>
+            <g class="f-bldg2"><rect x="0" y="40" width="60" height="170"/><rect x="62" y="70" width="44" height="140"/><rect x="108" y="30" width="56" height="180"/><rect x="166" y="60" width="40" height="150"/><rect x="208" y="20" width="62" height="190"/><rect x="272" y="56" width="50" height="154"/><rect x="324" y="36" width="76" height="174"/></g>
+            <g class="f-bldg" opacity=".5"><rect x="12" y="56" width="8" height="140"/><rect x="30" y="56" width="8" height="140"/><rect x="122" y="48" width="8" height="150"/><rect x="142" y="48" width="8" height="150"/><rect x="222" y="40" width="8" height="160"/><rect x="246" y="40" width="8" height="160"/><rect x="340" y="54" width="8" height="150"/><rect x="364" y="54" width="8" height="150"/></g>
+            <rect x="66" y="84" width="20" height="56" rx="2" class="f-sign s-red" stroke-width="2"/>
+            <rect x="290" y="70" width="18" height="50" rx="2" class="f-sign s-gold" stroke-width="2"/>
+            <line x1="0" y1="62" x2="400" y2="62" class="s-ink" stroke-width="1.4"/>
+            <rect y="206" width="400" height="44" class="f-road"/>
+            <g class="s-ink" stroke-width="1.5" opacity=".5"><line x1="0" y1="222" x2="400" y2="222"/><line x1="0" y1="228" x2="400" y2="228"/></g>
+            <line x1="200" y1="104" x2="226" y2="62" class="s-ink" stroke-width="2.4"/>
+            <rect x="86" y="104" width="228" height="8" rx="3" class="f-tram"/>
+            <rect x="92" y="110" width="216" height="98" rx="5" class="f-tram"/>
+            <rect x="92" y="152" width="216" height="6" class="f-white"/>
+            <g class="f-white" opacity=".92">
+              <rect x="122" y="120" width="20" height="22" rx="2"/><rect x="148" y="120" width="20" height="22" rx="2"/><rect x="174" y="120" width="20" height="22" rx="2"/><rect x="200" y="120" width="20" height="22" rx="2"/><rect x="226" y="120" width="20" height="22" rx="2"/><rect x="252" y="120" width="20" height="22" rx="2"/><rect x="278" y="120" width="20" height="22" rx="2"/>
+              <rect x="122" y="166" width="20" height="24" rx="2"/><rect x="148" y="166" width="20" height="24" rx="2"/><rect x="174" y="166" width="20" height="24" rx="2"/><rect x="226" y="166" width="20" height="24" rx="2"/><rect x="252" y="166" width="20" height="24" rx="2"/><rect x="278" y="166" width="20" height="24" rx="2"/>
+            </g>
+            <rect x="96" y="118" width="20" height="14" rx="1" class="f-sign"/>
+            <text x="106" y="129" class="f-signgold zh" font-size="8.5" text-anchor="middle">銅鑼灣</text>
+            <rect x="96" y="164" width="20" height="38" rx="1" class="f-bldg" opacity=".6"/>
+            <g class="f-ink"><circle cx="128" cy="210" r="7"/><circle cx="160" cy="210" r="7"/><circle cx="240" cy="210" r="7"/><circle cx="272" cy="210" r="7"/></g>
+          </svg>
+          <figcaption><span>Ding-ding tram, Hennessy Road</span><span>No. 7</span></figcaption>
+        </figure>
+      </div>
+      <ol class="stops">
+        <li class="stop">
+          <span class="t">10:30 AM</span>
+          <div>
+            <h4>Starstreet Precinct <span class="zh">星街小區</span></h4>
+            <p>Star, Moon and Sun streets: small cafés, boutiques and home shops on quiet sloping lanes. Time Out named it one of the world's coolest neighbourhoods in September 2026.</p>
+            <p class="how"><b>Getting there</b><span class="mtr" style="--line:var(--l-island)">Admiralty</span> through the Three Pacific Place link</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">12:30 PM</span>
+          <div>
+            <h4>Lunch at Isoya</h4>
+            <p>Japanese vegetarian: sushi, tempura and tofu dishes. Set lunches start around HK$98.</p>
+            <p class="how"><b>Where</b>1/F, 7 Mallory Street<span class="mtr" style="--line:var(--l-island)">Wan Chai</span> · Mon–Sat, 12–3 PM</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">2:00 PM</span>
+          <div>
+            <h4>Ding-ding tram to Causeway Bay <span class="zh">電車</span></h4>
+            <p>Sit on the upper deck as it rattles east along Hennessy Road. Board at the back and tap Octopus as you get off at the front.</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">2:30 PM</span>
+          <div>
+            <h4>Causeway Bay malls <span class="zh">銅鑼灣</span></h4>
+            <p>Hysan Place, Lee Garden and Times Square, all within a few minutes of each other: clothes, beauty and home goods. Good for anything still on the list.</p>
+            <p class="how"><b>Getting there</b><span class="mtr" style="--line:var(--l-island)">Causeway Bay</span></p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">7:00 PM</span>
+          <div>
+            <h4>Farewell dinner at Veggie Kingdom <span class="zh">緻素坊</span></h4>
+            <p>Vegetarian Cantonese cooking built on vegetables, tofu and mushrooms rather than mock meat. Book ahead; it's a Saturday.</p>
+            <p class="how"><b>Where</b>7/F Kyoto Plaza, 491–499 Lockhart Road<span class="mtr" style="--line:var(--l-island)">Causeway Bay</span> · tel. 2366 9223</p>
+          </div>
+        </li>
+      </ol>
+    </article>
+
+    <!-- DEPARTURE -->
+    <div class="depart" id="fly">
+      <figure class="plate" style="margin:0">
+        <svg viewBox="0 0 400 160" role="img" aria-label="Illustration of a plane climbing away over the sea and Lantau's hills">
+          <rect width="400" height="160" class="f-sky"/>
+          <path class="f-hill2" d="M0 120 L50 92 L90 106 L140 76 L190 104 L240 88 L300 112 L400 96 L400 160 L0 160Z"/>
+          <rect y="128" width="400" height="32" class="f-sea"/>
+          <line x1="60" y1="118" x2="236" y2="58" class="s-white" stroke-width="2" stroke-dasharray="6 6" opacity=".8"/>
+          <g transform="translate(262 48) rotate(-18)" class="f-ink">
+            <path d="M-26 0 Q-26 -4 -20 -4 L22 -4 Q30 -3 32 0 Q30 3 22 4 L-20 4 Q-26 4 -26 0Z"/>
+            <path d="M-2 -3 L-14 -22 L-6 -22 L10 -3Z"/>
+            <path d="M-2 3 L-14 22 L-6 22 L10 3Z"/>
+            <path d="M-22 -3 L-28 -12 L-23 -12 L-14 -3Z"/>
+          </g>
+        </svg>
+        <figcaption><span>Over Lantau, heading home</span><span>No. 8</span></figcaption>
+      </figure>
+      <div>
+        <div class="day-head">
+          <div class="vsign" aria-hidden="true">機場</div>
+          <div>
+            <p class="day-k">Day 8 · Sunday</p>
+            <h3 style="font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(2.1rem,4.4vw,3rem);line-height:.92;margin-top:.35rem">Slow breakfast, then home</h3>
+          </div>
+        </div>
+        <p class="lede">A last walk along the waterfront, then the Airport Express: 24 minutes from Hong Kong Station. Hong Kong and Kowloon stations offer in-town check-in for some airlines, including Cathay Pacific, Hong Kong Airlines, Qantas and Singapore Airlines, from 24 hours to 90 minutes before departure. Drop your bags there in the morning and travel to the airport light.</p>
+        <p class="how" style="margin-top:1rem"><b>Getting there</b><span class="mtr" style="--line:var(--l-ae)">Kowloon</span><span class="mtr" style="--line:var(--l-ae)">Hong Kong</span> Airport Express · check your airline's in-town check-in hours</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOD -->
+<section class="food" id="food">
+  <div class="wrap">
+    <p class="eyebrow">Eating vegetarian</p>
+    <h2 class="sec-title">The vegetarian table</h2>
+    <p class="lede">Hong Kong is easier for vegetarians than it looks, as long as you know where meat and fish hide. At ordinary Cantonese restaurants, stir-fried greens usually come with oyster sauce, and chicken powder and dried shrimp turn up as background seasoning. Dedicated vegetarian restaurants, marked 齋 or 素, remove the guesswork.</p>
+
+    <div class="dishes">
+      <div class="dish"><span class="zh">楊枝甘露</span><h4>Mango pomelo sago</h4><p>Chilled mango, pomelo and sago in coconut milk. The dessert to order everywhere.</p><span class="tag ok">Vegetarian</span></div>
+      <div class="dish"><span class="zh">雞蛋仔</span><h4>Egg waffles</h4><p>A sheet of crisp, puffy bubbles from a street stall, eaten warm from a paper bag.</p><span class="tag ok">Vegetarian · has egg</span></div>
+      <div class="dish"><span class="zh">豆腐花</span><h4>Tofu pudding</h4><p>Silky warm tofu with ginger syrup. Look for it at the kiosk beside Po Lin Monastery.</p><span class="tag ok">Vegetarian</span></div>
+      <div class="dish"><span class="zh">羅漢齋</span><h4>Buddha's delight</h4><p>Braised vegetables, mushrooms, tofu skin and glass noodles. Order it at vegetarian restaurants.</p><span class="tag ask">Ask about oyster sauce elsewhere</span></div>
+      <div class="dish"><span class="zh">港式奶茶</span><h4>Hong Kong milk tea</h4><p>Strong black tea strained through a cloth and finished with evaporated milk. Hot or iced.</p><span class="tag ok">Vegetarian</span></div>
+      <div class="dish"><span class="zh">蛋撻</span><h4>Egg tarts and pineapple buns</h4><p>Bakery classics, but traditional egg-tart pastry is made with lard, and so is the crackly topping on many pineapple buns.</p><span class="tag ask">Ask first</span></div>
+    </div>
+
+    <div class="talk">
+      <div>
+        <h3 style="font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:1.9rem;line-height:1;margin-bottom:1rem">Four phrases</h3>
+        <ul class="phrases">
+          <li><span class="zh">我食齋</span><span><span class="jp">ngo5 sik6 zaai1</span><br><span class="en">I'm vegetarian.</span></span></li>
+          <li><span class="zh">我唔食肉</span><span><span class="jp">ngo5 m4 sik6 juk6</span><br><span class="en">I don't eat meat.</span></span></li>
+          <li><span class="zh">走蠔油</span><span><span class="jp">zau2 hou4 jau4</span><br><span class="en">No oyster sauce.</span></span></li>
+          <li><span class="zh">唔該</span><span><span class="jp">m4 goi1</span><br><span class="en">Please, or thank you (for a service).</span></span></li>
+        </ul>
+      </div>
+      <div class="showcard">
+        <p class="lbl">Show this to your server</p>
+        <p class="big" id="showtext">唔該，我哋食齋。<br>唔好落肉、海鮮、<br>蠔油同雞粉。</p>
+        <p class="tr">"Excuse me, we're vegetarian. Please don't add any meat, seafood, oyster sauce or chicken powder."</p>
+        <button type="button" id="copybtn">Copy the Chinese text</button>
+      </div>
+    </div>
+
+    <div class="eats">
+      <h3>Where we're eating</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Restaurant</th><th>Day</th><th>Food</th><th>Address</th><th>Good to know</th></tr></thead>
+          <tbody>
+            <tr><td>Sangeetha</td><td><span class="d">Sun dinner</span></td><td>South Indian, all vegetarian</td><td>Wing On Plaza, 62 Mody Road, TST East</td><td>Dinner 6–10 PM; vegan and Jain on request</td></tr>
+            <tr><td>LockCha Tea House</td><td><span class="d">Mon lunch</span></td><td>Vegetarian dim sum, tea</td><td>Tai Kwun, 10 Hollywood Road, Central</td><td>Weekdays from 11 AM; also in Hong Kong Park</td></tr>
+            <tr><td>Kailash Parbat</td><td><span class="d">Mon dinner</span></td><td>Indian, all vegetarian</td><td>3/F Multifield Plaza, 3–7A Prat Ave, TST</td><td>Pav bhaji, chole bhature</td></tr>
+            <tr><td>Spices / Classified</td><td><span class="d">Tue lunch</span></td><td>Asian with a vegetarian menu / café</td><td>The Repulse Bay arcade / The Pulse</td><td>Neither is fully vegetarian; order from the veg menu</td></tr>
+            <tr><td>Plaza Inn</td><td><span class="d">Wed lunch</span></td><td>Chinese, table service</td><td>Main Street, Hong Kong Disneyland</td><td>Vegetarian dishes marked; reserve online</td></tr>
+            <tr><td>Three Virtues</td><td><span class="d">Thu lunch</span></td><td>Vegetarian Cantonese, dim sum</td><td>JD Mall, 233–239 Nathan Road, Jordan</td><td>Phone ahead: 3622 1888</td></tr>
+            <tr><td>Po Lin Monastery</td><td><span class="d">Fri lunch</span></td><td>Buddhist set meal</td><td>Ngong Ping, Lantau</td><td>Buy a meal ticket; kitchen 11:30 AM–4:30 PM</td></tr>
+            <tr><td>Isoya</td><td><span class="d">Sat lunch</span></td><td>Japanese vegetarian</td><td>1/F, 7 Mallory Street, Wan Chai</td><td>Closed Sundays</td></tr>
+            <tr><td>Veggie Kingdom</td><td><span class="d">Sat dinner</span></td><td>Vegetarian Cantonese</td><td>7/F Kyoto Plaza, 491–499 Lockhart Rd, Causeway Bay</td><td>Book for Saturday: 2366 9223</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOPPING -->
+<section id="shopping">
+  <div class="wrap">
+    <p class="eyebrow">Two shopping days</p>
+    <h2 class="sec-title">What to buy where</h2>
+    <p class="lede">Hong Kong has no sales tax, so the price on the tag is the price you pay. Thursday covers Kowloon's markets and specialist streets; Saturday covers the Island's boutiques and malls.</p>
+    <div class="shop-grid">
+      <div class="shop">
+        <h3>Clothes <span class="zh">衫</span></h3>
+        <ul>
+          <li><strong>Harbour City, Tsim Sha Tsui</strong>One huge mall with most international brands. <em>Thu evening</em></li>
+          <li><strong>Hysan Place, Lee Garden, Times Square</strong>Causeway Bay's cluster of malls, a few minutes apart. <em>Sat afternoon</em></li>
+          <li><strong>Ladies' Market and Fa Yuen Street</strong>Cheap clothes, bags and every sneaker you can think of. Bargain at the stalls. <em>Thu afternoon</em></li>
+        </ul>
+      </div>
+      <div class="shop">
+        <h3>Tech <span class="zh">電子</span></h3>
+        <ul>
+          <li><strong>Apliu Street</strong>Flea-market tables of cables, chargers, cameras and accessories. <em>Thu morning</em></li>
+          <li><strong>Golden Computer Arcade</strong>Computer parts and peripherals across many small stalls. <em>Thu morning</em></li>
+          <li><strong>Sin Tat Plaza, Mong Kok</strong>Phones and phone accessories. <em>Thu afternoon</em></li>
+          <li>Before buying a device, ask whether it's a Hong Kong set with a local warranty, and remember plugs here are the UK three-pin type.</li>
+        </ul>
+      </div>
+      <div class="shop">
+        <h3>Decor <span class="zh">家居</span></h3>
+        <ul>
+          <li><strong>PMQ</strong>Studios and shops by local designers: ceramics, prints, homeware. <em>Mon afternoon</em></li>
+          <li><strong>Hollywood Road</strong>Antiques, old posters and curios along the walk to Man Mo Temple. <em>Mon afternoon</em></li>
+          <li><strong>Ki Lung, Nam Cheong and Yu Chau streets</strong>Fabric, trims and cushion covers for home projects. <em>Thu midday</em></li>
+          <li><strong>Starstreet Precinct</strong>Small home and lifestyle boutiques. <em>Sat morning</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GETTING AROUND -->
+<section class="around" id="around">
+  <div class="wrap">
+    <p class="eyebrow">Logistics</p>
+    <h2 class="sec-title">Getting around</h2>
+    <p class="lede">The MTR gets you almost everywhere on this plan. Ferries, trams and buses fill the gaps, and taxis are cheap by US standards.</p>
+    <div class="cards">
+      <div class="card">
+        <p class="k">Pay for everything</p>
+        <h4>Octopus card</h4>
+        <p>Download the Octopus App for Tourists and add a card to Apple Pay with a US Visa or Mastercard (iPhone X or later). Or buy a physical Sold Tourist Octopus card (HK$39, then add value). It works on the MTR, buses, trams, the Star Ferry and at 7-Eleven. MTR gates also take contactless Visa, Mastercard and Apple Pay directly. The Peak Tram is the exception: buy a ticket at the counter.</p>
+      </div>
+      <div class="card">
+        <p class="k">The trains</p>
+        <h4>MTR lines on this trip</h4>
+        <p>Station chips throughout this page show the line colour, so you can match them to the signs.</p>
+        <div class="lines">
+          <span class="mtr" style="--line:var(--l-island)">Island</span>
+          <span class="mtr" style="--line:var(--l-tw)">Tsuen Wan</span>
+          <span class="mtr" style="--line:var(--l-tm)">Tuen Ma</span>
+          <span class="mtr" style="--line:var(--l-tc)">Tung Chung</span>
+          <span class="mtr" style="--line:var(--l-drl)">Disneyland Resort</span>
+          <span class="mtr" style="--line:var(--l-ae)">Airport Express</span>
+        </div>
+      </div>
+      <div class="card">
+        <p class="k">Three colours</p>
+        <h4>Taxis</h4>
+        <div class="taxis">
+          <div class="taxi"><i style="--c:#D62B23"></i><span><strong>Red, urban.</strong> Go almost anywhere, except Tung Chung Road and South Lantau.</span></div>
+          <div class="taxi"><i style="--c:#2E9A4E"></i><span><strong>Green, New Territories.</strong> Plus set routes to the airport and Disneyland.</span></div>
+          <div class="taxi"><i style="--c:#2B8BD6"></i><span><strong>Blue, Lantau.</strong> Covers the whole island, including Ngong Ping and Tai O.</span></div>
+        </div>
+        <p>Since April 2026 every taxi must accept electronic payment. A sticker in the window shows which methods that cab takes.</p>
+      </div>
+      <div class="card">
+        <p class="k">On the water and the rails</p>
+        <h4>Star Ferry and trams</h4>
+        <p>The Star Ferry runs between Central Pier 7 and Tsim Sha Tsui every 6–12 minutes, from early morning to about 11:30 PM. The double-decker trams run along the north shore of the Island; board at the back and pay as you leave. Both take Octopus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTES -->
+<section id="notes">
+  <div class="wrap">
+    <p class="eyebrow">Before you go</p>
+    <h2 class="sec-title">Practical notes</h2>
+    <div class="notes-grid">
+      <div class="n"><h4>Entry</h4><p>US passport holders can visit Hong Kong without a visa for up to 90 days.</p></div>
+      <div class="n"><h4>Book ahead</h4><p>Disneyland (ticket plus a dated park reservation), the spa, Saturday dinner at Veggie Kingdom, and LockCha if you want a set time.</p></div>
+      <div class="n">
+        <h4>Weather, October to December</h4>
+        <table class="wx">
+          <thead><tr><th>Month</th><th>High</th><th>Low</th><th>Rain</th></tr></thead>
+          <tbody>
+            <tr><td>Oct</td><td>83°F</td><td>75°F</td><td>4.7 in</td></tr>
+            <tr><td>Nov</td><td>76°F</td><td>69°F</td><td>1.5 in</td></tr>
+            <tr><td>Dec</td><td>69°F</td><td>61°F</td><td>1.1 in</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:.78rem;color:var(--muted)">Hong Kong Observatory averages, 1991–2020</p>
+      </div>
+      <div class="n"><h4>Typhoons</h4><p>Typhoon season runs May to November. Under signal No. 8, Disneyland closes, buses and ferries stop, and the MTR keeps running with a reduced service on open-air stretches. The Disney and Lantau days are the ones to swap if a storm comes through.</p></div>
+      <div class="n"><h4>Holidays and crowds</h4><p>Golden Week (about 1–7 October) brings big mainland crowds. Public holidays later in 2026: Monday 19 October, and 25–26 December.</p></div>
+      <div class="n"><h4>Money and tipping</h4><p>Many restaurants add a 10% service charge, and no further tip is expected. Small cafés and stalls don't expect tips; rounding up a taxi fare is a nice gesture.</p></div>
+      <div class="n"><h4>Power</h4><p>UK-style three-pin plugs (Type G), 220V. Phone and laptop chargers are usually fine with an adapter; check anything that says 110V only.</p></div>
+      <div class="n"><h4>The spa</h4><p>Tuesday afternoon is set aside for it. Pick the place once the hotel is booked, so it's an easy trip from the beach or back to the room.</p></div>
+      <div class="n"><h4>Confirm hours</h4><p>Everything here was checked in October 2026. Opening times, prices and attraction schedules change, so confirm the big ones the week you travel.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p class="fm">Hong Kong for two</p>
+      <div class="fz">香港</div>
+    </div>
+    <p>Seven nights, Sunday to Sunday. Vegetarian throughout, with a beach, a spa afternoon, Disneyland and two days of shopping. Illustrations drawn for this page.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const root = document.documentElement;
+  const tok = n => getComputedStyle(root).getPropertyValue(n).trim();
+
+  /* ---------- fireworks plate ---------- */
+  const NS = 'http://www.w3.org/2000/svg';
+  document.querySelectorAll('g.burst').forEach(g => {
+    const x=+g.dataset.x, y=+g.dataset.y, r=+g.dataset.r, n=+g.dataset.n, c=g.dataset.c;
+    for(let i=0;i<n;i++){
+      const a = (i/n)*Math.PI*2;
+      const l = document.createElementNS(NS,'line');
+      l.setAttribute('x1', x+Math.cos(a)*r*.3); l.setAttribute('y1', y+Math.sin(a)*r*.3);
+      l.setAttribute('x2', x+Math.cos(a)*r);    l.setAttribute('y2', y+Math.sin(a)*r);
+      l.setAttribute('class', c); l.setAttribute('stroke-width','1.8'); l.setAttribute('stroke-linecap','round');
+      g.appendChild(l);
+      const d = document.createElementNS(NS,'circle');
+      d.setAttribute('cx', x+Math.cos(a)*(r+4)); d.setAttribute('cy', y+Math.sin(a)*(r+4)); d.setAttribute('r','1.6');
+      d.setAttribute('class', c); d.setAttribute('fill','none'); d.setAttribute('stroke-width','1.6');
+      g.appendChild(d);
+    }
+  });
+
+  /* ---------- copy button ---------- */
+  const btn = document.getElementById('copybtn');
+  btn.addEventListener('click', () => {
+    const text = '唔該，我哋食齋。唔好落肉、海鮮、蠔油同雞粉。';
+    const done = () => { btn.textContent = 'Copied'; setTimeout(()=>btn.textContent='Copy the Chinese text',1800); };
+    const fallback = () => {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById('showtext'));
+      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected, copy it now';
+    };
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done, fallback); }
+      else fallback();
+    }catch(e){ fallback(); }
+  });
+
+  /* ---------- day nav highlight ---------- */
+  const links = [...document.querySelectorAll('.daynav a')];
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const targets = [...map.keys()].map(id => document.getElementById(id)).filter(Boolean);
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          links.forEach(a => a.removeAttribute('aria-current'));
+          const a = map.get(e.target.id);
+          if(a){ a.setAttribute('aria-current','true'); a.scrollIntoView({block:'nearest',inline:'nearest'}); }
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    targets.forEach(t => io.observe(t));
+  }
+
+  /* ---------- hero skyline ---------- */
+  const hero = document.querySelector('.hero');
+  const cv = hero.querySelector('canvas');
+  const ctx = cv.getContext('2d');
+  let W=0, H=0, dpr=1, S=1, bldgs=[], ridge=[], stars=[], colors={}, visible=true, last=0;
+
+  function readColors(){
+    colors = { s1:tok('--hero-1'), s2:tok('--hero-2'), s3:tok('--hero-3'), ridge:tok('--hero-ridge'),
+               b:tok('--hero-bldg'), sea:tok('--hero-sea'), win:tok('--hero-win') };
+  }
+  function rng(seed){ return () => (seed = (seed*16807) % 2147483647, (seed-1)/2147483646); }
+
+  function layout(){
+    const r = cv.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio||1, 2);
+    W = r.width; H = r.height;
+    cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    S = Math.max(.7, Math.min(1.25, W/1200));
+    const rand = rng(1997);
+    const base = H*.80;
+    // ridge of the Peak behind the towers
+    ridge = [];
+    for(let x=0; x<=W+20; x+=12){
+      const t = x/W;
+      const y = H*(.56 - .08*Math.sin(t*3.1+.4) - .04*Math.sin(t*7.3+1.2) - .015*Math.sin(t*19));
+      ridge.push([x,y]);
+    }
+    // towers
+    bldgs = [];
+    let x = -6;
+    const special = [W*.36, W*.5, W*.63];
+    while(x < W+6){
+      let w = (16 + rand()*30)*S;
+      let h = H*(.06 + rand()*.11);
+      let kind = 'flat';
+      if(rand() < .14){ h = H*(.15 + rand()*.06); }
+      special.forEach((sx,i) => { if(x < sx && x+w+4 >= sx){ w = (30+i*4)*S; h = H*([.31,.24,.27][i]); kind = ['ifc','tri','spire'][i]; } });
+      if(kind==='flat' && rand()<.2) kind='step';
+      const b = {x, w, h, top: base-h, kind, wins:[]};
+      const cw = 5*S, rh = 7*S;
+      for(let wy = base-h+8*S; wy < base-6*S; wy += rh){
+        for(let wx = x+3*S; wx < x+w-4*S; wx += cw){
+          if(rand() < .4) b.wins.push({x:wx, y:wy, p:rand()*6.28, s:.4+rand()*1.4});
+        }
+      }
+      bldgs.push(b);
+      x += w + (1 + rand()*3)*S;
+    }
+    stars = Array.from({length:60}, () => ({x:rand()*W, y:rand()*H*.4, r:.4+rand()*.9, p:rand()*6.28}));
+  }
+
+  function draw(t){
+    const base = H*.80;
+    const sky = ctx.createLinearGradient(0,0,0,base);
+    sky.addColorStop(0, colors.s1); sky.addColorStop(.6, colors.s2); sky.addColorStop(1, colors.s3);
+    ctx.fillStyle = sky; ctx.fillRect(0,0,W,base);
+
+    ctx.fillStyle = colors.win;
+    stars.forEach(s => { ctx.globalAlpha = .25 + .25*Math.sin(t*.8+s.p); ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,6.28); ctx.fill(); });
+    ctx.globalAlpha = 1;
+
+    // searchlights
+    const beamSrc = bldgs.filter(b => b.kind!=='flat' && b.kind!=='step');
+    beamSrc.forEach((b,i) => {
+      const cx = b.x + b.w/2, cy = b.top;
+      const a = -Math.PI/2 + Math.sin(t*.25 + i*1.7)*.45;
+      const g = ctx.createLinearGradient(cx,cy, cx+Math.cos(a)*H, cy+Math.sin(a)*H);
+      g.addColorStop(0,'rgba(255,240,200,.18)'); g.addColorStop(1,'rgba(255,240,200,0)');
+      ctx.strokeStyle = g; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(a)*H, cy+Math.sin(a)*H); ctx.stroke();
+    });
+
+    ctx.fillStyle = colors.ridge;
+    ctx.beginPath(); ctx.moveTo(0,base);
+    ridge.forEach(([x,y]) => ctx.lineTo(x,y));
+    ctx.lineTo(W,base); ctx.closePath(); ctx.fill();
+
+    ctx.fillStyle = colors.b;
+    bldgs.forEach(b => {
+      ctx.beginPath();
+      if(b.kind==='ifc'){
+        const i = b.w*.18;
+        ctx.moveTo(b.x,base); ctx.lineTo(b.x,b.top+14*S); ctx.lineTo(b.x+i,b.top+6*S); ctx.lineTo(b.x+i*2,b.top);
+        ctx.lineTo(b.x+b.w-i*2,b.top); ctx.lineTo(b.x+b.w-i,b.top+6*S); ctx.lineTo(b.x+b.w,b.top+14*S); ctx.lineTo(b.x+b.w,base);
+      } else if(b.kind==='tri'){
+        ctx.moveTo(b.x,base); ctx.lineTo(b.x,b.top+22*S); ctx.lineTo(b.x+b.w/2,b.top); ctx.lineTo(b.x+b.w,b.top+22*S); ctx.lineTo(b.x+b.w,base);
+      } else if(b.kind==='spire'){
+        ctx.rect(b.x,b.top,b.w,base-b.top);
+        ctx.rect(b.x+b.w/2-1.2*S,b.top-24*S,2.4*S,24*S);
+      } else if(b.kind==='step'){
+        ctx.rect(b.x,b.top+10*S,b.w,base-b.top-10*S);
+        ctx.rect(b.x+b.w*.2,b.top,b.w*.6,12*S);
+      } else {
+        ctx.rect(b.x,b.top,b.w,base-b.top);
+      }
+      ctx.fill();
+    });
+
+    // windows
+    ctx.fillStyle = colors.win;
+    const ww = 2*S, wh = 3*S;
+    bldgs.forEach(b => b.wins.forEach(w => {
+      ctx.globalAlpha = reduce ? .75 : .45 + .45*Math.sin(t*w.s + w.p);
+      ctx.fillRect(w.x, w.y, ww, wh);
+    }));
+    ctx.globalAlpha = 1;
+
+    // harbour
+    const sea = ctx.createLinearGradient(0,base,0,H);
+    sea.addColorStop(0, colors.s3); sea.addColorStop(.12, colors.sea); sea.addColorStop(1, colors.sea);
+    ctx.fillStyle = sea; ctx.fillRect(0,base,W,H-base);
+
+    ctx.fillStyle = colors.win;
+    bldgs.forEach(b => {
+      const rows = 7;
+      for(let k=0;k<rows;k++){
+        const y = base + 4*S + k*(H-base)/rows*.85;
+        const depth = k/rows;
+        const jitter = Math.sin(t*1.4 + k*1.3 + b.x*.05)*3*S;
+        const wd = b.w*(.5 - depth*.3) * (.6 + .4*Math.sin(b.x+k));
+        ctx.globalAlpha = (.32 - depth*.28) * (b.wins.length ? 1 : 0);
+        ctx.fillRect(b.x + b.w/2 - wd/2 + jitter, y, wd, 1.6*S);
+      }
+    });
+    ctx.globalAlpha = 1;
+  }
+
+  function frame(ts){
+    if(visible && ts - last > 60){ draw(ts/1000); last = ts; }
+    if(!reduce) requestAnimationFrame(frame);
+  }
+  function redraw(){ readColors(); layout(); draw(0); }
+
+  redraw();
+  if(!reduce) requestAnimationFrame(frame);
+  if('ResizeObserver' in window){
+    let rt; new ResizeObserver(() => { clearTimeout(rt); rt = setTimeout(redraw, 120); }).observe(hero);
+  }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(e => { visible = e[0].isIntersecting; }).observe(hero);
+  }
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  const onTheme = () => { readColors(); draw(performance.now()/1000); };
+  if(mq.addEventListener) mq.addEventListener('change', onTheme);
+  new MutationObserver(onTheme).observe(root, {attributes:true, attributeFilter:['data-theme']});
+})();
+</script>
+
+</body></html>
