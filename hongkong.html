@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Seven nights in Hong Kong for two, 26 December 2026 to 2 January 2027.">
+<meta name="description" content="Hong Kong 27 Dec 2026 – 3 Jan 2027 and Macau 3 – 6 Jan, for two.">
 <title>Hong Kong for Two</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -141,9 +141,9 @@ section{padding-block:clamp(3.5rem,8vw,6.5rem)}
 .lede{max-width:62ch;color:var(--ink-2);margin-top:1rem;font-size:1.05rem}
 
 /* ---------- week strip ---------- */
-.week{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:0;margin-top:2.4rem;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule)}
-.wk{padding:1rem .8rem 1.1rem;border-right:1px solid var(--rule);text-decoration:none;display:flex;flex-direction:column;gap:.45rem;min-width:0;transition:background .2s}
-.wk:last-child{border-right:0}
+.week{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:var(--rule);margin-top:2.4rem;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule)}
+.wk{background:var(--paper);padding:1rem .8rem 1.1rem;text-decoration:none;display:flex;flex-direction:column;gap:.45rem;min-width:0;transition:background .2s}
+.wk.mo .wk-d{color:var(--ferry)}
 .wk:hover{background:var(--ferry-soft)}
 .wk-d{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .wk-zh{font-family:var(--f-zh);font-weight:900;font-size:1.5rem;line-height:1}
@@ -151,10 +151,10 @@ section{padding-block:clamp(3.5rem,8vw,6.5rem)}
 .pace{display:flex;gap:3px;margin-top:auto;padding-top:.3rem}
 .pace i{display:block;width:16px;height:5px;border-radius:2px;background:var(--rule)}
 .pace[data-p="1"] i:nth-child(-n+1),.pace[data-p="2"] i:nth-child(-n+2),.pace[data-p="3"] i:nth-child(-n+3){background:var(--neon)}
-.pace-key{display:flex;gap:1rem;align-items:center;margin-top:.9rem;font-size:.8rem;color:var(--muted)}
+.pace-key{display:flex;gap:1rem;align-items:center;margin-top:.9rem;font-size:.8rem;color:var(--muted);flex-wrap:wrap}
 .pace-key .pace{margin:0;padding:0}
-@media (max-width:900px){.week{grid-template-columns:repeat(4,minmax(0,1fr))}.wk:nth-child(4){border-right:0}.wk:nth-child(-n+4){border-bottom:1px solid var(--rule)}}
-@media (max-width:460px){.week{grid-template-columns:repeat(2,minmax(0,1fr))}.wk:nth-child(2n){border-right:0}.wk:nth-child(-n+6){border-bottom:1px solid var(--rule)}.wk:nth-child(4){border-right:0}}
+@media (max-width:900px){.week{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:460px){.week{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* ---------- day spreads ---------- */
 .days{padding-top:0}
@@ -308,6 +308,28 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
 .shop-intro{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(1.4rem,4vw,3rem);align-items:end}
 @media (max-width:860px){.shop-intro{grid-template-columns:1fr}.shop-intro .plate{max-width:520px}}
 
+/* ---------- flights + part headers ---------- */
+.flights{padding-block:clamp(2.4rem,5vw,3.5rem) clamp(1rem,3vw,2rem);scroll-margin-top:3.5rem}
+.fl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1.6rem}
+@media (max-width:760px){.fl-grid{grid-template-columns:1fr}}
+.fl{background:var(--card);border:1px solid var(--rule);border-top:3px solid var(--ink);border-radius:3px;padding:1.2rem 1.3rem 1.3rem;min-width:0}
+.fl-k{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--neon)}
+.legs{list-style:none;margin:.9rem 0 0;padding:0;display:flex;flex-direction:column;gap:.55rem}
+.legs li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.2rem 1rem;align-items:baseline}
+.legs .fn{font-size:.82rem;color:var(--muted)}
+.legs .rt{font-family:var(--f-mono);font-size:.92rem;font-variant-numeric:tabular-nums;color:var(--ink)}
+.legs .rt b{font-weight:500;color:var(--ferry)}
+.legs .rt i{font-style:normal;color:var(--muted);padding-inline:.2rem}
+.legs .lay{font-size:.8rem;color:var(--ink-2);border-left:2px dashed var(--rule-strong);padding-left:.7rem;margin-left:.2rem}
+.fl-note{margin-top:.9rem;font-size:.86rem;color:var(--ink-2)}
+.fl-check{list-style:none;margin:1.4rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem 1.6rem}
+@media (max-width:900px){.fl-check{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.fl-check{grid-template-columns:1fr}}
+.fl-check li{font-size:.88rem;color:var(--ink-2);border-top:1px solid var(--rule-strong);padding-top:.6rem;min-width:0}
+.fl-check strong{color:var(--ink)}
+.part{padding-block:clamp(2.6rem,5vw,3.6rem) .4rem;border-top:2px solid var(--ink);scroll-margin-top:3.5rem}
+.part + .day{border-top:0}
+
 /* ---------- photo version ---------- */
 .hero{background:#0B1220}
 .hero-img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center 60%;z-index:-2}
@@ -317,6 +339,7 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
 @media (max-width:640px){.sign{bottom:3rem}}
 .plate.photo{padding:8px}
 .plate.photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:var(--paper-2);border-radius:1px}
+.depart .plate.photo img{aspect-ratio:16/10}
 .plate.photo figcaption{align-items:baseline}
 .cr{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.04em;color:var(--muted);text-decoration:none;white-space:nowrap}
 .cr:hover{text-decoration:underline}
@@ -346,13 +369,14 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
   <img class="hero-img" src="https://images.unsplash.com/photo-1630293534394-6f5a6f5e2b4d?auto=format&fit=crop&w=2000&q=75" alt="" fetchpriority="high">
   <div class="hero-shade" aria-hidden="true"></div>
   <div class="wrap hero-inner">
-    <p class="hero-eyebrow">Seven nights · 26 Dec 2026 – 2 Jan 2027 · For two</p>
-    <h1>Hong Kong<span>Christmas to New Year on the harbour</span></h1>
+    <p class="hero-eyebrow">Hong Kong 27 Dec – 3 Jan · Macau 3 – 6 Jan · For two</p>
+    <h1>Hong Kong<span>and Macau, Christmas to New Year</span></h1>
     <ul class="hero-meta">
       <li>New Year's Eve on the waterfront</li>
       <li>Disneyland at Christmas</li>
       <li>Beach and spa day</li>
       <li>Two shopping days</li>
+      <li>Three slow days in Macau</li>
       <li>All-vegetarian food plan</li>
     </ul>
   </div>
@@ -363,14 +387,18 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
 <nav class="daynav" aria-label="Jump to a day">
   <div class="wrap">
     <ol>
-      <li><a href="#d26"><span>26 Dec</span><span class="zh">尖沙咀</span></a></li>
-      <li><a href="#d27"><span>27</span><span class="zh">太平山</span></a></li>
-      <li><a href="#d28"><span>28</span><span class="zh">淺水灣</span></a></li>
-      <li><a href="#d29"><span>29</span><span class="zh">迪士尼</span></a></li>
-      <li><a href="#d30"><span>30</span><span class="zh">大嶼山</span></a></li>
+      <li><a href="#flights"><span>Flights</span></a></li>
+      <li><a href="#d27"><span>27 Dec</span><span class="zh">尖沙咀</span></a></li>
+      <li><a href="#d28"><span>28</span><span class="zh">太平山</span></a></li>
+      <li><a href="#d29"><span>29</span><span class="zh">淺水灣</span></a></li>
+      <li><a href="#d30"><span>30</span><span class="zh">迪士尼</span></a></li>
       <li><a href="#d31"><span>31</span><span class="zh">跨年</span></a></li>
       <li><a href="#d01"><span>1 Jan</span><span class="zh">銅鑼灣</span></a></li>
-      <li><a href="#d02"><span>2 Jan</span><span class="zh">機場</span></a></li>
+      <li><a href="#d02"><span>2</span><span class="zh">大嶼山</span></a></li>
+      <li><a href="#d03"><span>3</span><span class="zh">路氹</span></a></li>
+      <li><a href="#d04"><span>4</span><span class="zh">大三巴</span></a></li>
+      <li><a href="#d05"><span>5</span><span class="zh">氹仔</span></a></li>
+      <li><a href="#d06"><span>6</span><span class="zh">機場</span></a></li>
       <li class="sep" aria-hidden="true"></li>
       <li><a href="#food"><span>Food</span></a></li>
       <li><a href="#shopping"><span>Shopping</span></a></li>
@@ -385,16 +413,20 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
   <div class="wrap">
     <p class="eyebrow">The week at a glance</p>
     <h2 class="sec-title">Busy days, then slow ones</h2>
-    <p class="lede">This is the busiest week of Hong Kong's year, with two public holidays (26 December and 1 January) and New Year's Eve in the middle. The plan puts the beach, Disneyland and Lantau on the working days in between, keeps New Year's Eve afternoon free for a nap, and leaves New Year's Day slow.</p>
+    <p class="lede">Seven days in Hong Kong over the busiest week of its year, then three slow days in Macau. The beach and Disneyland fall on working days, New Year's Eve afternoon is kept free for a nap, New Year's Day is slow, and the trip ends with resort days before the flight home.</p>
     <div class="week">
-      <a class="wk" href="#d26"><span class="wk-d">Sat 26 Dec</span><span class="wk-zh">尖沙咀</span><span class="wk-t">Arrive, harbour walk, Christmas lights</span><span class="pace" data-p="1"><i></i><i></i><i></i></span></a>
-      <a class="wk" href="#d27"><span class="wk-d">Sun 27</span><span class="wk-zh">太平山</span><span class="wk-t">The Peak, Central, Christmas Town</span><span class="pace" data-p="3"><i></i><i></i><i></i></span></a>
-      <a class="wk" href="#d28"><span class="wk-d">Mon 28</span><span class="wk-zh">淺水灣</span><span class="wk-t">Beach morning, spa afternoon</span><span class="pace" data-p="1"><i></i><i></i><i></i></span></a>
-      <a class="wk" href="#d29"><span class="wk-d">Tue 29</span><span class="wk-zh">迪士尼</span><span class="wk-t">Disneyland at Christmas</span><span class="pace" data-p="3"><i></i><i></i><i></i></span></a>
-      <a class="wk" href="#d30"><span class="wk-d">Wed 30</span><span class="wk-zh">大嶼山</span><span class="wk-t">Cable car, Big Buddha, Tai O</span><span class="pace" data-p="2"><i></i><i></i><i></i></span></a>
+      <a class="wk" href="#flights"><span class="wk-d">Sat 26 Dec</span><span class="wk-zh">出發</span><span class="wk-t">Evening flight from Ahmedabad</span><span class="pace" data-p="1"><i></i><i></i><i></i></span></a>
+      <a class="wk" href="#d27"><span class="wk-d">Sun 27</span><span class="wk-zh">尖沙咀</span><span class="wk-t">Land, rest, harbour lights</span><span class="pace" data-p="1"><i></i><i></i><i></i></span></a>
+      <a class="wk" href="#d28"><span class="wk-d">Mon 28</span><span class="wk-zh">太平山</span><span class="wk-t">The Peak, Central, Christmas Town</span><span class="pace" data-p="3"><i></i><i></i><i></i></span></a>
+      <a class="wk" href="#d29"><span class="wk-d">Tue 29</span><span class="wk-zh">淺水灣</span><span class="wk-t">Beach morning, spa afternoon</span><span class="pace" data-p="1"><i></i><i></i><i></i></span></a>
+      <a class="wk" href="#d30"><span class="wk-d">Wed 30</span><span class="wk-zh">迪士尼</span><span class="wk-t">Disneyland at Christmas</span><span class="pace" data-p="3"><i></i><i></i><i></i></span></a>
       <a class="wk" href="#d31"><span class="wk-d">Thu 31</span><span class="wk-zh">跨年</span><span class="wk-t">Markets, a nap, the countdown</span><span class="pace" data-p="3"><i></i><i></i><i></i></span></a>
-      <a class="wk" href="#d01"><span class="wk-d">Fri 1 Jan</span><span class="wk-zh">銅鑼灣</span><span class="wk-t">Slow morning, malls, farewell dinner</span><span class="pace" data-p="2"><i></i><i></i><i></i></span></a>
-      <a class="wk" href="#d02"><span class="wk-d">Sat 2 Jan</span><span class="wk-zh">機場</span><span class="wk-t">Slow breakfast, fly home</span><span class="pace" data-p="1"><i></i><i></i><i></i></span></a>
+      <a class="wk" href="#d01"><span class="wk-d">Fri 1 Jan</span><span class="wk-zh">銅鑼灣</span><span class="wk-t">Slow morning, malls</span><span class="pace" data-p="2"><i></i><i></i><i></i></span></a>
+      <a class="wk" href="#d02"><span class="wk-d">Sat 2</span><span class="wk-zh">大嶼山</span><span class="wk-t">Cable car, Big Buddha, Tai O</span><span class="pace" data-p="2"><i></i><i></i><i></i></span></a>
+      <a class="wk mo" href="#d03"><span class="wk-d">Sun 3</span><span class="wk-zh">路氹</span><span class="wk-t">Ferry to Macau, resort afternoon</span><span class="pace" data-p="1"><i></i><i></i><i></i></span></a>
+      <a class="wk mo" href="#d04"><span class="wk-d">Mon 4</span><span class="wk-zh">大三巴</span><span class="wk-t">Old Macau</span><span class="pace" data-p="2"><i></i><i></i><i></i></span></a>
+      <a class="wk mo" href="#d05"><span class="wk-d">Tue 5</span><span class="wk-zh">氹仔</span><span class="wk-t">Taipa, Coloane, a show</span><span class="pace" data-p="2"><i></i><i></i><i></i></span></a>
+      <a class="wk mo" href="#d06"><span class="wk-d">Wed 6</span><span class="wk-zh">機場</span><span class="wk-t">Fly home from Macau</span><span class="pace" data-p="1"><i></i><i></i><i></i></span></a>
     </div>
     <div class="pace-key"><span class="pace" data-p="1"><i></i><i></i><i></i></span> easy <span class="pace" data-p="2"><i></i><i></i><i></i></span> moderate <span class="pace" data-p="3"><i></i><i></i><i></i></span> full day</div>
   </div>
@@ -403,25 +435,65 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
 <section class="days" aria-label="Day by day">
   <div class="wrap">
 
-    <!-- SAT 26 DEC -->
-    <article class="day" id="d26">
+    <div class="flights" id="flights">
+      <div class="fl-head">
+        <p class="eyebrow">Your flights</p>
+        <h2 class="sec-title">Ahmedabad and back</h2>
+      </div>
+      <div class="fl-grid">
+        <div class="fl">
+          <p class="fl-k">Out · Saturday 26 December</p>
+          <ol class="legs">
+            <li><span class="fn">IndiGo 6E2263</span><span class="rt"><b>AMD</b> 7:30 PM <i>→</i> <b>DEL</b> 9:05 PM</span></li>
+            <li class="lay">3 h 10 min in Delhi · Indian immigration here</li>
+            <li><span class="fn">IndiGo 6E1707</span><span class="rt"><b>DEL</b> 12:15 AM <i>→</i> <b>HKG</b> 7:55 AM</span></li>
+          </ol>
+          <p class="fl-note">Lands Sunday 27 December, 9 h 55 min door to door.</p>
+        </div>
+        <div class="fl">
+          <p class="fl-k">Home · Wednesday 6 January</p>
+          <ol class="legs">
+            <li><span class="fn">Thai AirAsia FD776</span><span class="rt"><b>MFM</b> 10:50 AM <i>→</i> <b>DMK</b> 12:45 PM</span></li>
+            <li class="lay">5 h 35 min at Bangkok Don Mueang</li>
+            <li><span class="fn">Thai AirAsia FD144</span><span class="rt"><b>DMK</b> 6:20 PM <i>→</i> <b>AMD</b> 9:25 PM</span></li>
+          </ol>
+          <p class="fl-note">Lands the same evening, 13 h 05 min in all.</p>
+        </div>
+      </div>
+      <ul class="fl-check">
+        <li><strong>Hong Kong PAR.</strong> Register online before you fly, then print and sign the slip. IndiGo checks it at Ahmedabad.</li>
+        <li><strong>Hotel from the 26th.</strong> Book the Hong Kong room from the night of the 26th so it's ready at 9 AM on the 27th.</li>
+        <li><strong>Bags at Delhi.</strong> Ask at Ahmedabad check-in whether your bags go straight through to Hong Kong.</li>
+        <li><strong>Fly-Thru home.</strong> Make sure both AirAsia flights are on one Fly-Thru booking, with bags tagged to Ahmedabad. If it's two separate bookings, you clear Thai immigration at Don Mueang (30 days visa-free, plus the Thailand Digital Arrival Card).</li>
+        <li><strong>Checked bags.</strong> AirAsia fares often include none. Pre-book enough for the shopping, online and in advance.</li>
+        <li><strong>Vegetarian meals.</strong> Pre-order them on both airlines.</li>
+      </ul>
+    </div>
+
+    <div class="part" id="hongkong">
+      <p class="eyebrow">Part one · 27 December – 3 January</p>
+      <h2 class="sec-title">Hong Kong, seven days</h2>
+    </div>
+
+    <!-- SUN 27 DEC -->
+    <article class="day" id="d27">
       <div class="day-side">
         <div class="day-head">
           <div class="vsign" aria-hidden="true">尖沙咀</div>
           <div>
-            <p class="day-k">Day 1 · Saturday 26 December</p>
+            <p class="day-k">Day 1 · Sunday 27 December</p>
             <h3>Land, rest, Christmas lights</h3>
-            <p class="area"><span class="pace" data-p="1"><i></i><i></i><i></i></span>Tsim Sha Tsui, Kowloon · public holiday</p>
+            <p class="area"><span class="pace" data-p="1"><i></i><i></i><i></i></span>Tsim Sha Tsui, Kowloon</p>
           </div>
         </div>
         <figure class="plate photo"><img src="https://images.unsplash.com/photo-1697266145359-6dd9626f405b?auto=format&fit=crop&w=1000&q=75&h=750" alt="Avenue of Stars, Tsim Sha Tsui" width="1000" height="750" loading="lazy" decoding="async"><figcaption><span>Avenue of Stars, Tsim Sha Tsui</span><a class="cr" href="https://unsplash.com/photos/a-view-of-the-city-skyline-from-the-waterfront-Ogv4cUb5D7o" target="_blank" rel="noopener">Photo: Cheung Yin / Unsplash</a></figcaption></figure>
       </div>
       <ol class="stops">
         <li class="stop">
-          <span class="t">Morning</span>
+          <span class="t">7:55 AM</span>
           <div>
             <h4>Arrive and check in <span class="zh">機場快綫</span></h4>
-            <p>Take the Airport Express into town, then a short taxi to your hotel. Tsim Sha Tsui is the most convenient base for this week, and for New Year's Eve it puts you a short walk from the waterfront. If the room isn't ready, leave the bags and get a coffee; the afternoon is for napping.</p>
+            <p>You land after the overnight flight from Delhi. Take the Airport Express into town, then a short taxi to the hotel. Book the room from the night of the 26th so it's ready when you arrive; without that, hotels rarely check you in before 2 PM. Tsim Sha Tsui is the best base for this week and puts you a short walk from the waterfront on New Year's Eve. Sleep until mid-afternoon.</p>
             <p class="how"><b>Getting there</b><span class="mtr" style="--line:var(--l-ae)">Kowloon</span> station on the Airport Express, then taxi</p>
           </div>
         </li>
@@ -438,7 +510,7 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
           <span class="t">6:00 PM</span>
           <div>
             <h4>Dinner at Sangeetha</h4>
-            <p>Fully vegetarian South Indian. Order the dosa platter or a masala dosa. Vegan and Jain versions are available on request. Book, since it's a holiday.</p>
+            <p>Fully vegetarian South Indian. Order the dosa platter or a masala dosa. Vegan and Jain versions are available on request. Book ahead; it's holiday week.</p>
             <p class="how"><b>Where</b>Wing On Plaza, 62 Mody Road<span class="mtr" style="--line:var(--l-tm)">East Tsim Sha Tsui</span> Exit P1 · dinner 6–10 PM</p>
           </div>
         </li>
@@ -461,13 +533,13 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
       </ol>
     </article>
 
-    <!-- SUN 27 DEC -->
-    <article class="day" id="d27">
+    <!-- MON 28 DEC -->
+    <article class="day" id="d28">
       <div class="day-side">
         <div class="day-head">
           <div class="vsign" aria-hidden="true">太平山</div>
           <div>
-            <p class="day-k">Day 2 · Sunday 27 December</p>
+            <p class="day-k">Day 2 · Monday 28 December</p>
             <h3>The Peak, Central and Christmas Town</h3>
             <p class="area"><span class="pace" data-p="3"><i></i><i></i><i></i></span>Hong Kong Island</p>
           </div>
@@ -479,7 +551,7 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
           <span class="t">9:00 AM</span>
           <div>
             <h4>Peak Tram to Victoria Peak <span class="zh">山頂纜車</span></h4>
-            <p>A steep 1.4 km climb in about eight minutes. On a Sunday in holiday week the queue builds fast, so be there by 9. The Sky Terrace 428 viewing deck opens at 8:30 AM.</p>
+            <p>A steep 1.4 km climb in about eight minutes. Even on a weekday in holiday week the queue builds fast, so be there by 9. The Sky Terrace 428 viewing deck opens at 8:30 AM.</p>
             <p class="how"><b>Getting there</b><span class="mtr" style="--line:var(--l-island)">Central</span> Exit J2, then about 10 minutes uphill to the Garden Road terminus. Buy tickets at the counter; Octopus can't be tapped for entry.</p>
           </div>
         </li>
@@ -488,7 +560,7 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
           <div>
             <h4>Lunch at LockCha Tea House <span class="zh">樂茶軒</span></h4>
             <p>All-vegetarian dim sum and more than a hundred teas, inside the restored Tai Kwun police compound. The pan-fried taro cake is the one to get.</p>
-            <p class="how"><b>Where</b>Tai Kwun, 10 Hollywood Road · weekends from 8 AM · book on their site</p>
+            <p class="how"><b>Where</b>Tai Kwun, 10 Hollywood Road · weekdays from 11 AM · book on their site</p>
           </div>
         <figure class="thumb"><img src="https://images.unsplash.com/photo-1627401143954-114f25826d5c?auto=format&fit=crop&w=640&q=75&h=480" alt="Tai Kwun, Central" width="640" height="480" loading="lazy" decoding="async"><figcaption><a class="cr" href="https://unsplash.com/photos/people-walking-on-street-near-building-during-daytime-uKX-DJeiD6g" target="_blank" rel="noopener">Photo: Timmy Wong / Unsplash</a></figcaption></figure>
           </li>
@@ -539,13 +611,13 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
       </ol>
     </article>
 
-    <!-- MON 28 DEC -->
-    <article class="day" id="d28">
+    <!-- TUE 29 DEC -->
+    <article class="day" id="d29">
       <div class="day-side">
         <div class="day-head">
           <div class="vsign" aria-hidden="true">淺水灣</div>
           <div>
-            <p class="day-k">Day 3 · Monday 28 December</p>
+            <p class="day-k">Day 3 · Tuesday 29 December</p>
             <h3>Beach morning, spa afternoon</h3>
             <p class="area"><span class="pace" data-p="1"><i></i><i></i><i></i></span>Southside, Hong Kong Island</p>
           </div>
@@ -557,7 +629,7 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
           <span class="t">10:30 AM</span>
           <div>
             <h4>Repulse Bay Beach <span class="zh">淺水灣</span></h4>
-            <p>Late December is mild by Hong Kong standards: highs around 20°C (68°F), and the sea is about the same. Think a long walk on the sand and a coffee facing the water rather than a swim. If you do want a dip, Deep Water Bay along the Seaview Promenade has lifeguards all winter.</p>
+            <p>Late December is mild by Hong Kong standards: highs around 20°C, and the sea is about the same. Think a long walk on the sand and a coffee facing the water rather than a swim. If you do want a dip, Deep Water Bay along the Seaview Promenade has lifeguards all winter.</p>
             <p class="how"><b>Getting there</b>Bus 6, 6X or 260 from Exchange Square<span class="mtr" style="--line:var(--l-island)">Central</span> · or bus 973 from Tsim Sha Tsui · about 20 minutes by taxi from Central</p>
           </div>
         </li>
@@ -588,13 +660,13 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
     </article>
     <div class="note green" style="margin-top:-1.4rem;margin-bottom:2rem"><strong>No lifeguards at Repulse Bay in winter.</strong> They're off duty from December to February. Neighbouring Deep Water Bay is staffed through the winter, 8 AM–5 PM in past seasons.</div>
 
-    <!-- TUE 29 DEC -->
-    <article class="day" id="d29">
+    <!-- WED 30 DEC -->
+    <article class="day" id="d30">
       <div class="day-side">
         <div class="day-head">
           <div class="vsign" aria-hidden="true">迪士尼</div>
           <div>
-            <p class="day-k">Day 4 · Tuesday 29 December</p>
+            <p class="day-k">Day 4 · Wednesday 30 December</p>
             <h3>Disneyland at Christmas</h3>
             <p class="area"><span class="pace" data-p="3"><i></i><i></i><i></i></span>Lantau Island</p>
           </div>
@@ -606,7 +678,7 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
           <span class="t">Opening</span>
           <div>
             <h4>Be at the gates before the park opens <span class="zh">香港迪士尼樂園</span></h4>
-            <p>"A Disney Christmas" runs from 20 November 2026 to 3 January 2027 and is included with admission. The week between Christmas and New Year is one of the park's busiest, so the first hour matters most. Go straight to World of Frozen, then work back toward Main Street.</p>
+            <p>"A Disney Christmas" runs from 20 November 2026 to 3 January 2027 and is included with admission. Wednesday is usually the park's quietest weekday, but the week between Christmas and New Year is one of its busiest, so the first hour still matters most. Go straight to World of Frozen, then work back toward Main Street.</p>
             <p class="how"><b>Getting there</b>MTR to <span class="mtr" style="--line:var(--l-tc)">Sunny Bay</span> then change to the <span class="mtr" style="--line:var(--l-drl)">Disneyland Resort</span> line · about 30 minutes from Hong Kong or Kowloon station</p>
           </div>
         </li>
@@ -629,70 +701,12 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
           <span class="t">Closing</span>
           <div>
             <h4>Momentous nighttime spectacular</h4>
-            <p>About 20 minutes of fireworks and projections over the castle. Find a spot on Main Street early. Check the park calendar for the showtime on the 29th.</p>
+            <p>About 20 minutes of fireworks and projections over the castle. Find a spot on Main Street early. Check the park calendar for the showtime on the 30th.</p>
           </div>
         </li>
       </ol>
     </article>
-    <div class="note" style="margin-top:-1.4rem;margin-bottom:2rem"><strong>Book the ticket and the date together, now.</strong> Every guest needs a park reservation for a specific day, and each ticket type has a daily quota that sells out in holiday weeks. Tickets are priced in four tiers by date; check the official calendar for the 29th. The park also holds its own New Year's Eve countdown at the castle, if you'd rather spend the 31st there.</div>
-
-    <!-- WED 30 DEC -->
-    <article class="day" id="d30">
-      <div class="day-side">
-        <div class="day-head">
-          <div class="vsign" aria-hidden="true">大嶼山</div>
-          <div>
-            <p class="day-k">Day 5 · Wednesday 30 December</p>
-            <h3>Cable car, Big Buddha, Tai O</h3>
-            <p class="area"><span class="pace" data-p="2"><i></i><i></i><i></i></span>Lantau Island</p>
-          </div>
-        </div>
-        <figure class="plate photo"><img src="https://images.unsplash.com/photo-1510994951947-04f930f31c3d?auto=format&fit=crop&w=1000&q=75&h=750" alt="Tian Tan Buddha, Lantau" width="1000" height="750" loading="lazy" decoding="async"><figcaption><span>Tian Tan Buddha, Lantau</span><a class="cr" href="https://unsplash.com/photos/gray-concrete-buddha-statue-over-the-mountain-under-white-sky-FCzW7qWpCao" target="_blank" rel="noopener">Photo: Andrew Yang / Unsplash</a></figcaption></figure>
-      </div>
-      <ol class="stops">
-        <li class="stop has-thumb">
-          <span class="t">10:00 AM</span>
-          <div>
-            <h4>Ngong Ping 360 cable car <span class="zh">昂坪360</span></h4>
-            <p>A 25-minute ride over the mountains and sea. Crystal cabins have glass floors; Crystal+ adds glass sides. Book online, up to 14 days ahead, so you skip the ticket queue in holiday week.</p>
-            <p class="how"><b>Getting there</b><span class="mtr" style="--line:var(--l-tc)">Tung Chung</span> Exit B, a 5-minute walk · runs about 10 AM–6 PM</p>
-          </div>
-        <figure class="thumb"><img src="https://images.unsplash.com/photo-1501820416958-4d71836959c7?auto=format&fit=crop&w=640&q=75&h=480" alt="Ngong Ping 360" width="640" height="480" loading="lazy" decoding="async"><figcaption><a class="cr" href="https://unsplash.com/photos/white-clouds-above-brown-mountains-landscape-photography--De3ygoVll8" target="_blank" rel="noopener">Photo: Pop &amp; Zebra / Unsplash</a></figcaption></figure>
-          </li>
-        <li class="stop">
-          <span class="t">11:00 AM</span>
-          <div>
-            <h4>Tian Tan Buddha <span class="zh">天壇大佛</span></h4>
-            <p>268 steps up to the giant bronze Buddha, with views across Lantau's peaks and the sea. The nearby Wisdom Path is closed for renovation until the end of 2026.</p>
-          </div>
-        </li>
-        <li class="stop has-thumb">
-          <span class="t">12:30 PM</span>
-          <div>
-            <h4>Vegetarian lunch at Po Lin Monastery <span class="zh">寶蓮禪寺</span></h4>
-            <p>A fixed vegetarian set (soup, a fried dish, vegetables, rice and tea) that changes with the season. Buy a meal ticket at the kitchen reception or the Buddha's entrance; the standard set is around HK$148 a person. Tofu pudding from the kiosk next door makes a good dessert.</p>
-            <p class="how"><b>Hours</b>Kitchen 11:30 AM–4:30 PM</p>
-          </div>
-        <figure class="thumb"><img src="https://images.unsplash.com/photo-1549167008-f02ad8abf052?auto=format&fit=crop&w=640&q=75&h=480" alt="Po Lin Monastery" width="640" height="480" loading="lazy" decoding="async"><figcaption><a class="cr" href="https://unsplash.com/photos/chinese-temple-with-stair-zoMu7jetYDc" target="_blank" rel="noopener">Photo: Joshua J. Cotten / Unsplash</a></figcaption></figure>
-          </li>
-        <li class="stop has-thumb">
-          <span class="t">2:30 PM</span>
-          <div>
-            <h4>Tai O fishing village <span class="zh">大澳</span></h4>
-            <p>Stilt houses over the water, dried-seafood stalls and a much slower pace than the city.</p>
-            <p class="how"><b>Getting there</b>Bus 21 from Ngong Ping, about 15 minutes · bus back to <span class="mtr" style="--line:var(--l-tc)">Tung Chung</span></p>
-          </div>
-        <figure class="thumb"><img src="https://images.unsplash.com/photo-1549167008-e8fda15b1710?auto=format&fit=crop&w=640&q=75&h=480" alt="Stilt houses, Tai O" width="640" height="480" loading="lazy" decoding="async"><figcaption><a class="cr" href="https://unsplash.com/photos/a-body-of-water-with-houses-and-mountains-in-the-background-Ge1t87lvyRM" target="_blank" rel="noopener">Photo: Joshua J. Cotten / Unsplash</a></figcaption></figure>
-          </li>
-        <li class="stop">
-          <span class="t">Evening</span>
-          <div>
-            <h4>Quiet night in</h4>
-            <p>Rest up. Tomorrow ends after midnight.</p>
-          </div>
-        </li>
-      </ol>
-    </article>
+    <div class="note" style="margin-top:-1.4rem;margin-bottom:2rem"><strong>Book the ticket and the date together, now.</strong> Every guest needs a park reservation for a specific day, and each ticket type has a daily quota that sells out in holiday weeks. Tickets are priced in four tiers by date; check the official calendar for the 30th. The park also holds its own New Year's Eve countdown at the castle, if you'd rather spend the 31st there.</div>
 
     <!-- THU 31 DEC: NEW YEAR'S EVE -->
     <article class="day" id="d31">
@@ -700,7 +714,7 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
         <div class="day-head">
           <div class="vsign" aria-hidden="true">跨年</div>
           <div>
-            <p class="day-k">Day 6 · Thursday 31 December</p>
+            <p class="day-k">Day 5 · Thursday 31 December</p>
             <h3>New Year's Eve</h3>
             <p class="area"><span class="pace" data-p="3"><i></i><i></i><i></i></span>Sham Shui Po, Mong Kok, then the harbour</p>
           </div>
@@ -709,7 +723,7 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
       </div>
       <ol class="stops">
         <li class="stop has-thumb">
-          <span class="t">10:00 AM</span>
+          <span class="t">10:30 AM</span>
           <div>
             <h4>Apliu Street and Golden Computer Arcade <span class="zh">鴨寮街</span></h4>
             <p>An open-air electronics flea market (cables, chargers, cameras, odd gadgets), then floors of computer parts and accessories at the arcade on Fuk Wa Street. Compare prices at a few stalls before you buy.</p>
@@ -805,7 +819,7 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
         <div class="day-head">
           <div class="vsign" aria-hidden="true">銅鑼灣</div>
           <div>
-            <p class="day-k">Day 7 · Friday 1 January</p>
+            <p class="day-k">Day 6 · Friday 1 January</p>
             <h3>Slow morning, then the malls</h3>
             <p class="area"><span class="pace" data-p="2"><i></i><i></i><i></i></span>Wan Chai and Causeway Bay · public holiday</p>
           </div>
@@ -856,7 +870,7 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
         <li class="stop">
           <span class="t">7:00 PM</span>
           <div>
-            <h4>Farewell dinner at Veggie Kingdom <span class="zh">緻素坊</span></h4>
+            <h4>Dinner at Veggie Kingdom <span class="zh">緻素坊</span></h4>
             <p>Vegetarian Cantonese cooking built on vegetables, tofu and mushrooms rather than mock meat. Book well ahead for New Year's Day.</p>
             <p class="how"><b>Where</b>7/F Kyoto Plaza, 491–499 Lockhart Road<span class="mtr" style="--line:var(--l-island)">Causeway Bay</span> · tel. 2366 9223</p>
           </div>
@@ -865,18 +879,250 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
     </article>
 
     <!-- SAT 2 JAN -->
-    <div class="depart" id="d02">
-      <figure class="plate photo" style="margin:0"><img src="https://images.unsplash.com/photo-1725596119131-40a0b79c71e8?auto=format&fit=crop&w=1000&q=75&h=750" alt="Heading home from Hong Kong" width="1000" height="750" loading="lazy" decoding="async"><figcaption><span>Heading home from Hong Kong</span><a class="cr" href="https://unsplash.com/photos/an-airplane-flying-over-a-city-with-tall-buildings-1b4X9fCi-s8" target="_blank" rel="noopener">Photo: Thomas Kinto / Unsplash</a></figcaption></figure>
+    <article class="day" id="d02">
+      <div class="day-side">
+        <div class="day-head">
+          <div class="vsign" aria-hidden="true">大嶼山</div>
+          <div>
+            <p class="day-k">Day 7 · Saturday 2 January</p>
+            <h3>Cable car, Big Buddha, Tai O</h3>
+            <p class="area"><span class="pace" data-p="2"><i></i><i></i><i></i></span>Lantau Island</p>
+          </div>
+        </div>
+        <figure class="plate photo"><img src="https://images.unsplash.com/photo-1510994951947-04f930f31c3d?auto=format&fit=crop&w=1000&q=75&h=750" alt="Tian Tan Buddha, Lantau" width="1000" height="750" loading="lazy" decoding="async"><figcaption><span>Tian Tan Buddha, Lantau</span><a class="cr" href="https://unsplash.com/photos/gray-concrete-buddha-statue-over-the-mountain-under-white-sky-FCzW7qWpCao" target="_blank" rel="noopener">Photo: Andrew Yang / Unsplash</a></figcaption></figure>
+      </div>
+      <ol class="stops">
+        <li class="stop has-thumb">
+          <span class="t">10:00 AM</span>
+          <div>
+            <h4>Ngong Ping 360 cable car <span class="zh">昂坪360</span></h4>
+            <p>A 25-minute ride over the mountains and sea. Crystal cabins have glass floors; Crystal+ adds glass sides. It's a Saturday in holiday week, so book online (up to 14 days ahead) and be at Tung Chung for opening.</p>
+            <p class="how"><b>Getting there</b><span class="mtr" style="--line:var(--l-tc)">Tung Chung</span> Exit B, a 5-minute walk · runs about 10 AM–6 PM</p>
+          </div>
+        <figure class="thumb"><img src="https://images.unsplash.com/photo-1501820416958-4d71836959c7?auto=format&fit=crop&w=640&q=75&h=480" alt="Ngong Ping 360" width="640" height="480" loading="lazy" decoding="async"><figcaption><a class="cr" href="https://unsplash.com/photos/white-clouds-above-brown-mountains-landscape-photography--De3ygoVll8" target="_blank" rel="noopener">Photo: Pop &amp; Zebra / Unsplash</a></figcaption></figure>
+          </li>
+        <li class="stop">
+          <span class="t">11:00 AM</span>
+          <div>
+            <h4>Tian Tan Buddha <span class="zh">天壇大佛</span></h4>
+            <p>268 steps up to the giant bronze Buddha, with views across Lantau's peaks and the sea. The nearby Wisdom Path has been closed for renovation through 2026; it may have reopened by then.</p>
+          </div>
+        </li>
+        <li class="stop has-thumb">
+          <span class="t">12:30 PM</span>
+          <div>
+            <h4>Vegetarian lunch at Po Lin Monastery <span class="zh">寶蓮禪寺</span></h4>
+            <p>A fixed vegetarian set (soup, a fried dish, vegetables, rice and tea) that changes with the season. Buy a meal ticket at the kitchen reception or the Buddha's entrance; the standard set is around HK$148 a person. Tofu pudding from the kiosk next door makes a good dessert.</p>
+            <p class="how"><b>Hours</b>Kitchen 11:30 AM–4:30 PM</p>
+          </div>
+        <figure class="thumb"><img src="https://images.unsplash.com/photo-1549167008-f02ad8abf052?auto=format&fit=crop&w=640&q=75&h=480" alt="Po Lin Monastery" width="640" height="480" loading="lazy" decoding="async"><figcaption><a class="cr" href="https://unsplash.com/photos/chinese-temple-with-stair-zoMu7jetYDc" target="_blank" rel="noopener">Photo: Joshua J. Cotten / Unsplash</a></figcaption></figure>
+          </li>
+        <li class="stop has-thumb">
+          <span class="t">2:30 PM</span>
+          <div>
+            <h4>Tai O fishing village <span class="zh">大澳</span></h4>
+            <p>Stilt houses over the water, dried-seafood stalls and a much slower pace than the city.</p>
+            <p class="how"><b>Getting there</b>Bus 21 from Ngong Ping, about 15 minutes · bus back to <span class="mtr" style="--line:var(--l-tc)">Tung Chung</span></p>
+          </div>
+        <figure class="thumb"><img src="https://images.unsplash.com/photo-1549167008-e8fda15b1710?auto=format&fit=crop&w=640&q=75&h=480" alt="Stilt houses, Tai O" width="640" height="480" loading="lazy" decoding="async"><figcaption><a class="cr" href="https://unsplash.com/photos/a-body-of-water-with-houses-and-mountains-in-the-background-Ge1t87lvyRM" target="_blank" rel="noopener">Photo: Joshua J. Cotten / Unsplash</a></figcaption></figure>
+          </li>
+        <li class="stop">
+          <span class="t">7:30 PM</span>
+          <div>
+            <h4>Last night in Hong Kong</h4>
+            <p>Back to Tsim Sha Tsui for dinner at your favourite place of the week, then one more walk along the harbour. Pack tonight; tomorrow starts with a ferry.</p>
+          </div>
+        </li>
+      </ol>
+    </article>
+
+    <div class="part" id="macau">
+      <p class="eyebrow">Part two · 3 – 6 January</p>
+      <h2 class="sec-title">Macau, three slow days</h2>
+      <p class="lede">An hour from Hong Kong by ferry, with its own border, its own currency and Portuguese street signs. Indian passports get 30 days visa-free with no advance registration. Stay at a Cotai resort: it's close to the ferry terminal you arrive at and 10 to 15 minutes from the airport for the flight home.</p>
+    </div>
+
+    <!-- SUN 3 JAN -->
+    <article class="day" id="d03">
+      <div class="day-side">
+        <div class="day-head">
+          <div class="vsign" aria-hidden="true">路氹</div>
+          <div>
+            <p class="day-k">Day 8 · Sunday 3 January</p>
+            <h3>Ferry to Macau, resort afternoon</h3>
+            <p class="area"><span class="pace" data-p="1"><i></i><i></i><i></i></span>Sheung Wan, then Cotai, Macau</p>
+          </div>
+        </div>
+        <figure class="plate photo"><img src="https://images.unsplash.com/photo-1741704512872-f43db6e1d0b0?auto=format&fit=crop&w=1000&q=75&h=750" alt="A Cotai Water Jet ferry" width="1000" height="750" loading="lazy" decoding="async"><figcaption><span>A Cotai Water Jet ferry</span><a class="cr" href="https://unsplash.com/photos/a-blue-ferry-boat-glides-across-the-water-dH_61oLE0Us" target="_blank" rel="noopener">Photo: Raymond Yeung / Unsplash</a></figcaption></figure>
+      </div>
+      <ol class="stops">
+        <li class="stop has-thumb">
+          <span class="t">10:00 AM</span>
+          <div>
+            <h4>Ferry from Sheung Wan <span class="zh">港澳碼頭</span></h4>
+            <p>Check out and take a taxi to the Hong Kong–Macau Ferry Terminal in the Shun Tak Centre. Cotai Water Jet sails to Taipa, the terminal closest to the Cotai resorts, in about an hour; economy was about HK$209 at weekends in 2026. You clear Hong Kong departure immigration at the terminal and Macau immigration when you land, so keep your passports, hotel booking and return flight handy.</p>
+            <p class="how"><b>Getting there</b><span class="mtr" style="--line:var(--l-island)">Sheung Wan</span> the terminal is in the Shun Tak Centre above the station</p>
+          </div>
+        <figure class="thumb"><img src="https://images.unsplash.com/photo-1750594248861-87cf1fff70db?auto=format&fit=crop&w=640&q=75&h=480" alt="Hong Kong–Macau Ferry Terminal" width="640" height="480" loading="lazy" decoding="async"><figcaption><a class="cr" href="https://unsplash.com/photos/a-ferry-docked-at-a-waterfront-terminal-wJ3lHzsByVU" target="_blank" rel="noopener">Photo: Kaden Taylor / Unsplash</a></figcaption></figure>
+          </li>
+        <li class="stop has-thumb">
+          <span class="t">12:30 PM</span>
+          <div>
+            <h4>Check in at your Cotai resort <span class="zh">路氹</span></h4>
+            <p>Ask the resort before you travel whether it runs a shuttle from Taipa ferry terminal. If not, the taxi is short. Use the room package's breakfast or dining credit for lunch.</p>
+          </div>
+        <figure class="thumb"><img src="https://images.unsplash.com/photo-1562525378-1e880eca8693?auto=format&fit=crop&w=640&q=75&h=480" alt="The Venetian, Cotai" width="640" height="480" loading="lazy" decoding="async"><figcaption><a class="cr" href="https://unsplash.com/photos/brown-building-during-daytime-06tlzkiLNYk" target="_blank" rel="noopener">Photo: White.Rainforest / Unsplash</a></figcaption></figure>
+          </li>
+        <li class="stop has-thumb">
+          <span class="t">2:00 PM</span>
+          <div>
+            <h4>A warm swim</h4>
+            <p>Galaxy's famous outdoor wave pool closes for winter. Studio City's water park has an indoor section heated to 30°C all year (12–8 PM, closed some days; winter tickets were MOP 398). Or check that your own resort's pool is heated before you book.</p>
+          </div>
+        <figure class="thumb"><img src="https://images.unsplash.com/photo-1774585358955-939431165305?auto=format&fit=crop&w=640&q=75&h=480" alt="Studio City, Cotai" width="640" height="480" loading="lazy" decoding="async"><figcaption><a class="cr" href="https://unsplash.com/photos/studio-city-sign-with-bright-lights-at-night-q68a0cawx4s" target="_blank" rel="noopener">Photo: MACAU PHOTOGRAPHY / Unsplash</a></figcaption></figure>
+          </li>
+        <li class="stop">
+          <span class="t">Evening</span>
+          <div>
+            <h4>Cotai after dark</h4>
+            <p>Walk between the resorts to see their lights and Christmas decorations, with an easy dinner in your hotel.</p>
+          </div>
+        </li>
+      </ol>
+    </article>
+
+    <!-- MON 4 JAN -->
+    <article class="day" id="d04">
+      <div class="day-side">
+        <div class="day-head">
+          <div class="vsign" aria-hidden="true">大三巴</div>
+          <div>
+            <p class="day-k">Day 9 · Monday 4 January</p>
+            <h3>Old Macau</h3>
+            <p class="area"><span class="pace" data-p="2"><i></i><i></i><i></i></span>The historic centre, Macau Peninsula</p>
+          </div>
+        </div>
+        <figure class="plate photo"><img src="https://images.unsplash.com/photo-1679226954060-9317a2a35219?auto=format&fit=crop&w=1000&q=75&h=750" alt="Ruins of St Paul&#x27;s" width="1000" height="750" loading="lazy" decoding="async"><figcaption><span>Ruins of St Paul&#x27;s</span><a class="cr" href="https://unsplash.com/photos/a-group-of-people-walking-around-a-large-building-qR9JKwEt2dI" target="_blank" rel="noopener">Photo: Stephan HK / Unsplash</a></figcaption></figure>
+      </div>
+      <ol class="stops">
+        <li class="stop has-thumb">
+          <span class="t">10:00 AM</span>
+          <div>
+            <h4>Senado Square <span class="zh">議事亭前地</span></h4>
+            <p>Wavy black-and-white Portuguese pavement, pastel colonial buildings and a lot of people taking photos. Walk it slowly and duck into the side lanes.</p>
+            <p class="how"><b>Getting there</b>Taxi from Cotai, about 20 minutes</p>
+          </div>
+        <figure class="thumb"><img src="https://images.unsplash.com/photo-1724847010055-b06f686963dc?auto=format&fit=crop&w=640&q=75&h=480" alt="Senado Square" width="640" height="480" loading="lazy" decoding="async"><figcaption><a class="cr" href="https://unsplash.com/photos/a-yellow-building-with-a-blue-sky-in-the-background-M7fUbQaALD8" target="_blank" rel="noopener">Photo: MACAU PHOTOGRAPHY / Unsplash</a></figcaption></figure>
+          </li>
+        <li class="stop has-thumb">
+          <span class="t">11:00 AM</span>
+          <div>
+            <h4>Ruins of St Paul's <span class="zh">大三巴牌坊</span></h4>
+            <p>The carved stone front of a 17th-century church that burned in 1835, at the top of a wide flight of steps. Mount Fortress, next to it, has views over the old town.</p>
+            <p class="how"><b>Getting there</b>Uphill from Senado Square through the lanes, about 10 minutes on foot</p>
+          </div>
+        <figure class="thumb"><img src="https://images.unsplash.com/photo-1682975113690-3f4eeca22dc2?auto=format&fit=crop&w=640&q=75&h=480" alt="Ruins of St Paul&#x27;s" width="640" height="480" loading="lazy" decoding="async"><figcaption><a class="cr" href="https://unsplash.com/photos/an-old-building-with-a-bird-flying-in-front-of-it-qvFRZ32cp3Y" target="_blank" rel="noopener">Photo: Siyun Tsang / Unsplash</a></figcaption></figure>
+          </li>
+        <li class="stop">
+          <span class="t">12:30 PM</span>
+          <div>
+            <h4>Vegetarian lunch near St Paul's</h4>
+            <p>Puffin Café, a vegan and vegetarian café close to the ruins, or Vegan Lovers on Rua dos Ervanários for vegetarian Chinese.</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">2:30 PM</span>
+          <div>
+            <h4>Back to the resort</h4>
+            <p>An afternoon off: pool, nap or a long coffee.</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">7:00 PM</span>
+          <div>
+            <h4>Dinner at Woodlands Indian Vegetarian</h4>
+            <p>South Indian vegetarian on the peninsula, open 11:30 AM–10:30 PM.</p>
+            <p class="how"><b>Where</b>Rua de Paris, Macau Peninsula</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">8:30 PM</span>
+          <div>
+            <h4>Light Up Macao, if it's running <span class="zh">光影節</span></h4>
+            <p>Last winter's free light festival ran from 6 December to 11 January, 6–10 PM, around Nam Van Lake and other spots. The 2026 edition hasn't been announced yet; check the tourism office's site in December.</p>
+          </div>
+        </li>
+      </ol>
+    </article>
+
+    <!-- TUE 5 JAN -->
+    <article class="day" id="d05">
+      <div class="day-side">
+        <div class="day-head">
+          <div class="vsign" aria-hidden="true">氹仔</div>
+          <div>
+            <p class="day-k">Day 10 · Tuesday 5 January</p>
+            <h3>Taipa, Coloane and a show</h3>
+            <p class="area"><span class="pace" data-p="2"><i></i><i></i><i></i></span>Taipa, Coloane and Cotai</p>
+          </div>
+        </div>
+        <figure class="plate photo"><img src="https://images.unsplash.com/photo-1756720167839-5eea33e29e58?auto=format&fit=crop&w=1000&q=75&h=750" alt="Coloane Village" width="1000" height="750" loading="lazy" decoding="async"><figcaption><span>Coloane Village</span><a class="cr" href="https://unsplash.com/photos/man-sits-outside-closed-shop-with-rolling-shutter-Yufjzx-8wGk" target="_blank" rel="noopener">Photo: winter sun / Unsplash</a></figcaption></figure>
+      </div>
+      <ol class="stops">
+        <li class="stop">
+          <span class="t">10:00 AM</span>
+          <div>
+            <h4>Taipa Village <span class="zh">氹仔舊城區</span></h4>
+            <p>Narrow lanes of old shophouses around Rua do Cunha, the snack street, and the mint-green Taipa Houses by the old waterfront. It's right next to Cotai.</p>
+            <p class="how"><b>Getting there</b>A short taxi from Cotai, or walk from the north end</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">12:00 PM</span>
+          <div>
+            <h4>Lunch at Pou Tai Un temple <span class="zh">菩提園</span></h4>
+            <p>Buddhist vegetarian food at the temple behind Nova Mall in Taipa, including Sum Yuen Buddhist Vegetarian and an inexpensive buffet upstairs.</p>
+          </div>
+        </li>
+        <li class="stop has-thumb">
+          <span class="t">2:00 PM</span>
+          <div>
+            <h4>Coloane Village and Lord Stow's Bakery <span class="zh">路環</span></h4>
+            <p>A quiet seaside village of small chapels and lanes at the island's southern end, and the bakery that made Macau's egg tart famous. The tarts contain egg.</p>
+            <p class="how"><b>Getting there</b>Taxi from Taipa, about 15 minutes</p>
+          </div>
+        <figure class="thumb"><img src="https://images.unsplash.com/photo-1756720167675-b17498c508fa?auto=format&fit=crop&w=640&q=75&h=480" alt="A café in Coloane Village" width="640" height="480" loading="lazy" decoding="async"><figcaption><a class="cr" href="https://unsplash.com/photos/two-people-looking-into-a-cafe-window-2LElzukZ5kE" target="_blank" rel="noopener">Photo: winter sun / Unsplash</a></figcaption></figure>
+          </li>
+        <li class="stop">
+          <span class="t">4:00 PM</span>
+          <div>
+            <h4>Back to the resort, and pack</h4>
+            <p>The flight home leaves at 10:50 tomorrow morning. Weigh the shopping against your AirAsia allowance tonight, not at the airport.</p>
+          </div>
+        </li>
+        <li class="stop">
+          <span class="t">Evening</span>
+          <div>
+            <h4>The House of Dancing Water <span class="zh">水舞間</span></h4>
+            <p>The water-and-acrobatics show at City of Dreams in Cotai, back since May 2025. Tickets were MOP 698–1,598. Check the show days for 5 January and book; if it isn't on, swap in the 4th.</p>
+          </div>
+        </li>
+      </ol>
+    </article>
+
+    <!-- WED 6 JAN -->
+    <div class="depart" id="d06">
+      <figure class="plate photo" style="margin:0"><img src="https://images.unsplash.com/photo-1726908687793-9b71bf4253d1?auto=format&fit=crop&w=1000&q=75&h=750" alt="Macau Tower across the water" width="1000" height="750" loading="lazy" decoding="async"><figcaption><span>Macau Tower across the water</span><a class="cr" href="https://unsplash.com/photos/a-view-of-a-city-at-night-from-across-the-water-XqsFGuvmW20" target="_blank" rel="noopener">Photo: Roméo A. / Unsplash</a></figcaption></figure>
       <div>
         <div class="day-head">
           <div class="vsign" aria-hidden="true">機場</div>
           <div>
-            <p class="day-k">Day 8 · Saturday 2 January</p>
-            <h3 class="dep-h">Slow breakfast, then home</h3>
+            <p class="day-k">Day 11 · Wednesday 6 January</p>
+            <h3 class="dep-h">Fly home from Macau</h3>
           </div>
         </div>
-        <p class="lede">A last walk along the waterfront, then the Airport Express: 24 minutes from Hong Kong Station. Hong Kong and Kowloon stations offer in-town check-in for some airlines, including Cathay Pacific, Hong Kong Airlines, Qantas and Singapore Airlines, from 24 hours to 90 minutes before departure. Drop your bags there in the morning and travel to the airport light.</p>
-        <p class="how" style="margin-top:1rem"><b>Getting there</b><span class="mtr" style="--line:var(--l-ae)">Kowloon</span><span class="mtr" style="--line:var(--l-ae)">Hong Kong</span> Airport Express · check your airline's in-town check-in hours</p>
+        <p class="lede">Leave the resort around 8:15 AM; Macau International Airport is 10 to 15 minutes from Cotai. Thai AirAsia FD776 leaves at 10:50 AM for Bangkok Don Mueang, and FD144 lands in Ahmedabad at 9:25 PM. There's no need to go back through Hong Kong.</p>
+        <p class="how" style="margin-top:1rem"><b>Before you fly</b>Confirm the booking is Fly-Thru so your bags go straight to Ahmedabad · see the flight checklist</p>
       </div>
     </div>
 
@@ -888,7 +1134,7 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
   <div class="wrap">
     <p class="eyebrow">Eating vegetarian</p>
     <h2 class="sec-title">The vegetarian table</h2>
-    <p class="lede">Hong Kong is easier for vegetarians than it looks, as long as you know where meat and fish hide. At ordinary Cantonese restaurants, stir-fried greens usually come with oyster sauce, and chicken powder and dried shrimp turn up as background seasoning. Dedicated vegetarian restaurants, marked 齋 or 素, remove the guesswork. In holiday week, book every dinner.</p>
+    <p class="lede">Hong Kong is easier for vegetarians than it looks, as long as you know where meat and fish hide. At ordinary Cantonese restaurants, stir-fried greens usually come with oyster sauce, and chicken powder and dried shrimp turn up as background seasoning. Dedicated vegetarian restaurants, marked 齋 or 素, remove the guesswork. In holiday week, book every dinner. Macau speaks Cantonese too, so the phrases and the card work there as well.</p>
 
     <div class="dishes">
       <div class="dish"><div class="dish-img"><img src="https://images.unsplash.com/photo-1682596044361-88ee04cb80fa?auto=format&fit=crop&w=700&q=75&h=525" alt="Mango pomelo sago" width="700" height="525" loading="lazy" decoding="async"><a class="cr" href="https://unsplash.com/photos/a-bowl-of-food-with-a-spoon-in-it-A56ij4gjhX4" target="_blank" rel="noopener">Photo: You Le / Unsplash</a></div><span class="zh">楊枝甘露</span><h4>Mango pomelo sago</h4><p>Chilled mango, pomelo and sago in coconut milk. The dessert to order everywhere.</p><span class="tag ok">Vegetarian</span></div>
@@ -923,15 +1169,18 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
         <table>
           <thead><tr><th>Restaurant</th><th>When</th><th>Food</th><th>Address</th><th>Good to know</th></tr></thead>
           <tbody>
-            <tr><td>Sangeetha</td><td><span class="d">26 Dec dinner</span></td><td>South Indian, all vegetarian</td><td>Wing On Plaza, 62 Mody Road, TST East</td><td>Dinner 6–10 PM; book for the holiday</td></tr>
-            <tr><td>LockCha Tea House</td><td><span class="d">27 Dec lunch</span></td><td>Vegetarian dim sum, tea</td><td>Tai Kwun, 10 Hollywood Road, Central</td><td>Weekends from 8 AM; also in Hong Kong Park</td></tr>
-            <tr><td>Kailash Parbat</td><td><span class="d">27 Dec dinner</span></td><td>Indian, all vegetarian</td><td>3/F Multifield Plaza, 3–7A Prat Ave, TST</td><td>Also good for New Year's Eve dinner</td></tr>
-            <tr><td>Spices / Classified</td><td><span class="d">28 Dec lunch</span></td><td>Asian with a vegetarian menu / café</td><td>The Repulse Bay arcade / The Pulse</td><td>Neither is fully vegetarian; order from the veg menu</td></tr>
-            <tr><td>Plaza Inn</td><td><span class="d">29 Dec lunch</span></td><td>Chinese, table service</td><td>Main Street, Hong Kong Disneyland</td><td>Vegetarian dishes marked; reserve online</td></tr>
-            <tr><td>Po Lin Monastery</td><td><span class="d">30 Dec lunch</span></td><td>Buddhist set meal</td><td>Ngong Ping, Lantau</td><td>Buy a meal ticket; kitchen 11:30 AM–4:30 PM</td></tr>
+            <tr><td>Sangeetha</td><td><span class="d">27 Dec dinner</span></td><td>South Indian, all vegetarian</td><td>Wing On Plaza, 62 Mody Road, TST East</td><td>Dinner 6–10 PM; book for holiday week</td></tr>
+            <tr><td>LockCha Tea House</td><td><span class="d">28 Dec lunch</span></td><td>Vegetarian dim sum, tea</td><td>Tai Kwun, 10 Hollywood Road, Central</td><td>Weekdays from 11 AM; also in Hong Kong Park</td></tr>
+            <tr><td>Kailash Parbat</td><td><span class="d">28 Dec dinner</span></td><td>Indian, all vegetarian</td><td>3/F Multifield Plaza, 3–7A Prat Ave, TST</td><td>Also good for New Year's Eve dinner</td></tr>
+            <tr><td>Spices / Classified</td><td><span class="d">29 Dec lunch</span></td><td>Asian with a vegetarian menu / café</td><td>The Repulse Bay arcade / The Pulse</td><td>Neither is fully vegetarian; order from the veg menu</td></tr>
+            <tr><td>Plaza Inn</td><td><span class="d">30 Dec lunch</span></td><td>Chinese, table service</td><td>Main Street, Hong Kong Disneyland</td><td>Vegetarian dishes marked; reserve online</td></tr>
             <tr><td>Three Virtues</td><td><span class="d">31 Dec lunch</span></td><td>Vegetarian Cantonese, dim sum</td><td>JD Mall, 233–239 Nathan Road, Jordan</td><td>Phone ahead: 3622 1888</td></tr>
             <tr><td>Isoya</td><td><span class="d">1 Jan lunch</span></td><td>Japanese vegetarian</td><td>1/F, 7 Mallory Street, Wan Chai</td><td>Check holiday opening</td></tr>
             <tr><td>Veggie Kingdom</td><td><span class="d">1 Jan dinner</span></td><td>Vegetarian Cantonese</td><td>7/F Kyoto Plaza, 491–499 Lockhart Rd, Causeway Bay</td><td>Book early: 2366 9223</td></tr>
+            <tr><td>Po Lin Monastery</td><td><span class="d">2 Jan lunch</span></td><td>Buddhist set meal</td><td>Ngong Ping, Lantau</td><td>Buy a meal ticket; kitchen 11:30 AM–4:30 PM</td></tr>
+            <tr><td>Puffin Café / Vegan Lovers</td><td><span class="d">4 Jan lunch</span></td><td>Vegan café / vegetarian Chinese</td><td>Near St Paul's / Rua dos Ervanários, Macau</td><td>Both close to the ruins</td></tr>
+            <tr><td>Woodlands</td><td><span class="d">4 Jan dinner</span></td><td>South Indian, all vegetarian</td><td>Rua de Paris, Macau Peninsula</td><td>11:30 AM–10:30 PM</td></tr>
+            <tr><td>Pou Tai Un temple</td><td><span class="d">5 Jan lunch</span></td><td>Buddhist vegetarian</td><td>Behind Nova Mall, Taipa, Macau</td><td>Restaurant plus a buffet upstairs</td></tr>
           </tbody>
         </table>
       </div>
@@ -946,7 +1195,7 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
       <div>
         <p class="eyebrow">Two shopping days</p>
         <h2 class="sec-title">What to buy where</h2>
-        <p class="lede">Hong Kong has no sales tax, so the price on the tag is the price you pay. The morning of New Year's Eve covers Kowloon's markets and specialist streets; New Year's Day afternoon covers the Island's boutiques and malls, with decor stops on the 27th too.</p>
+        <p class="lede">Hong Kong has no sales tax, so the price on the tag is the price you pay. The morning of New Year's Eve covers Kowloon's markets and specialist streets; New Year's Day afternoon covers the Island's boutiques and malls, with decor stops on the 28th too. Leave room in your AirAsia baggage allowance for all of it.</p>
       </div>
       <figure class="plate photo"><img src="https://images.unsplash.com/photo-1502099530544-2b61cbaed85c?auto=format&fit=crop&w=1000&q=75&h=750" alt="Neon signs after rain" width="1000" height="750" loading="lazy" decoding="async"><figcaption><span>Neon signs after rain</span><a class="cr" href="https://unsplash.com/photos/neon-signs-on-wet-hong-kong-street-DdQkVaQbSsg" target="_blank" rel="noopener">Photo: Nic Low / Unsplash</a></figcaption></figure>
     </div>
@@ -971,8 +1220,8 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
       <div class="shop">
         <h3>Decor <span class="zh">家居</span></h3>
         <ul>
-          <li><strong>PMQ</strong>Studios and shops by local designers: ceramics, prints, homeware. <em>27 Dec afternoon</em></li>
-          <li><strong>Hollywood Road</strong>Antiques, old posters and curios along the walk to Man Mo Temple. <em>27 Dec afternoon</em></li>
+          <li><strong>PMQ</strong>Studios and shops by local designers: ceramics, prints, homeware. <em>28 Dec afternoon</em></li>
+          <li><strong>Hollywood Road</strong>Antiques, old posters and curios along the walk to Man Mo Temple. <em>28 Dec afternoon</em></li>
           <li><strong>Ki Lung, Nam Cheong and Yu Chau streets</strong>Fabric, trims and cushion covers for home projects. <em>31 Dec midday</em></li>
           <li><strong>Starstreet Precinct</strong>Small home and lifestyle boutiques. <em>1 Jan</em></li>
         </ul>
@@ -986,12 +1235,12 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
   <div class="wrap">
     <p class="eyebrow">Logistics</p>
     <h2 class="sec-title">Getting around</h2>
-    <p class="lede">The MTR gets you almost everywhere on this plan. Ferries, trams and buses fill the gaps, and taxis are cheap by US standards.</p>
+    <p class="lede">The MTR gets you almost everywhere on this plan. Ferries, trams and buses fill the gaps, and taxis are inexpensive.</p>
     <div class="cards">
       <div class="card">
         <p class="k">Pay for everything</p>
         <h4>Octopus card</h4>
-        <p>Download the Octopus App for Tourists and add a card to Apple Pay with a US Visa or Mastercard (iPhone X or later). Or buy a physical Sold Tourist Octopus card (HK$39, then add value). It works on the MTR, buses, trams, the Star Ferry and at 7-Eleven. MTR gates also take contactless Visa, Mastercard and Apple Pay directly. The Peak Tram is the exception: buy a ticket at the counter.</p>
+        <p>Download the Octopus App for Tourists and add a card to Apple Pay with an overseas Visa or Mastercard (iPhone X or later). Or buy a physical Sold Tourist Octopus card (HK$39, then add value). It works on the MTR, buses, trams, the Star Ferry and at 7-Eleven. MTR gates also take contactless Visa, Mastercard and Apple Pay directly. The Peak Tram is the exception: buy a ticket at the counter.</p>
       </div>
       <div class="card">
         <p class="k">The trains</p>
@@ -1021,6 +1270,16 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
         <h4>Star Ferry and trams</h4>
         <p>The Star Ferry runs between Central Pier 7 and Tsim Sha Tsui every 6–12 minutes, from early morning to about 11:30 PM. The double-decker trams run along the north shore of the Island; board at the back and pay as you leave. Both take Octopus.</p>
       </div>
+      <div class="card">
+        <p class="k">Hong Kong to Macau</p>
+        <h4>Ferry or bridge bus</h4>
+        <p>Ferries leave from the Hong Kong–Macau Ferry Terminal at Sheung Wan: Cotai Water Jet to Taipa, for the Cotai resorts, and TurboJET mainly to the Outer Harbour on the peninsula. Both take about an hour; no ferries run overnight. The bridge shuttle bus runs 24 hours from the Hong Kong Port near the airport, about 40 minutes across, for HK$65. Each way you pass through two immigration counters.</p>
+      </div>
+      <div class="card">
+        <p class="k">In Macau</p>
+        <h4>Patacas and taxis</h4>
+        <p>Macau has its own currency, the pataca (MOP). Hong Kong dollars are widely accepted at about one to one, but change comes back in patacas, so spend them before you leave. Taxis are the simplest way between Cotai, Taipa, Coloane and the old town; most trips on this plan take 15 to 20 minutes.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1031,15 +1290,15 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
     <p class="eyebrow">Before you go</p>
     <h2 class="sec-title">Practical notes</h2>
     <div class="notes-grid">
-      <div class="n"><h4>Entry</h4><p>US passport holders can visit Hong Kong without a visa for up to 90 days.</p></div>
-      <div class="n"><h4>Book now</h4><p>Disneyland (ticket plus a dated park reservation), the spa, New Year's Eve cruise or rooftop tickets when they go on sale, New Year's Eve dinner, and the New Year's Day farewell dinner. Ngong Ping 360 opens bookings 14 days ahead.</p></div>
+      <div class="n"><h4>Entry with an Indian passport</h4><p>Up to 14 days visa-free, but only after the free online Pre-arrival Registration (PAR) on gov.hk, done before you fly. The result is instant. Print the slip on A4, sign it, and carry it with your passport (valid six months or more); you show both at check-in and on arrival. One PAR covers several visits over six months.</p></div>
+      <div class="n"><h4>Book now</h4><p>The Hong Kong room from the night of the 26th, Disneyland (ticket plus a dated park reservation), the spa, New Year's Eve dinner and any cruise or rooftop tickets, the Macau resort, and AirAsia checked bags. Ngong Ping 360 opens bookings 14 days ahead.</p></div>
       <div class="n">
         <h4>Weather, late December</h4>
         <table class="wx">
           <thead><tr><th>Month</th><th>High</th><th>Low</th><th>Sea</th></tr></thead>
           <tbody>
-            <tr><td>Dec</td><td>69°F</td><td>61°F</td><td>68°F</td></tr>
-            <tr><td>Jan</td><td>66°F</td><td>58°F</td><td>64°F</td></tr>
+            <tr><td>Dec</td><td>20°C</td><td>16°C</td><td>20°C</td></tr>
+            <tr><td>Jan</td><td>19°C</td><td>15°C</td><td>18°C</td></tr>
           </tbody>
         </table>
         <p style="font-size:.78rem;color:var(--muted)">Hong Kong Observatory averages, 1991–2020. Dry and mild; pack a light jacket for evenings on the water.</p>
@@ -1048,8 +1307,8 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
       <div class="n"><h4>Christmas lights</h4><p>WinterFest's Christmas Town in Statue Square, the East Tsim Sha Tsui building lights and Harbour City's decorations have all run into the first days of January in past years.</p></div>
       <div class="n"><h4>Money and tipping</h4><p>Many restaurants add a 10% service charge, and no further tip is expected. Small cafés and stalls don't expect tips; rounding up a taxi fare is a nice gesture.</p></div>
       <div class="n"><h4>Power</h4><p>UK-style three-pin plugs (Type G), 220V. Phone and laptop chargers are usually fine with an adapter; check anything that says 110V only.</p></div>
-      <div class="n"><h4>The spa</h4><p>Monday afternoon, 28 December, is set aside for it. Pick the place once the hotel is booked, so it's an easy trip from the beach or back to the room.</p></div>
-      <div class="n"><h4>Confirm in December</h4><p>Everything here was checked in October 2026. The New Year's Eve programme, the harbour light show and holiday opening hours are usually confirmed in December, so check the big ones the week before you fly.</p></div>
+      <div class="n"><h4>Entry to Macau</h4><p>Indian passports get 30 days visa-free, with nothing to fill in beforehand. Your passport must be valid at least 90 days beyond the stay, and you may be asked for the return flight and proof of funds (officially MOP 5,000 for up to seven days).</p></div>
+      <div class="n"><h4>Confirm in December</h4><p>Everything here was checked in October 2026. The New Year's Eve programme, the harbour light show, Macau's light festival and holiday opening hours are usually confirmed in December, so check the big ones the week before you fly.</p></div>
     </div>
   </div>
 </section>
@@ -1057,7 +1316,7 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
   <div class="wrap">
     <p class="eyebrow">Photo credits</p>
     <p class="lede" style="margin-top:.6rem">All photos are from Unsplash, used under the Unsplash License, and load directly from Unsplash.</p>
-    <ul class="credit-list"><li><span>Victoria Harbour at night from the Avenue of Stars</span><a href="https://unsplash.com/photos/city-skyline-across-body-of-water-during-night-time-uCGIcUuxsvw" target="_blank" rel="noopener">Cheung Yin</a></li><li><span>Avenue of Stars, Tsim Sha Tsui</span><a href="https://unsplash.com/photos/a-view-of-the-city-skyline-from-the-waterfront-Ogv4cUb5D7o" target="_blank" rel="noopener">Cheung Yin</a></li><li><span>The view from Victoria Peak</span><a href="https://unsplash.com/photos/victoria-peak-with-a-body-of-water-in-the-background-W9vTeM4yXak" target="_blank" rel="noopener">Sean Choo</a></li><li><span>Repulse Bay from above</span><a href="https://unsplash.com/photos/aerial-photography-of-beach-during-daytime-7cIyLI-IVTE" target="_blank" rel="noopener">Joshua J. Cotten</a></li><li><span>Hong Kong Disneyland</span><a href="https://unsplash.com/photos/a-crowd-of-people-walking-down-a-street-next-to-tall-buildings-oLgET4cBtqs" target="_blank" rel="noopener">Kit Ko</a></li><li><span>Tian Tan Buddha, Lantau</span><a href="https://unsplash.com/photos/gray-concrete-buddha-statue-over-the-mountain-under-white-sky-FCzW7qWpCao" target="_blank" rel="noopener">Andrew Yang</a></li><li><span>Hong Kong New Year&#x27;s Eve fireworks, 2024</span><a href="https://unsplash.com/photos/fireworks-are-lit-up-in-the-night-sky-over-a-city-kbZIK_LiMAs" target="_blank" rel="noopener">Henry Lai</a></li><li><span>Trams on Des Voeux Road Central</span><a href="https://unsplash.com/photos/a-blue-and-white-double-decker-bus-on-a-city-street-1I5L3v65wMI" target="_blank" rel="noopener">Cheung Yin</a></li><li><span>Heading home from Hong Kong</span><a href="https://unsplash.com/photos/an-airplane-flying-over-a-city-with-tall-buildings-1b4X9fCi-s8" target="_blank" rel="noopener">Thomas Kinto</a></li><li><span>Neon signs after rain</span><a href="https://unsplash.com/photos/neon-signs-on-wet-hong-kong-street-DdQkVaQbSsg" target="_blank" rel="noopener">Nic Low</a></li><li><span>McDull statue, Avenue of Stars</span><a href="https://unsplash.com/photos/a-statue-of-a-slotty-bear-on-a-pier-with-a-city-in-the-background-NIzzoxkqxVk" target="_blank" rel="noopener">Cheung Yin</a></li><li><span>Christmas lights in Hong Kong</span><a href="https://unsplash.com/photos/a-lighted-display-of-a-santa-clause-on-a-boat-AVPsDc2mC00" target="_blank" rel="noopener">Mathew Browne</a></li><li><span>Victoria Harbour at night</span><a href="https://unsplash.com/photos/city-skyline-during-night-time-m04G9KRixMc" target="_blank" rel="noopener">Henry Lai</a></li><li><span>Tai Kwun, Central</span><a href="https://unsplash.com/photos/people-walking-on-street-near-building-during-daytime-uKX-DJeiD6g" target="_blank" rel="noopener">Timmy Wong</a></li><li><span>Incense coils, Man Mo Temple</span><a href="https://unsplash.com/photos/a-group-of-fans-hanging-from-the-ceiling-jVYeecgUGVQ" target="_blank" rel="noopener">Rex</a></li><li><span>PMQ courtyard</span><a href="https://unsplash.com/photos/people-gather-in-an-outdoor-plaza-surrounded-by-buildings-nFr3-BgxJQU" target="_blank" rel="noopener">Michael Moloney</a></li><li><span>A Hong Kong Christmas tree</span><a href="https://unsplash.com/photos/a-large-christmas-tree-in-front-of-a-city-skyline-K8N5-vrUDuk" target="_blank" rel="noopener">Henry Lai</a></li><li><span>The Star Ferry</span><a href="https://unsplash.com/photos/white-and-blue-boat-on-sea-during-daytime-FrlkA3kF21c" target="_blank" rel="noopener">SHUJA OFFICIAL</a></li><li><span>Sunset at Repulse Bay</span><a href="https://unsplash.com/photos/a-long-dock-in-the-middle-of-a-body-of-water-wQb5oN0gatQ" target="_blank" rel="noopener">Stephen Fang</a></li><li><span>A parade at Hong Kong Disneyland</span><a href="https://unsplash.com/photos/colorful-dancers-perform-in-a-disney-parade-1V2ouC53RBA" target="_blank" rel="noopener">Henry Lai</a></li><li><span>Ngong Ping 360</span><a href="https://unsplash.com/photos/white-clouds-above-brown-mountains-landscape-photography--De3ygoVll8" target="_blank" rel="noopener">Pop &amp; Zebra</a></li><li><span>Po Lin Monastery</span><a href="https://unsplash.com/photos/chinese-temple-with-stair-zoMu7jetYDc" target="_blank" rel="noopener">Joshua J. Cotten</a></li><li><span>Stilt houses, Tai O</span><a href="https://unsplash.com/photos/a-body-of-water-with-houses-and-mountains-in-the-background-Ge1t87lvyRM" target="_blank" rel="noopener">Joshua J. Cotten</a></li><li><span>Apliu Street, Sham Shui Po</span><a href="https://unsplash.com/photos/woman-walking-on-road-vmsuvvaw8Gc" target="_blank" rel="noopener">Airam Dato-on</a></li><li><span>Mong Kok at night</span><a href="https://unsplash.com/photos/nighttime-cityscape-shows-cars-buses-and-pedestrians-Ai26mDgNITk" target="_blank" rel="noopener">Anastasia Zanko</a></li><li><span>Ding-ding trams at night</span><a href="https://unsplash.com/photos/trams-decorated-with-advertisements-at-night-uFF2lsp1RyY" target="_blank" rel="noopener">Gerald Tan</a></li><li><span>Causeway Bay</span><a href="https://unsplash.com/photos/a-crowd-of-people-walking-down-a-street-next-to-tall-buildings-MAfAvBLyfMA" target="_blank" rel="noopener">crystal</a></li><li><span>Mango pomelo sago</span><a href="https://unsplash.com/photos/a-bowl-of-food-with-a-spoon-in-it-A56ij4gjhX4" target="_blank" rel="noopener">You Le</a></li><li><span>Tofu pudding</span><a href="https://unsplash.com/photos/four-cups-of-ice-cream-with-spoons-in-them-5IZQy8aPYQc" target="_blank" rel="noopener">Remi Chow</a></li><li><span>Milk tea, Lan Fong Yuen</span><a href="https://unsplash.com/photos/two-people-holding-up-drinks-in-front-of-a-restaurant--BcXL46l41o" target="_blank" rel="noopener">Jeanne Rose Gomez</a></li><li><span>Hong Kong egg tarts</span><a href="https://unsplash.com/photos/freshly-baked-egg-tarts-are-displayed-in-a-case-VqFUgDHON-s" target="_blank" rel="noopener">Raymond Yeung</a></li></ul>
+    <ul class="credit-list"><li><span>Victoria Harbour at night from the Avenue of Stars</span><a href="https://unsplash.com/photos/city-skyline-across-body-of-water-during-night-time-uCGIcUuxsvw" target="_blank" rel="noopener">Cheung Yin</a></li><li><span>Avenue of Stars, Tsim Sha Tsui</span><a href="https://unsplash.com/photos/a-view-of-the-city-skyline-from-the-waterfront-Ogv4cUb5D7o" target="_blank" rel="noopener">Cheung Yin</a></li><li><span>The view from Victoria Peak</span><a href="https://unsplash.com/photos/victoria-peak-with-a-body-of-water-in-the-background-W9vTeM4yXak" target="_blank" rel="noopener">Sean Choo</a></li><li><span>Repulse Bay from above</span><a href="https://unsplash.com/photos/aerial-photography-of-beach-during-daytime-7cIyLI-IVTE" target="_blank" rel="noopener">Joshua J. Cotten</a></li><li><span>Hong Kong Disneyland</span><a href="https://unsplash.com/photos/a-crowd-of-people-walking-down-a-street-next-to-tall-buildings-oLgET4cBtqs" target="_blank" rel="noopener">Kit Ko</a></li><li><span>Hong Kong New Year&#x27;s Eve fireworks, 2024</span><a href="https://unsplash.com/photos/fireworks-are-lit-up-in-the-night-sky-over-a-city-kbZIK_LiMAs" target="_blank" rel="noopener">Henry Lai</a></li><li><span>Trams on Des Voeux Road Central</span><a href="https://unsplash.com/photos/a-blue-and-white-double-decker-bus-on-a-city-street-1I5L3v65wMI" target="_blank" rel="noopener">Cheung Yin</a></li><li><span>Tian Tan Buddha, Lantau</span><a href="https://unsplash.com/photos/gray-concrete-buddha-statue-over-the-mountain-under-white-sky-FCzW7qWpCao" target="_blank" rel="noopener">Andrew Yang</a></li><li><span>A Cotai Water Jet ferry</span><a href="https://unsplash.com/photos/a-blue-ferry-boat-glides-across-the-water-dH_61oLE0Us" target="_blank" rel="noopener">Raymond Yeung</a></li><li><span>Ruins of St Paul&#x27;s</span><a href="https://unsplash.com/photos/a-group-of-people-walking-around-a-large-building-qR9JKwEt2dI" target="_blank" rel="noopener">Stephan HK</a></li><li><span>Coloane Village</span><a href="https://unsplash.com/photos/man-sits-outside-closed-shop-with-rolling-shutter-Yufjzx-8wGk" target="_blank" rel="noopener">winter sun</a></li><li><span>Macau Tower across the water</span><a href="https://unsplash.com/photos/a-view-of-a-city-at-night-from-across-the-water-XqsFGuvmW20" target="_blank" rel="noopener">Roméo A.</a></li><li><span>Neon signs after rain</span><a href="https://unsplash.com/photos/neon-signs-on-wet-hong-kong-street-DdQkVaQbSsg" target="_blank" rel="noopener">Nic Low</a></li><li><span>McDull statue, Avenue of Stars</span><a href="https://unsplash.com/photos/a-statue-of-a-slotty-bear-on-a-pier-with-a-city-in-the-background-NIzzoxkqxVk" target="_blank" rel="noopener">Cheung Yin</a></li><li><span>Christmas lights in Hong Kong</span><a href="https://unsplash.com/photos/a-lighted-display-of-a-santa-clause-on-a-boat-AVPsDc2mC00" target="_blank" rel="noopener">Mathew Browne</a></li><li><span>Victoria Harbour at night</span><a href="https://unsplash.com/photos/city-skyline-during-night-time-m04G9KRixMc" target="_blank" rel="noopener">Henry Lai</a></li><li><span>Tai Kwun, Central</span><a href="https://unsplash.com/photos/people-walking-on-street-near-building-during-daytime-uKX-DJeiD6g" target="_blank" rel="noopener">Timmy Wong</a></li><li><span>Incense coils, Man Mo Temple</span><a href="https://unsplash.com/photos/a-group-of-fans-hanging-from-the-ceiling-jVYeecgUGVQ" target="_blank" rel="noopener">Rex</a></li><li><span>PMQ courtyard</span><a href="https://unsplash.com/photos/people-gather-in-an-outdoor-plaza-surrounded-by-buildings-nFr3-BgxJQU" target="_blank" rel="noopener">Michael Moloney</a></li><li><span>A Hong Kong Christmas tree</span><a href="https://unsplash.com/photos/a-large-christmas-tree-in-front-of-a-city-skyline-K8N5-vrUDuk" target="_blank" rel="noopener">Henry Lai</a></li><li><span>The Star Ferry</span><a href="https://unsplash.com/photos/white-and-blue-boat-on-sea-during-daytime-FrlkA3kF21c" target="_blank" rel="noopener">SHUJA OFFICIAL</a></li><li><span>Sunset at Repulse Bay</span><a href="https://unsplash.com/photos/a-long-dock-in-the-middle-of-a-body-of-water-wQb5oN0gatQ" target="_blank" rel="noopener">Stephen Fang</a></li><li><span>A parade at Hong Kong Disneyland</span><a href="https://unsplash.com/photos/colorful-dancers-perform-in-a-disney-parade-1V2ouC53RBA" target="_blank" rel="noopener">Henry Lai</a></li><li><span>Ngong Ping 360</span><a href="https://unsplash.com/photos/white-clouds-above-brown-mountains-landscape-photography--De3ygoVll8" target="_blank" rel="noopener">Pop &amp; Zebra</a></li><li><span>Po Lin Monastery</span><a href="https://unsplash.com/photos/chinese-temple-with-stair-zoMu7jetYDc" target="_blank" rel="noopener">Joshua J. Cotten</a></li><li><span>Stilt houses, Tai O</span><a href="https://unsplash.com/photos/a-body-of-water-with-houses-and-mountains-in-the-background-Ge1t87lvyRM" target="_blank" rel="noopener">Joshua J. Cotten</a></li><li><span>Apliu Street, Sham Shui Po</span><a href="https://unsplash.com/photos/woman-walking-on-road-vmsuvvaw8Gc" target="_blank" rel="noopener">Airam Dato-on</a></li><li><span>Mong Kok at night</span><a href="https://unsplash.com/photos/nighttime-cityscape-shows-cars-buses-and-pedestrians-Ai26mDgNITk" target="_blank" rel="noopener">Anastasia Zanko</a></li><li><span>Ding-ding trams at night</span><a href="https://unsplash.com/photos/trams-decorated-with-advertisements-at-night-uFF2lsp1RyY" target="_blank" rel="noopener">Gerald Tan</a></li><li><span>Causeway Bay</span><a href="https://unsplash.com/photos/a-crowd-of-people-walking-down-a-street-next-to-tall-buildings-MAfAvBLyfMA" target="_blank" rel="noopener">crystal</a></li><li><span>Hong Kong–Macau Ferry Terminal</span><a href="https://unsplash.com/photos/a-ferry-docked-at-a-waterfront-terminal-wJ3lHzsByVU" target="_blank" rel="noopener">Kaden Taylor</a></li><li><span>The Venetian, Cotai</span><a href="https://unsplash.com/photos/brown-building-during-daytime-06tlzkiLNYk" target="_blank" rel="noopener">White.Rainforest</a></li><li><span>Studio City, Cotai</span><a href="https://unsplash.com/photos/studio-city-sign-with-bright-lights-at-night-q68a0cawx4s" target="_blank" rel="noopener">MACAU PHOTOGRAPHY</a></li><li><span>Senado Square</span><a href="https://unsplash.com/photos/a-yellow-building-with-a-blue-sky-in-the-background-M7fUbQaALD8" target="_blank" rel="noopener">MACAU PHOTOGRAPHY</a></li><li><span>Ruins of St Paul&#x27;s</span><a href="https://unsplash.com/photos/an-old-building-with-a-bird-flying-in-front-of-it-qvFRZ32cp3Y" target="_blank" rel="noopener">Siyun Tsang</a></li><li><span>A café in Coloane Village</span><a href="https://unsplash.com/photos/two-people-looking-into-a-cafe-window-2LElzukZ5kE" target="_blank" rel="noopener">winter sun</a></li><li><span>Mango pomelo sago</span><a href="https://unsplash.com/photos/a-bowl-of-food-with-a-spoon-in-it-A56ij4gjhX4" target="_blank" rel="noopener">You Le</a></li><li><span>Tofu pudding</span><a href="https://unsplash.com/photos/four-cups-of-ice-cream-with-spoons-in-them-5IZQy8aPYQc" target="_blank" rel="noopener">Remi Chow</a></li><li><span>Milk tea, Lan Fong Yuen</span><a href="https://unsplash.com/photos/two-people-holding-up-drinks-in-front-of-a-restaurant--BcXL46l41o" target="_blank" rel="noopener">Jeanne Rose Gomez</a></li><li><span>Hong Kong egg tarts</span><a href="https://unsplash.com/photos/freshly-baked-egg-tarts-are-displayed-in-a-case-VqFUgDHON-s" target="_blank" rel="noopener">Raymond Yeung</a></li></ul>
   </div>
 </section>
 </main>
@@ -1065,10 +1324,10 @@ footer .fm{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-
 <footer>
   <div class="wrap">
     <div>
-      <p class="fm">Hong Kong for two · 26 Dec – 2 Jan</p>
+      <p class="fm">Hong Kong and Macau for two · 26 Dec – 6 Jan</p>
       <div class="fz">新年快樂</div>
     </div>
-    <p>Seven nights from Christmas to New Year. Vegetarian throughout, with a beach morning, a spa afternoon, Disneyland, two days of shopping and the countdown on the harbour. Photos from Unsplash; credits above.</p>
+    <p>Seven days in Hong Kong from Christmas to New Year, then three in Macau. Vegetarian throughout, with a beach morning, a spa afternoon, Disneyland, two days of shopping, the countdown on the harbour and resort days at the end. Photos from Unsplash; credits above.</p>
   </div>
 </footer>
 
